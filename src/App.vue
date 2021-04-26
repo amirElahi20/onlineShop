@@ -1,26 +1,65 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<!-- <top-responsive></top-responsive> -->
+  <the-header></the-header>
+  <main-content></main-content>
+  <!-- <log-in></log-in> -->
+  <!-- <responsive-header></responsive-header> -->
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheHeader from "./components/Common/TheHeader.vue";
+import MainContent from "./components/Content/MainContent.vue";
+// import LogIn from "./components/Login/LogIn.vue";
+// import ResponsiveHeader from './responsive/ResponsiveHeader.vue'
+// import TopResponsive from './responsive/TopResponsive.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TheHeader,
+    MainContent,
+    // TopResponsive
+    // LogIn,
+    // ResponsiveHeader,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+@import '../src/styles/mixins.scss';
+@font-face {
+  font-family: "BYekan";
+  src: url("../public/fonts/BYekan-webfont.eot") format("eot"),
+    url("../public/fonts/BYekan-webfont.woff") format("woff"),
+    url("../public/fonts/BYekan-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "BYekan";
+  width: 100%;
+
+     @include respond(tab-port){
+       padding: 0;
+     }
+}
+.english {
+  font-family: sans-serif;
+}
+.container {
+  width: 1200px;
+}
+input {
+  font-family: "BYekan";
+  outline: none;
+}
+button {
+  font-family: "BYekan";
 }
 </style>

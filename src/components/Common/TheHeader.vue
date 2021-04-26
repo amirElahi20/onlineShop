@@ -1,0 +1,52 @@
+
+<template>
+  <div>
+    <header class="header">
+      <top-nav></top-nav>
+      <the-menu></the-menu>
+      <text-header></text-header>
+      <responsive-header></responsive-header>
+    </header>
+  </div>
+</template>
+
+
+<script>
+import TopNav from "./Header/MainMenu/TopNav.vue";
+import TheMenu from "./Header/MainMenu/TheMenu";
+import TextHeader from './Header/TextHeader/TextHeader.vue';
+import ResponsiveHeader from '../../responsive/ResponsiveHeader.vue'
+export default {
+  components: {
+    TopNav,
+    TheMenu,
+    TextHeader,
+    ResponsiveHeader,
+  },
+};
+</script>
+
+<style scoped lang="scss">
+@import '../../styles/mixins.scss';
+.header {
+  width: 100%;
+  height: 110vh;
+  background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
+    url("../../../public/img/artiom-vallat-H-qqp_Eqaww-unsplash.jpg");
+  /* background-color: #2d3436; */
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  @include respond(phone) {
+    height: 450px;
+     background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
+    url("../../../public/img/phoneheader.jpg");
+  /* background-color: #2d3436; */
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  }
+}
+
+</style>
