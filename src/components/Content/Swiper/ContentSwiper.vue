@@ -217,7 +217,7 @@ h1 {
   height: 570px;
   justify-content: space-between;
   //   align-items: flex-start;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   //   background-color: yellow;
 
