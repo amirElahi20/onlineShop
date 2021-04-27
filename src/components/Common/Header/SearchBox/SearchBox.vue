@@ -17,7 +17,7 @@ export default {};
 <style scoped>
 .search-box {
   margin-left: 10px;
-  margin-top: -7px;
+  margin-top: -10px;
   margin-left: 15px;
   transform: translate(-1%);
   background: #2f3640;

@@ -42,7 +42,7 @@ export default {};
   border-bottom-right-radius: 10px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 0.5rem;
   border-radius: 10px;
   display :none;
   justify-content: space-around;

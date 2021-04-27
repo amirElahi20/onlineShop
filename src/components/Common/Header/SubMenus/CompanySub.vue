@@ -45,17 +45,18 @@ export default {};
 
 <style scoped>
 .company {
-  background-color: white;
+  background-color:white;
   width: 1200px;
   height: 375px;
   position: absolute;
   top: 0;
-  right:0;
+  right:0.5rem;
   padding-right: 200px;
   /* margin-top: -354px; */
   /* margin-right: 200px; */
-  border-radius: 10px;
-  /* border-top-left-radius: 10px; */
+  /* border-radius: 10px; */
+   border-radius: 10px;
+   border-top-right-radius: 0px;
   display: flex;
   justify-content: space-around;
   opacity: 1;

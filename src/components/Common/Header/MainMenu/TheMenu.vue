@@ -142,6 +142,7 @@ export default {
   width: 100%;
   position: fixed;
   z-index: 999;
+  // top: 0;
 
   @media (max-width: 1260px) {
     display: none;
@@ -159,7 +160,9 @@ export default {
   /* border-radius: 10px; */
   margin-top: -5px;
   margin-left: 20px;
+  // margin-bottom: 100rem;
   padding: 12px 7px;
+  // position: relative;
   transition: all 1s;
   color: black;
   /* cursor: pointer; */

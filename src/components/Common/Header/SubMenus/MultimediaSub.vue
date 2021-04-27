@@ -60,7 +60,7 @@ export default {};
   min-height: 375px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 0.5rem;
   /* margin-top: -214px; */
   /* margin-right: 200px; */
   border-radius: 10px;

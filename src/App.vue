@@ -2,12 +2,14 @@
 <!-- <top-responsive></top-responsive> -->
   <the-header></the-header>
   <main-content></main-content>
+  <the-footer></the-footer>
   <!-- <log-in></log-in> -->
   <!-- <responsive-header></responsive-header> -->
   
 </template>
 
 <script>
+import TheFooter from './components/Common/Footer/TheFooter.vue';
 import TheHeader from "./components/Common/TheHeader.vue";
 import MainContent from "./components/Content/MainContent.vue";
 // import LogIn from "./components/Login/LogIn.vue";
@@ -18,6 +20,7 @@ export default {
   components: {
     TheHeader,
     MainContent,
+    TheFooter,
     // TopResponsive
     // LogIn,
     // ResponsiveHeader,

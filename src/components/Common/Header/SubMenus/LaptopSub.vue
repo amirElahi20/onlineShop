@@ -69,7 +69,7 @@ export default {
   /* margin-right: 200px; */
   border-radius: 10px;
   top: 0;
-  right: 0;
+  right: 0.5rem;
   padding-right: 200px;
   /* border-top-left-radius: 10px; */
   display: flex;

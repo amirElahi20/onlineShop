@@ -56,7 +56,7 @@ export default {};
 .computer {
   background-color: white;
   width: 1200px;
-  right: 0;
+  right: 0.5rem;
   top: 0;
   height: auto;
   position: absolute;

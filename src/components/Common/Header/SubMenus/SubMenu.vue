@@ -71,12 +71,19 @@ export default {
 .sub-menu {
   display: none;
   // width: 200px;
-  background-color: red;
-  position: absolute;
-  height: auto;
+  // background-color: red;
+  // position: absolute;
+  // display: flex;
+  // justify-content: center;
+  // height: auto;
+  // right: 10rem;
+  // margin-top: 100px;
   border-radius: 10px;
-  background-color: white;
+  // top: 8.5rem;
+  // padding-right:-20px ;
+  // background-color: yellow;
   z-index: 999;
+  // right: 10px;
   // right:1;
   // text-align: center;
   // margin: 100rem;
@@ -95,7 +102,7 @@ export default {
   list-style: none;
   padding-top: 25px;
   position: relative;
-  padding-right: 0px;
+  padding-right: 8px;
 }
 .sub-menu ul li {
   padding-right: 10px;
