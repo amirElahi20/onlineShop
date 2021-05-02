@@ -6,7 +6,8 @@
       <div class="right">
         <ul class="menu r">
           <li>
-            <a href="" class="login">ورود</a>
+            <router-link to="/login" class="login" exact>ورود</router-link>
+            <!-- <a class="login" href="../../../Login/LogIn.vue">ورود</a> -->
           </li>
           <li>
             <a href="#">

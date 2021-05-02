@@ -6,7 +6,7 @@
           <div class="form">
             <div class="form__login">
               <form action="#" class="list">
-                <h2 class="topform">ورود</h2>
+                <h2 class="topform">ثبت نام</h2>
                 <div class="list__group">
                   <input
                     type="text"
@@ -27,13 +27,20 @@
                   />
                   <label for="name" class="list__label">رمز عبور</label>
                 </div>
-                <button class="submit-btn" type="submit">ورود</button>
+                <div class="list__group">
+                  <input
+                    type="email"
+                    class="list__input"
+                    placeholder="ایمیلتو وارد کن"
+                    id="email"
+                    required
+                  />
+                  <label for="name" class="list__label">ایمیل</label>
+                </div>
+                <button class="submit-btn" type="submit">ثبت نام</button>
               </form>
-              <h5 class="txt">
-                عضو نیستید؟؟
-                <router-link to="/register">پس ثبت نام کنید</router-link>
-              </h5>
-              <router-link class="back-btn" to="/">بازگشت</router-link>
+             <h5 class="txt"> عضو هستید؟؟ پس <router-link to="/login">وارد شوید</router-link></h5>
+            <router-link class="back-btn" to="/">بازگشت</router-link>
             </div>
           </div>
         </div>
@@ -49,7 +56,7 @@ export default {};
 
 
 <style lang="scss" scoped>
-.log {
+.log{
   display: flex;
   justify-content: center;
 }
@@ -139,7 +146,7 @@ export default {};
     transform: translateY(-4rem);
   }
 }
-.submit-btn {
+.submit-btn{
   padding: 10px;
   display: flex;
   width: 90%;
@@ -150,29 +157,29 @@ export default {};
   align-items: center;
   color: white;
   background-color: rgb(18, 18, 126);
-  transition: all 0.3s;
+   transition: all 0.3s;
   &:hover {
     transform: scale(1.1);
   }
 }
-.txt {
+.txt{
   text-align: center;
   padding-right: 1rem;
   padding-top: 1rem;
   font-size: 15px;
 }
-.back-btn {
-  padding: 10px;
+.back-btn{
+  padding:10px;
   display: flex;
   justify-content: center;
-  width: 90%;
+  width:90%;
   margin-top: 1rem;
   border-radius: 10px;
   background-color: purple;
   color: white;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.3s;
+   transition: all 0.3s;
   &:hover {
     transform: scale(1.1);
   }

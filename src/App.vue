@@ -1,17 +1,16 @@
 <template>
-<!-- <top-responsive></top-responsive> -->
   <the-header></the-header>
-  <main-content></main-content>
+  <transition name="fade">
+    <router-view></router-view>
+  </transition>
   <the-footer></the-footer>
-  <!-- <log-in></log-in> -->
-  <!-- <responsive-header></responsive-header> -->
-  
 </template>
 
 <script>
-import TheFooter from './components/Common/Footer/TheFooter.vue';
+import TheFooter from "./components/Common/Footer/TheFooter.vue";
 import TheHeader from "./components/Common/TheHeader.vue";
-import MainContent from "./components/Content/MainContent.vue";
+// import LogIn from './components/Login/LogIn.vue';
+
 // import LogIn from "./components/Login/LogIn.vue";
 // import ResponsiveHeader from './responsive/ResponsiveHeader.vue'
 // import TopResponsive from './responsive/TopResponsive.vue';
@@ -19,8 +18,8 @@ import MainContent from "./components/Content/MainContent.vue";
 export default {
   components: {
     TheHeader,
-    MainContent,
     TheFooter,
+    // LogIn
     // TopResponsive
     // LogIn,
     // ResponsiveHeader,
@@ -29,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../src/styles/mixins.scss';
+@import "../src/styles/mixins.scss";
 @font-face {
   font-family: "BYekan";
   src: url("../public/fonts/BYekan-webfont.eot") format("eot"),
@@ -48,9 +47,9 @@ body {
   font-family: "BYekan";
   width: 100%;
 
-     @include respond(tab-port){
-       padding: 0;
-     }
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
 .english {
   font-family: sans-serif;
@@ -64,5 +63,29 @@ input {
 }
 button {
   font-family: "BYekan";
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.4s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 0.4s;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

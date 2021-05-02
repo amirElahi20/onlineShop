@@ -49,7 +49,7 @@ $color-primary-light: #72151e;
   transition: all 0.3s;
 
   &:hover {
-    transform: skewY(-3deg) skewX(-15deg);
+    // transform: skewY(-3deg) skewX(-15deg);
     text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
   }
 }

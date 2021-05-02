@@ -77,7 +77,7 @@
     <div class="btn-btn1">
       <a class="btn">نمایش همه</a>
     </div>
-    <svg height="1" width="100%">
+    <!-- <svg height="1" width="100%">
       <line
         x1="15%"
         y1="0"
@@ -85,7 +85,7 @@
         y2="0"
         style="stroke: rgb(220, 0, 0); stroke-width: 2"
       />
-    </svg>
+    </svg> -->
   </div>
 </template>
 
