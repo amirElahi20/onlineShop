@@ -61,27 +61,22 @@ export default {};
   position: absolute;
   top: 0;
   right: 0.5rem;
-  /* margin-top: -214px; */
-  /* margin-right: 200px; */
+
   border-radius: 10px;
-  /* border-top-left-radius: 10px; */
   display: none;
   justify-content: space-around;
-  /* opacity: 0; */
   z-index: -2;
   padding-right: 200px;
 
 }
 .sub-menu ul li:hover .multimedia {
   z-index: -1;
-  /* opacity: 1; */
   display: flex;
 }
 ul {
   text-decoration: none;
   list-style: none;
   padding-top: 10px;
-  /* padding-right: 0px; */
 }
 .titletext {
   color: crimson;

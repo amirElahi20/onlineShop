@@ -34,7 +34,6 @@ export default {
   overflow: hidden;
   background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
     url("../../../public/img/artiom-vallat-H-qqp_Eqaww-unsplash.jpg");
-  /* background-color: #2d3436; */
   background-size: cover;
   background-position: top;
   position: relative;
@@ -43,7 +42,6 @@ export default {
     height: 450px;
      background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
     url("../../../public/img/phoneheader.jpg");
-  /* background-color: #2d3436; */
   background-size: cover;
   background-position: top;
   position: relative;

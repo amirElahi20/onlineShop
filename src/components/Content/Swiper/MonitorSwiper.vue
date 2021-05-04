@@ -10,66 +10,12 @@
       <span class="span s1" :class="{ deactive: l <= 0 }" @click="goToLeft"
         >&#10092;</span
       >
-      <div class="cards mos">
+        <div class="cards mos"  v-for="monitor in Monitors" :key="monitor.id">
         <div class="swipimg">
-          <img src="../../../../public/img/mobile1.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards mos">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile2.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards mos">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile3.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards mos">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile4.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards mos">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile5.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards mos">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobil6.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards mos">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile7.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
+          <img :src="monitor.picture" alt="" />
+          <span class="text">{{monitor.name }}</span>
+          <span class="text--sub">{{monitor.description_one}}</span>
+          <span class="cost">{{monitor.cost}} تومان</span>
           <button class="product-btn">مشاهده محصول</button>
         </div>
       </div>
@@ -91,7 +37,6 @@
 
 
 <script>
-// import BoxSwiper from '../../../javascript/Carousel';
 export default {
   data() {
     return {
@@ -147,6 +92,15 @@ export default {
       }
     },
   },
+   computed:{
+    Monitors(){
+      return this.$store.getters.GetMonitors;
+    },
+  },
+  created(){
+    this.$store.dispatch("GetMonitorsFromServer");
+    // console.log("GetMostSellProductsFromServer");
+  }
 };
 </script>
 
@@ -189,7 +143,6 @@ h1 {
 }
 .span {
   position: absolute;
-  // top: 192rem;
   margin-top: 140px;
   font-size: 60px;
   font-weight: bold;
@@ -217,11 +170,9 @@ h1 {
   margin: 0px 2rem;
   display: flex;
   justify-content: space-between;
-  //   align-items: flex-start;
   overflow-x: hidden;
   overflow-y: hidden;
   height: 570px;
-  //   background-color: yellow;
 
   &::-webkit-scrollbar {
     visibility: hidden;
@@ -266,7 +217,6 @@ h1 {
   padding: 20px 50px;
   border-radius: 100px;
   cursor: pointer;
-  // align-items: center;
   text-align: center;
 
   &-btn1 {
@@ -345,7 +295,7 @@ $color-primary-light: #72151e;
   transition: all 0.3s;
 
   &:hover {
-    transform: skewY(-3deg) skewX(-15deg);
+    // transform: skewY(-3deg) skewX(-15deg);
     text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
   }
 }

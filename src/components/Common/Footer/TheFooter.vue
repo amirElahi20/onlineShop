@@ -1,6 +1,6 @@
 <template>
  <div>
-    <div class="footer">
+    <div class="footer" :class="{'layout' : $route.path == '/register' || $route.path == '/login'}">
         <div class="top-footer">
             <h3 class="txt">کامپیوتر شاپ</h3>
             <span>تلفن پشتیبانی : 025895211</span>
@@ -52,6 +52,9 @@ export default {};
 .footer{
    background-image: linear-gradient(to right ,#fdfcfb , #e2d1c3);
 }
+.layout{
+    display: none;
+}
 .top-footer{
     color: black;
     direction: rtl;
@@ -68,10 +71,6 @@ span::after {
     background-color : black;
     position: absolute;
     right: 208px;
-    // top: 0;
-    // right: 0;
-    // top: 11px;
-    // left: 0px;
 }
 span{
     padding-left: 20px;
@@ -84,7 +83,6 @@ span:last-child::after {
 .main-footer{
     display: flex;
     direction: rtl;
-    // padding-right: 20px;
     justify-content: space-around;
     padding-top: 2rem;
     color: black;
@@ -93,18 +91,16 @@ span:last-child::after {
     font-size: 14px;
 }
 .bottom-footer{
-    // background-color: red;
+    
     display: flex;
     direction: rtl;
     padding-top: 2rem;
 }
 .right-column{
-    // background-color: green;
     width: 50%;
     padding-right: 20px;
 }
 .left-column{
-    // background-color: hotpink;
     width: 50%;
     display: flex;
     justify-content: center;
@@ -116,8 +112,9 @@ img{
     width: 200px;
     height: 100px;
     padding-right: 15px;
+ 
 }
-//    <div class="footer" :class="{'layout' : $route.path == '/register' || $route.path == '/login'}">
+
 </style>
 
 

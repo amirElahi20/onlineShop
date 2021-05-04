@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="sub-menu" :class="{ scroll: position >= 20 }">
-      <!-- <transition name="fadein"> -->
       <ul>
         <li class="computers">
           <i class="fa fa-circle" aria-hidden="true"></i>
@@ -39,7 +38,6 @@
           <company-sub></company-sub>
         </li>
       </ul>
-      <!-- </transition> -->
     </div>
   </div>
 </template>
@@ -70,31 +68,11 @@ export default {
 
 .sub-menu {
   display: none;
-  // width: 200px;
-  // background-color: red;
-  // position: absolute;
-  // display: flex;
-  // justify-content: center;
-  // height: auto;
-  // right: 10rem;
-  // margin-top: 100px;
   border-radius: 10px;
-  // top: 8.5rem;
-  // padding-right:-20px ;
-  // background-color: yellow;
   z-index: 999;
-  // right: 10px;
-  // right:1;
-  // text-align: center;
-  // margin: 100rem;
-  // right:10.44em;
-  // margin-right: 200px;
-  // position:absolute;
-  // padding-top: -100px;
 }
 .scroll {
   right: 1;
-  // top: -15px;
   transition: all 0.3s;
 }
 .sub-menu ul {
@@ -113,8 +91,6 @@ export default {
 .sub-menu ul li:hover {
   background-color: crimson;
   transition: all 0.3s;
-  // border-radius: 5px;
-  // border-bottom-right-radius: 5px;
 }
 .sub-menu ul li:last-child:hover {
   border-bottom-right-radius: 8px;

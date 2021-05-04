@@ -52,9 +52,6 @@ export default {};
   top: 0;
   right:0.5rem;
   padding-right: 200px;
-  /* margin-top: -354px; */
-  /* margin-right: 200px; */
-  /* border-radius: 10px; */
    border-radius: 10px;
    border-top-right-radius: 0px;
   display: flex;

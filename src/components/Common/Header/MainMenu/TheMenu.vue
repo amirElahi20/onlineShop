@@ -3,7 +3,6 @@
     <transition name="fade">
       <div class="popup" v-show="!activePopup"></div>
     </transition>
-    <!-- <responsive-header> -->
     <div
       :class="{
         scroll: scrollPosition >= 20,
@@ -46,7 +45,6 @@
         </div>
       </div>
     </div>
-    <!-- </responsive-header> -->
   </div>
 </template>
 
@@ -54,15 +52,13 @@
 <script>
 import SearchBox from "../SearchBox/SearchBox.vue";
 import SubMenu from "../SubMenus/SubMenu.vue";
-// import ResponsiveHeader from '../../../../responsive/ResponsiveHeader.vue';
-// import ResponsiveHeader from '../../../../responsive/ResponsiveHeader.vue';
+
 export default {
   data() {
     return {
       activePopup: true,
       scrollPosition: 0,
       isSticky: false,
-      // stickyClass : 'is_sticky'
     };
   },
   created() {
@@ -74,7 +70,6 @@ export default {
   components: {
     SubMenu,
     SearchBox,
-    // ResponsiveHeader,
   },
   methods: {
     mouseover() {
@@ -92,7 +87,7 @@ export default {
       } else {
         this.isSticky = false;
       }
-      console.log(this.scrollPosition);
+      // console.log(this.scrollPosition);
     },
   },
 };
@@ -157,16 +152,11 @@ export default {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  /* border-radius: 10px; */
   margin-top: -5px;
   margin-left: 20px;
-  // margin-bottom: 100rem;
   padding: 12px 7px;
-  // position: relative;
   transition: all 1s;
   color: black;
-  /* cursor: pointer; */
-  /* z-index: 999; */
 }
 
 a {

@@ -51,7 +51,6 @@ export default {};
 }
 .sub-menu ul li:hover .network {
   z-index: -1;
-  /* opacity: 1; */
   display: flex;
 }
 ul {

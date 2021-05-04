@@ -78,7 +78,6 @@ export default {};
   border-radius: 5px;
   box-shadow: 0.5rem 1rem 1rem rgba(rgb(163, 158, 158), 0.5);
   transition: all 0.3s;
-//   outline-offset: 5px;
 
   &__icon {
     font-size: 50px;
@@ -87,7 +86,6 @@ export default {};
   &:hover {
     transform: translateY(-1.5rem) scale(1.03);
     cursor: pointer;
-    // outline: 5px solid crimson;
   }
   &__text {
     font-size: 12px;

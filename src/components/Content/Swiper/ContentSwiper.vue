@@ -7,66 +7,12 @@
       <span class="span s1" :class="{ deactive: l <= 0 }" @click="goToLeft"
         >&#10092;</span
       >
-      <div class="cards cs">
+      <div class="cards cs"  v-for="product in MostSellProducts" :key="product.id">
         <div class="swipimg">
-          <img src="../../../../public/img/mobile1.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards cs">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile2.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards cs">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile3.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards cs">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile4.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards cs">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile5.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards cs">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobil6.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-      <div class="cards cs">
-        <div class="swipimg">
-          <img src="../../../../public/img/mobile7.jpg" alt="" />
-          <span class="text">مودم ADSL</span>
-          <span class="text--sub">روتر بی‌سیم N300 دی-لینک مدل DIR-605L</span>
-          <span class="cost"> 1,200000تومان</span>
+          <img :src="product.picture" alt="" />
+          <span class="text">{{product.name }}</span>
+          <span class="text--sub">{{product.description_one}}</span>
+          <span class="cost">{{product.cost}} تومان</span>
           <button class="product-btn">مشاهده محصول</button>
         </div>
       </div>
@@ -88,7 +34,8 @@
 
 
 <script>
-// import BoxSwiper from '../../../javascript/Carousel';
+// import {mapState} from 'vuex';
+
 export default {
   data() {
     return {
@@ -144,6 +91,14 @@ export default {
       }
     },
   },
+  computed:{
+    MostSellProducts(){
+      return this.$store.getters.GetMostSellProducts;
+    },
+  },
+  created(){
+    this.$store.dispatch("GetMostSellProductsFromServer");
+  }
 };
 </script>
 
@@ -154,7 +109,7 @@ export default {
 }
 
 .swipimg img {
-  width: 100%;
+  width: 300px;
   height: 300px;
   padding: 0 20px;
   margin-bottom: 0px;
@@ -216,10 +171,8 @@ h1 {
   display: flex;
   height: 570px;
   justify-content: space-between;
-  //   align-items: flex-start;
   overflow-x: hidden;
   overflow-y: hidden;
-  //   background-color: yellow;
 
   &::-webkit-scrollbar {
     visibility: hidden;
@@ -264,7 +217,6 @@ h1 {
   padding: 20px 50px;
   border-radius: 100px;
   cursor: pointer;
-  // align-items: center;
   text-align: center;
 
   &-btn1 {

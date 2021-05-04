@@ -60,17 +60,13 @@ export default {};
   top: 0;
   height: auto;
   position: absolute;
-  /* margin-top: -74px; */
-  /* margin-right: 200px; */
   border-radius: 10px;
-  /* border-top-left-radius: 10px; */
   display: flex;
   justify-content: space-around;
   z-index: -2;
   display: none;
 }
 .sub-menu ul li:hover .computer{
-  /* opacity: 1; */
   display: flex;
   z-index: -1;
 }

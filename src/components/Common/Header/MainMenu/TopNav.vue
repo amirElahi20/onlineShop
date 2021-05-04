@@ -7,7 +7,6 @@
         <ul class="menu r">
           <li>
             <router-link to="/login" class="login" exact>ورود</router-link>
-            <!-- <a class="login" href="../../../Login/LogIn.vue">ورود</a> -->
           </li>
           <li>
             <a href="#">
@@ -73,7 +72,6 @@ export default {
   padding-top: 20px;
   height: 100%;
   display: flex;
-  // position: relative;
 
   @include respond(phone) {
     display: none;
@@ -83,19 +81,14 @@ export default {
 
 .left {
   height: 50px;
-  // background-color: blue;
-  // display: flex;
-  // margin-right: 30%;
-  // background-color: blue;
 }
 .right {
   height: 50px;
-  // background-color: red;
 }
 
 .container {
   display: flex;
-  // width :1200px ;
+
    margin: 0 auto;
   justify-content: space-between;
   direction: rtl;
@@ -116,9 +109,7 @@ export default {
   display: flex;
   list-style: none;
   text-decoration: none;
-  // padding-right: 30px;
-  // background-color: red;
-  // justify-content: flex-end;
+
 }
 .l li{
   padding-right: 10px ;
@@ -164,7 +155,6 @@ a {
  font-family: sans-serif;
 }
 svg{
-  // position: relative;
 
    @include respond(phone) {
     display: none;

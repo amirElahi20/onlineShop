@@ -64,8 +64,6 @@ $color-primary-light: #72151e;
 .section-about {
   padding: 2rem 0 6rem;
   margin-bottom: 5rem;
-  // display: block;
-  // background-color: red;
 }
 .pos{
   padding: 0 10px 0rem 10px;
@@ -91,7 +89,6 @@ $color-primary-light: #72151e;
   }
 
   &:hover {
-    // transform: skewY(-3deg) skewX(-15deg);
     text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
   }
 }
@@ -106,8 +103,6 @@ $color-primary-light: #72151e;
 }
 .row {
   display: flex;
-  // justify-content: space-between;
-  // flex-wrap: wrap;
    @include respond(tab-port) {
     flex-wrap: wrap;
   }
@@ -116,14 +111,12 @@ $color-primary-light: #72151e;
   direction: rtl;
   width: 100%;
   display: block;
-  // width: 100%;
 }
 .heading-teritary {
   font-size: 25px;
   font-weight: 700;
   padding-bottom: 10px;
   color: crimson;
-  // width: 100%;
   @media (max-width: 1366px) {
     font-size: 20px;
   }
@@ -169,34 +162,19 @@ $color-primary-light: #72151e;
   width: 100%;
 
   @include respond(phone){
-    // left:200px;
-    // right: -80px;
+    
     top: 3rem;
   }
   @media (max-width: 535px){
-    // right: -110px;
   }
-  // height: 400px;
-  // display: block;
-  // display: block;
-  // img {
-  //   width: 50%;
 
-  //   @include respond(tab-land) {
-  //     width: 30%;
-  //   }
-  // }
   &__photo {
-    // width: 150px;
     box-shadow: 0.5rem 1rem 1rem rgba(rgb(77, 75, 75), 0.5);
     border-radius: 2px;
-    // z-index: 10;
-    // position: absolute;
+
     transition: all 0.2s;
     outline-offset: 15px;
-    // display: block;
     position: absolute;
-    // flex-wrap: wrap;
 
     @include respond(tab-port){
 
@@ -204,7 +182,6 @@ $color-primary-light: #72151e;
 
     &--p1 {
       right: 140px;
-      // top: -1rem;
       z-index: 5;
       width: 330px;
 

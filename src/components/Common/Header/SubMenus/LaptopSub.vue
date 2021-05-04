@@ -65,16 +65,15 @@ export default {
   width: 1200px;
   height: auto;
   position: absolute;
-  /* margin-top: -284px; */
-  /* margin-right: 200px; */
+
   border-radius: 10px;
   top: 0;
   right: 0.5rem;
   padding-right: 200px;
-  /* border-top-left-radius: 10px; */
+
   display: flex;
   justify-content: space-around;
-  /* opacity: 1; */
+
   display: none;
   z-index: -2;
 

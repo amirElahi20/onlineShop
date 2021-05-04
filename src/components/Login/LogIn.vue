@@ -55,12 +55,8 @@ export default {};
 }
 .login {
   padding: 3rem 0;
-  // display: flex;
   width: 1000px;
-  // position: absolute;
-  // left: 250px;
-  // justify-content: center;
-  // background-color: rgba(0, 0, 0, 0.5);
+
 }
 .topform {
   margin-bottom: 20px;
@@ -125,7 +121,6 @@ export default {};
   &__label {
     font-size: 1rem;
     font-weight: 700;
-    //   margin-left: 22rem;
     margin-right: 3rem;
     margin-top: 0.7rem;
     display: block;
@@ -145,7 +140,6 @@ export default {};
   width: 90%;
   cursor: pointer;
   border-radius: 10px;
-  // height: 40px;
   justify-content: center;
   align-items: center;
   color: white;
