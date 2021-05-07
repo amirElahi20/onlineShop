@@ -109,7 +109,7 @@ export default {
 }
 
 .swipimg img {
-  width: 300px;
+  width: 100%;
   height: 300px;
   padding: 0 20px;
   margin-bottom: 0px;

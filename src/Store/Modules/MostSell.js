@@ -24,7 +24,7 @@ const mutations = {
 
 const actions = {
     GetMostSellProductsFromServer({ commit }) {
-        axios.get('https://onshop321.herokuapp.com/product/products//', {
+        axios.get('https://onshop321.herokuapp.com/product/v1/top_product/', {
                 responseType: 'json'
             })
             .then(res => {

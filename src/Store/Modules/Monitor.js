@@ -19,7 +19,7 @@ const mutations = {
 
 const actions = {
     GetMonitorsFromServer({ commit }) {
-        axios.get('https://onshop321.herokuapp.com/product/products//', {
+        axios.get('https://onshop321.herokuapp.com/product/v1/best_product_one/', {
                 responseType: 'json'
             })
             .then(res => {

@@ -4,20 +4,14 @@
       <div class="row">
         <div class="col-1-of-4">
           <div class="feature-box">
-            <i
-              class="feature-box__icon fa fa-check-circle"
-              aria-hidden="true"
-            ></i>
+          <fa icon="check-circle"></fa>
             <h3 class="heading-tertiary">ضمانت و تضمین اصل بودن</h3>
             <p class="feature-box__text">لذت خرید کالای درجه یک و اصل</p>
           </div>
         </div>
         <div class="col-1-of-4">
           <div class="feature-box">
-            <i
-              class="feature-box__icon fa fa-shopping-bag"
-              aria-hidden="true"
-            ></i>
+          <fa icon="shopping-bag"></fa>
             <h3 class="heading-tertiary">خرید راحت</h3>
             <p class="feature-box__text">
               به راحتی و با چندکلیک خرید خود را انجام دهید
@@ -26,24 +20,21 @@
         </div>
         <div class="col-1-of-4">
           <div class="feature-box">
-            <i
-              class="feature-box__icon fa fa-credit-card"
-              aria-hidden="true"
-            ></i>
+        <fa icon="credit-card"></fa>
             <h3 class="heading-tertiary">پرداخت آنی و سفارش آنلاین</h3>
             <p class="feature-box__text">پرداخت بدون دردسر و امن در خانه</p>
           </div>
         </div>
         <div class="col-1-of-4">
           <div class="feature-box">
-            <i class="feature-box__icon fa fa-truck" aria-hidden="true"></i>
+            <fa icon="truck"></fa>
             <h3 class="heading-tertiary">تحویل در کوتاه ترین زمان ممکن</h3>
             <p class="feature-box__text">ارسال کالا به تمام نقاط ایران</p>
           </div>
         </div>
         <div class="col-1-of-4">
           <div class="feature-box">
-            <i class="feature-box__icon fa fa-undo" aria-hidden="true"></i>
+            <fa icon="undo"></fa>
             <h3 class="heading-tertiary">بازگشت وجه</h3>
             <p class="feature-box__text">
               ارجاع کالا و بازگشت وجه درصورت عدم رضایت
@@ -66,7 +57,7 @@ export default {};
 }
 .row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap:wrap ;
 }
 .feature-box {

@@ -23,8 +23,8 @@
         <li><a href="">هارددیسک</a></li>
         <li><a href="">پاور</a></li>
         <li><a href="">کارت گرافیک</a></li>
-        <li><a href="">حافظه ssd</a></li>
-        <li><a href="">حافظه Ram</a></li>
+        <li><a href="">حافظه <span class="english">ssd</span></a></li>
+        <li><a href="">حافظه <span class="english">RAM</span></a></li>
         <li><a href="">مادربورد</a></li>
       </ul>
       <ul class="accessories">
@@ -54,14 +54,14 @@ export default {};
 
 <style scoped>
 .computer {
-  background-color: white;
+  background-color:white;
   width: 1200px;
   right: 0.5rem;
   top: 0;
   height: auto;
   position: absolute;
   border-radius: 10px;
-  display: flex;
+  display: none;
   justify-content: space-around;
   z-index: -2;
   display: none;

@@ -27,6 +27,7 @@ export default {};
   background-color: rgba(53, 51, 51, 0.39);
   border-radius: 10px;
   padding: 40px;
+  margin-top: 50px;
 
    @include respond(phone) {
     padding: 10px;
@@ -40,7 +41,7 @@ export default {};
 }
 .heading-primary-main {
   display: block;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 0;
 
@@ -62,7 +63,7 @@ export default {};
 }
 .heading-primary-sub {
   display: block;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0;
 

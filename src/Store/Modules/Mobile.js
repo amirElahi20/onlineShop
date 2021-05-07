@@ -19,12 +19,11 @@ const mutations = {
 
 const actions = {
     GetMobilesFromServer({ commit }) {
-        axios.get('https://onshop321.herokuapp.com/product/products//', {
+        axios.get('https://onshop321.herokuapp.com/product/v1/best_product_two/', {
                 responseType: 'json'
             })
             .then(res => {
                 commit("SetMobiles", res.data);
-                // console.log(data);
 
             })
     }

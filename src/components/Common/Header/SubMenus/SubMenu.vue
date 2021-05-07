@@ -3,40 +3,40 @@
     <div class="sub-menu" :class="{ scroll: position >= 20 }">
       <ul>
         <li class="computers">
-          <i class="fa fa-circle" aria-hidden="true"></i>
+          <fa class="fa-circle" icon="circle"></fa>
           <a href="#"
-            >کامپیوتر<i class="fa fa-angle-left" aria-hidden="true"></i
-          ></a>
-          <computer-sub></computer-sub>
-        </li>
-        <li>
-          <i class="fa fa-circle" aria-hidden="true"></i>
-          <a href="#"
-            >تجهیزات شبکه<i class="fa fa-angle-left" aria-hidden="true"></i
-          ></a>
-          <network-sub></network-sub>
-        </li>
-        <li>
-          <i class="fa fa-circle" aria-hidden="true"></i>
-          <a href="#"
-            >صوتی-تصویری<i class="fa fa-angle-left" aria-hidden="true"></i
+            >{{ GroupName[2] }}<fa class="fa-angle-left" icon="angle-left"></fa
           ></a>
           <multimedia-sub></multimedia-sub>
         </li>
         <li>
-          <i class="fa fa-circle" aria-hidden="true"></i>
+          <fa class="fa-circle" icon="circle"></fa>
           <a href="#"
-            >لپ تاپ و تبلت<i class="fa fa-angle-left" aria-hidden="true"></i
+            >{{ GroupName[3] }}<fa class="fa-angle-left" icon="angle-left"></fa
+          ></a>
+          <computer-sub></computer-sub>
+        </li>
+        <li>
+          <fa class="fa-circle" icon="circle"></fa>
+          <a href="#"
+            >{{ GroupName[0] }}<fa class="fa-angle-left" icon="angle-left"></fa
           ></a>
           <laptop-sub></laptop-sub>
         </li>
         <li>
-          <i class="fa fa-circle" aria-hidden="true"></i>
+          <fa class="fa-circle" icon="circle"></fa>
           <a href="#"
-            >ماشین های اداری<i class="fa fa-angle-left" aria-hidden="true"></i
+            >{{ GroupName[4] }}<fa class="fa-angle-left" icon="angle-left"></fa
           ></a>
-          <company-sub></company-sub>
+          <network-sub></network-sub>
         </li>
+        <li>
+          <fa class="fa-circle" icon="circle"></fa>
+          <a href="#"
+            >{{ GroupName[1] }}<fa class="fa-angle-left" icon="angle-left"></fa
+          ></a>
+        </li>
+        <company-sub></company-sub>
       </ul>
     </div>
   </div>
@@ -51,7 +51,18 @@ import CompanySub from "./CompanySub";
 export default {
   props: ["position"],
   data() {
-    return {};
+    return {
+      multimedia: "",
+      Amir: false,
+    };
+  },
+  methods: {
+    mouseover() {
+      this.Amir = true;
+    },
+    mouseleave() {
+      this.Amir = false;
+    },
   },
   components: {
     ComputerSub,
@@ -59,6 +70,15 @@ export default {
     MultimediaSub,
     LaptopSub,
     CompanySub,
+  },
+  computed: {
+    GroupName() {
+      return this.$store.getters.GetOptions;
+    },
+  },
+  created() {
+    this.$store.dispatch("GetMenuOptionsFromServer");
+    // this.$store.dispatch("GetSubMenuOptionsFromServer");
   },
 };
 </script>
@@ -92,6 +112,7 @@ export default {
   background-color: crimson;
   transition: all 0.3s;
 }
+
 .sub-menu ul li:last-child:hover {
   border-bottom-right-radius: 8px;
 }
@@ -99,9 +120,9 @@ export default {
   color: white;
   transition: all 0.3s;
 }
-.sub-menu ul li .fa-angle-left {
+.fa-angle-left {
   float: left;
-  padding-left: 15px;
+  margin-left: 15px;
 }
 .sub-menu ul li .fa-circle {
   margin-left: 10px;

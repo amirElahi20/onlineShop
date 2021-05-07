@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { createRouter, createWebHistory } from 'vue-router';
 import { store } from './Store/Store';
@@ -33,8 +34,7 @@ const router = createRouter({
 })
 
 
-
-library.add(fas);
+library.add(fas, fab);
 
 const app = createApp(App);
 

@@ -38,7 +38,7 @@
             <li class="shopping">
               <a href="#">
                 <span class="badge">1</span>
-                <i class="fa fa-shopping-cart"></i>
+                <fa icon="shopping-cart"></fa>
               </a>
             </li>
           </ul>

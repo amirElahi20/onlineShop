@@ -3,7 +3,7 @@
     <div class="search-box">
       <input type="text" class="search-txt" placeholder="دنبال چی میگردی؟" />
       <a href="#" class="search-btn">
-        <i class="fa fa-search"></i>
+        <fa icon="search"></fa>
       </a>
     </div>
   </div>

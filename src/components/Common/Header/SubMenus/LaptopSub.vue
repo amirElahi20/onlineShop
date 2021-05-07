@@ -70,8 +70,6 @@ export default {
   top: 0;
   right: 0.5rem;
   padding-right: 200px;
-
-  display: flex;
   justify-content: space-around;
 
   display: none;
