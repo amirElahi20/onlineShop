@@ -109,7 +109,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required, email, minLength, sameAs } from "@vuelidate/validators";
+import { required, email, minLength } from "@vuelidate/validators";
 import axios from "axios";
 export default {
   data() {
@@ -118,7 +118,6 @@ export default {
       username: "",
       email: "",
       password: "",
-      repassword: "",
       check: false,
       checknum : false,
     };
@@ -142,6 +141,7 @@ export default {
             .then(
               (response) => {
                 this.checknum = false
+                useVuelidate()
                 return !response.data.reserved;
               },
               (error) => {
@@ -168,6 +168,7 @@ export default {
              .then(
               (response) => {
                 this.check = false;
+                useVuelidate()
                 console.log(response);
                 return !response.data.reserved;
               },
@@ -183,9 +184,7 @@ export default {
         required,
         minLength: minLength(6),
       },
-      repassword: {
-        sameAs: sameAs("password"),
-      },
+
     };
   },
   methods: {
