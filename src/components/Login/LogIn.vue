@@ -5,35 +5,46 @@
         <div class="row">
           <div class="form">
             <div class="form__login">
-              <form action="#" class="list">
+              <form class="list" @submit.prevent="submit">
                 <h2 class="topform">ورود</h2>
                 <div class="list__group">
+                  <label for="name" class="list__label">نام کاربری</label>
                   <input
                     type="text"
                     class="list__input"
                     placeholder="اسمتو بنویس "
                     id="name"
+                    v-model="username"
+                    autofocus="autofocus"
+                    maxlength="100"
                     required
                   />
-                  <label for="name" class="list__label">نام کاربری</label>
                 </div>
                 <div class="list__group">
+                  <label for="name" class="list__label">رمز عبور</label>
                   <input
                     type="password"
                     class="list__input"
                     placeholder="رمز عبورتو وارد کن"
                     id="password"
+                    v-model="password"
                     required
                   />
-                  <label for="name" class="list__label">رمز عبور</label>
                 </div>
                 <button class="submit-btn" type="submit">ورود</button>
               </form>
               <h5 class="txt">
                 عضو نیستید؟؟
-                <router-link to="/register">پس ثبت نام کنید</router-link>
+                <router-link class="router" to="/register"
+                  >پس ثبت نام کنید</router-link
+                >
               </h5>
               <router-link class="back-btn" to="/">بازگشت</router-link>
+              <h5 class="txt">
+                <router-link class="router forget" to="/"
+                  >رمز خود را فراموش کرده اید؟</router-link
+                >
+              </h5>
             </div>
           </div>
         </div>
@@ -44,11 +55,42 @@
 
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    async submit() {
+      await fetch(
+        "https://onshop321.herokuapp.com/accounts/v1/auth/obtain_token/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(this.$data),
+
+        }
+      );
+      console.log(this.$data);
+    },
+  },
+};
 </script>
 
 
 <style lang="scss" scoped>
+.router {
+  text-decoration: none;
+}
+.forget {
+  font-size: 15px;
+  text-align: center;
+  color:  rgb(18, 18, 126);
+}
 .log {
   display: flex;
   justify-content: center;
@@ -56,12 +98,14 @@ export default {};
 .login {
   padding: 3rem 0;
   width: 1000px;
-
 }
 .topform {
   margin-bottom: 20px;
   text-align: center;
   margin-top: -50px;
+}
+p {
+  direction: rtl;
 }
 .form {
   width: 100%;
@@ -102,20 +146,6 @@ export default {};
     width: 90%;
     display: block;
     color: inherit;
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 1rem 2rem rgba(rgb(15, 15, 15), 0.2);
-      border-bottom: 3px solid rgb(15, 190, 15);
-    }
-
-    &:focus:invalid {
-      border-bottom: 3px solid red;
-    }
-
-    &::-webkit-input-placeholder {
-      color: #999;
-    }
   }
 
   &__label {
@@ -126,12 +156,7 @@ export default {};
     display: block;
     direction: rtl;
     transition: all 0.3s;
-  }
-
-  &__input:placeholder-shown + &__label {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4rem);
+    margin-bottom: 10px;
   }
 }
 .submit-btn {
@@ -145,6 +170,7 @@ export default {};
   color: white;
   background-color: rgb(18, 18, 126);
   transition: all 0.3s;
+  margin-top: 30px;
   &:hover {
     transform: scale(1.1);
   }

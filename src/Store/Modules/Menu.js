@@ -22,28 +22,11 @@ const actions = {
                 responseType: 'json'
             })
             .then(res => {
-                var menu = []
-                for (var i = 0; i < res.data.length; i++) {
-                    if (!res.data[i].top_group)
-                        menu.push(res.data[i].group_name)
-                        // console.log(res.data[i]);
-                }
-                commit("SetMenuOptions", menu);
-                console.log(menu)
-                    // console.log(res.data);
+                commit("SetMenuOptions", res.data.results);
+                // console.log(res.data.results);
+
             })
     },
-    // GetSubMenuOptionsFromServer({ commit }) {
-    //     axios.get('https://onshop321.herokuapp.com/product/v1/group_list/', {
-    //             responseType: 'json'
-    //         })
-    //         .then(res => {
-    //             commit("SetOptions", res.data);
-    //             console.log(res.data);
-
-    //         })
-    // },
-
 };
 
 export default {

@@ -79,7 +79,7 @@ export default {
 .sub-menu ul li:hover .laptop {
   z-index: -1;
   opacity: 1;;
-  display: flex;
+  /* display: flex; */
 }
 ul {
   text-decoration: none;

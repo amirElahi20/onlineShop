@@ -67,7 +67,7 @@ export default {};
   display: none;
 }
 .sub-menu ul li:hover .computer{
-  display: flex;
+  /* display: flex; */
   z-index: -1;
 }
 .peripherals{

@@ -1,42 +1,18 @@
 <template>
   <div>
     <div class="sub-menu" :class="{ scroll: position >= 20 }">
-      <ul>
-        <li class="computers">
+      <ul class="ulmenu">
+        <li v-for="item in GroupName" :key="item.id">
           <fa class="fa-circle" icon="circle"></fa>
           <a href="#"
-            >{{ GroupName[2] }}<fa class="fa-angle-left" icon="angle-left"></fa
+            >{{ item.name }}<fa class="fa-angle-left" icon="angle-left"></fa
           ></a>
-          <multimedia-sub></multimedia-sub>
-        </li>
-        <li>
-          <fa class="fa-circle" icon="circle"></fa>
-          <a href="#"
-            >{{ GroupName[3] }}<fa class="fa-angle-left" icon="angle-left"></fa
-          ></a>
-          <computer-sub></computer-sub>
-        </li>
-        <li>
-          <fa class="fa-circle" icon="circle"></fa>
-          <a href="#"
-            >{{ GroupName[0] }}<fa class="fa-angle-left" icon="angle-left"></fa
-          ></a>
-          <laptop-sub></laptop-sub>
-        </li>
-        <li>
-          <fa class="fa-circle" icon="circle"></fa>
-          <a href="#"
-            >{{ GroupName[4] }}<fa class="fa-angle-left" icon="angle-left"></fa
-          ></a>
+           <multimedia-sub></multimedia-sub>
           <network-sub></network-sub>
+          <laptop-sub></laptop-sub>
+          <computer-sub></computer-sub>
+        <company-sub ></company-sub>
         </li>
-        <li>
-          <fa class="fa-circle" icon="circle"></fa>
-          <a href="#"
-            >{{ GroupName[1] }}<fa class="fa-angle-left" icon="angle-left"></fa
-          ></a>
-        </li>
-        <company-sub></company-sub>
       </ul>
     </div>
   </div>
@@ -90,7 +66,12 @@ export default {
   display: none;
   border-radius: 10px;
   z-index: 999;
+  // background-color: white;
+  width: 1200px;
+  // padding: 40px;
 }
+
+
 .scroll {
   right: 1;
   transition: all 0.3s;

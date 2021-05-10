@@ -15,10 +15,12 @@ import TheRegister from './components/Login/TheRegister.vue';
 
 
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
             path: '/',
+            name: 'home',
             component: MainContent
         },
         {
@@ -31,7 +33,8 @@ const router = createRouter({
 
         }
     ]
-})
+});
+
 
 
 library.add(fas, fab);
@@ -43,5 +46,6 @@ app.component('fa', FontAwesomeIcon);
 app.use(router);
 app.use(store);
 app.use(VueAxios, axios);
+
 
 app.mount('#app');

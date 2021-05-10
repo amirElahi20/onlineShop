@@ -1,60 +1,42 @@
 <template>
   <div>
     <div class="company">
-      <ul>
-        <li class="title">
-          <a class="titletext" href=""><h3>پرینتر</h3></a>
-        </li>
-        <li><a href="">پرینتر لیزری</a></li>
-        <li><a href="">دستگاه کپی</a></li>
-        <li><a href="">پرینتر بارکد</a></li>
-      </ul>
-      <ul>
-        <li class="text">
-          <a class="titletext" href=""><h3>اسکنر</h3></a>
-        </li>
-        <li><a href="">اسکنر فلت</a></li>
-        <li><a href="">اسکنر بایگانی</a></li>
-        <li><a href="">اسکنر دستی</a></li>
-        <li><a href="">بارکدخوانی</a></li>
-      </ul>
-      <ul>
-        <li class="title">
-          <a class="titletext" href=""><h3>مولتی مدیا</h3></a>
-        </li>
-        <li><a href="">پروژکتور</a></li>
-        <li><a href="">پرزنتر</a></li>
-      </ul>
-      <ul>
-        <li class="title">
-          <a class="titletext" href=""><h3>سایر</h3></a>
-        </li>
-        <li><a href=""> فکس</a></li>
-        <li><a href="">تلفن</a></li>
-        <li><a href="">کشوی پول</a></li>
-        <li><a href="">ماشین حساب</a></li>
-        <li><a href="">دستگاه حضور و غیاب</a></li>
+      <ul v-for="name in GroupName" :key="name.id">
+        <li>{{ name.sub_group[0] }}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    GroupName() {
+      return this.$store.getters.GetOptions;
+    },
+  },
+  created() {
+    this.$store.dispatch("GetMenuOptionsFromServer");
+    // this.$store.dispatch("GetSubMenuOptionsFromServer");
+  },
+};
 </script>
 
 <style scoped>
 .company {
-  background-color:white;
+  background-color: white;
   width: 1200px;
-  height: 375px;
+  height: 445px;
   position: absolute;
   top: 0;
-  right:0.5rem;
+  right: 0.5rem;
   padding-right: 200px;
-   border-radius: 10px;
-   border-top-right-radius: 0px;
-  display: flex;
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  display:  none;
   justify-content: space-around;
   opacity: 1;
   z-index: -2;
@@ -62,6 +44,7 @@ export default {};
 .sub-menu ul li:hover .company {
   z-index: -1;
   opacity: 1;
+  /* display: flex; */
 }
 ul {
   text-decoration: none;

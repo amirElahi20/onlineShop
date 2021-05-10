@@ -28,7 +28,7 @@ const actions = {
                 responseType: 'json'
             })
             .then(res => {
-                commit("SetMostSellProducts", res.data);
+                commit("SetMostSellProducts", res.data.results);
                 // console.log(data);
 
             })

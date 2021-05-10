@@ -102,6 +102,7 @@ export default {
   text-decoration: none;
   direction: rtl;
   height: auto;
+  // background-clip: white;
 }
 .r li {
   margin-left: 20px;
@@ -162,6 +163,7 @@ export default {
 a {
   color: white;
   font-size: 18px;
+  text-decoration: none;
 }
 
 .rightmenu {
