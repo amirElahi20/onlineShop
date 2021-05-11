@@ -4,14 +4,14 @@
       <div class="row">
         <div class="col-1-of-4">
           <div class="feature-box">
-          <fa icon="check-circle"></fa>
+            <fa icon="check-circle"></fa>
             <h3 class="heading-tertiary">ضمانت و تضمین اصل بودن</h3>
             <p class="feature-box__text">لذت خرید کالای درجه یک و اصل</p>
           </div>
         </div>
         <div class="col-1-of-4">
           <div class="feature-box">
-          <fa icon="shopping-bag"></fa>
+            <fa icon="shopping-bag"></fa>
             <h3 class="heading-tertiary">خرید راحت</h3>
             <p class="feature-box__text">
               به راحتی و با چندکلیک خرید خود را انجام دهید
@@ -20,7 +20,7 @@
         </div>
         <div class="col-1-of-4">
           <div class="feature-box">
-        <fa icon="credit-card"></fa>
+            <fa icon="credit-card"></fa>
             <h3 class="heading-tertiary">پرداخت آنی و سفارش آنلاین</h3>
             <p class="feature-box__text">پرداخت بدون دردسر و امن در خانه</p>
           </div>
@@ -54,21 +54,24 @@ export default {};
 <style lang="scss" scoped>
 .heading-tertiary {
   font-size: 15px;
+  // color: white;
 }
 .row {
   display: flex;
-  justify-content: space-around;
-  flex-wrap:wrap ;
+  justify-content: space-evenly;
+  // flex-wrap:wrap ;
 }
 .feature-box {
-  background-color: white;
+
+  background-color: rgba(221, 50, 50, 0.726);
   width: 250px;
   font-size: 20px;
   padding: 2.5rem 0px;
   text-align: center;
   border-radius: 5px;
-  box-shadow: 0.5rem 1rem 1rem rgba(rgb(163, 158, 158), 0.5);
+  // box-shadow: 0.5rem 1rem 1rem rgba(rgb(163, 158, 158), 0.5);
   transition: all 0.3s;
+  color: white;
 
   &__icon {
     font-size: 50px;
@@ -86,7 +89,7 @@ export default {};
 .section-features {
   padding: 13rem 0;
   background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
-    url("../../../../public/img/mobile.jpg");
+    url("../../../../public/img/zaib-tse-KVv5lFOMY1E-unsplash.jpg");
   background-color: #2d3436;
   background-size: cover;
   margin-top: -10rem;
@@ -96,9 +99,5 @@ export default {};
   & > * {
     transform: skewY(7deg);
   }
-}
-.col-1-of-4 {
-  width: 15%;
-  margin: 0 10px;
 }
 </style>

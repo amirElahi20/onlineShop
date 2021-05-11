@@ -3,7 +3,7 @@
     <transition name="fade">
       <div class="popup" v-show="!activePopup"></div>
     </transition>
-    <div
+    <div class="total"
       :class="{
         scroll: scrollPosition >= 20,
         container: scrollPosition < 20,
@@ -102,6 +102,7 @@ export default {
   text-decoration: none;
   direction: rtl;
   height: auto;
+  margin-top: 5px;
   // background-clip: white;
 }
 .r li {
@@ -126,7 +127,7 @@ export default {
   }
 }
 .scroll {
-  background-color: grey;
+  background-color: rgb(190, 71, 16);
   border-radius: 0px;
   margin-top: -100px;
   justify-content: space-around;
@@ -199,7 +200,7 @@ a {
 }
 .badge {
   margin-left: 10px;
-  background-color: crimson;
+  background-color: rgb(231, 94, 31);
   padding: 0px 6px;
   border-radius: 50%;
 }

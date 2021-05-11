@@ -9,7 +9,12 @@
                 <h2 class="topform">ثبت نام</h2>
                 <div
                   class="list__group"
-                  :class="{ invalid: v$.username.$dirty && !v$.username.required.$response || !v$.username.minLength.$response || checknum}"
+                  :class="{
+                    invalid:
+                      (v$.username.$dirty && !v$.username.required.$response) ||
+                      !v$.username.minLength.$response ||
+                      checknum,
+                  }"
                 >
                   <label for="name" class="list__label">نام کاربری</label>
                   <input
@@ -26,7 +31,9 @@
                   >
                     نام کاربری نمیتواند خالی باشد
                   </div>
-                  <div class="alert" v-if="checknum">نام کاربری تکراری میباشد</div>
+                  <div class="alert" v-if="checknum">
+                    نام کاربری تکراری میباشد
+                  </div>
                   <span
                     class="alert"
                     v-if="
@@ -65,7 +72,15 @@
                   </span>
                 </div>
 
-                <div class="list__group" :class="{ invalid: v$.email.$dirty && !v$.email.required.$response || v$.email.email.$invalid || check }">
+                <div
+                  class="list__group"
+                  :class="{
+                    invalid:
+                      (v$.email.$dirty && !v$.email.required.$response) ||
+                      v$.email.email.$invalid ||
+                      check,
+                  }"
+                >
                   <label for="name" class="list__label">ایمیل</label>
                   <!-- <div>{{ check }}</div> -->
                   <!-- <div>{{ v$.email }}</div> -->
@@ -94,7 +109,7 @@
                 <button class="submit-btn" type="submit">ثبت نام</button>
               </form>
               <h5 class="txt">
-                عضو هستید؟؟ پس <router-link to="/login">وارد شوید</router-link>
+                عضو هستید؟؟ پس <router-link class="router" to="/login">وارد شوید</router-link>
               </h5>
               <router-link class="back-btn" to="/">بازگشت</router-link>
             </div>
@@ -110,7 +125,7 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
-import axios from "axios";
+// import axios from "axios";
 export default {
   data() {
     return {
@@ -119,7 +134,7 @@ export default {
       email: "",
       password: "",
       check: false,
-      checknum : false,
+      checknum: false,
     };
   },
 
@@ -128,63 +143,15 @@ export default {
       username: {
         required,
         minLength: minLength(2),
-        unique: function (val) {
-          if (val === " true") return true;
-          return axios
-            .post(
-              "https://onshop321.herokuapp.com/accounts/v1/auth/check_user/",
-              {
-                responseType: "json",
-                params: { user: val },
-              }
-            )
-            .then(
-              (response) => {
-                this.checknum = false
-                useVuelidate()
-                return !response.data.reserved;
-              },
-              (error) => {
-                console.log(error);
-                this.checknum = true;
-                // console.log("check", this.check);
-              }
-            );
-        },
       },
       email: {
         required,
         email,
-        uniaue: function (val) {
-          if (val === " true") return true;
-          return axios
-            .post(
-              "https://onshop321.herokuapp.com/accounts/v1/auth/check_email/",
-              {
-                responseType: "json",
-                params: { email: val },
-              }
-            )
-             .then(
-              (response) => {
-                this.check = false;
-                useVuelidate()
-                console.log(response);
-                return !response.data.reserved;
-              },
-              (error) => {
-                console.log(error);
-                this.check = true;
-                // console.log("check", this.check);
-              }
-            );
-        },
       },
       password: {
         required,
         minLength: minLength(6),
       },
-
     };
   },
   methods: {
@@ -209,6 +176,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .invalid input {
   border: 1px solid red !important;
 }
@@ -234,6 +202,10 @@ export default {
   text-align: center;
   margin-top: -75px;
 }
+.router{
+  text-decoration: none;
+  color: #ff4e00;
+}
 .form {
   width: 100%;
   height: 40rem;
@@ -243,9 +215,9 @@ export default {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/h3.png");
+    url("../../../public/img/tamas-tuzes-katai-GZ9_EfvDCFU-unsplash.jpg");
   background-size: cover;
-  background-position: top;
+  background-position: center;
   position: relative;
   border-radius: 30px;
   box-shadow: 1rem 2rem 2rem rgba(rgb(15, 15, 15), 0.8);
@@ -288,15 +260,16 @@ export default {
 .submit-btn {
   padding: 10px;
   display: flex;
-  margin-top: 2rem;
   width: 90%;
   cursor: pointer;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: rgb(18, 18, 126);
+  background-color: #ff4e00;
+  border: 1px solid #ff4e00;
   transition: all 0.3s;
+  margin-top: 30px;
   &:hover {
     transform: scale(1.1);
   }
@@ -314,7 +287,7 @@ export default {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: purple;
+  background-color:#ec9f05;
   color: white;
   cursor: pointer;
   text-decoration: none;

@@ -100,11 +100,12 @@ export default {
 .mob {
   padding: 1rem 2rem;
 }
+
 .swipimg img {
   width: 100%;
-  height: 280px;
+  height: 300px;
   padding: 0 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   border-radius: 50px;
   transition: all 0.3s;
   top: 0;
@@ -113,17 +114,17 @@ export default {
     transform: scale(1.09);
   }
 }
-.cost {
-  color: black;
-  display: block;
-  padding: 5px 0;
-  direction: rtl;
-}
 main {
   width: 95%;
   height: 400px;
   margin: 20px;
   position: absolute;
+}
+.cost {
+  color: black;
+  display: block;
+  padding: 5px 0;
+  direction: rtl;
 }
 h1 {
   width: 90%;
@@ -134,11 +135,13 @@ h1 {
 }
 .span {
   position: absolute;
+  // top: 140rem;
   margin-top: 140px;
   font-size: 60px;
   font-weight: bold;
-  color: red;
+  color: #ff4e00;
   cursor: pointer;
+  left: 0.5%;
   z-index: 1;
   background-color: white;
   padding: 1px 6px;
@@ -149,7 +152,7 @@ h1 {
   }
 
   &.deactive {
-    color: rgb(255, 196, 196);
+    color: #ff4d003f;
   }
 }
 .s1 {
@@ -159,10 +162,10 @@ h1 {
 .cardbox {
   margin: 0px 2rem;
   display: flex;
+  height: 570px;
   justify-content: space-between;
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 570px;
 
   &::-webkit-scrollbar {
     visibility: hidden;
@@ -176,12 +179,12 @@ h1 {
   font-weight: bold;
   margin: 10px 20px;
   color: white;
-  background: rgb(219, 218, 218);
+  background: whitesmoke;
   transition: all 0.8s;
   left: 0px;
   border-radius: 50px;
   text-align: center;
-  border: 1px solid crimson;
+  border: 3px solid #ff4e00;
   cursor: pointer;
 }
 
@@ -199,8 +202,9 @@ h1 {
   animation-fill-mode: backwards;
   align-items: center;
 }
+
 .btn {
-  background-color: crimson;
+  background-color: #ff4e00;
   color: white;
   position: relative;
   direction: rtl;
@@ -226,7 +230,7 @@ h1 {
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color: crimson;
+  background-color: #ff4e00;
   position: absolute;
   top: 0;
   left: 0;
@@ -240,7 +244,7 @@ h1 {
 .product-btn {
   padding: 10px 50px;
   border-radius: 10px;
-  border: 1px solid crimson;
+  border: 3px solid #ff4e00;
   background-color: white;
   margin-top: 15px;
   font-size: 15px;
@@ -249,7 +253,7 @@ h1 {
   cursor: pointer;
 
   &:hover {
-    background-color: crimson;
+    background-color: #ff4e00;
     color: white;
   }
 }
@@ -267,10 +271,10 @@ h1 {
 }
 .u-center-text {
   text-align: center;
-  padding: 3rem 1rem;
+  padding-bottom: 4rem;
 }
-$color-primary-dark: #f30629;
-$color-primary-light: #72151e;
+$color-primary-dark: #ff4e00;
+$color-primary-light: #ec9f05;
 .heading-secondary {
   font-size: 2rem;
   font-weight: 700;
@@ -284,9 +288,5 @@ $color-primary-light: #72151e;
   color: transparent;
   transition: all 0.3s;
 
-  &:hover {
-    // transform: skewY(-3deg) skewX(-15deg);
-    text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
-  }
 }
 </style>

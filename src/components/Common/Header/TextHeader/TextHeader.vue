@@ -2,9 +2,9 @@
   <div>
     <div class="textheader">
       <h1 class="heading-primary">
-        <span class="heading-primary-main">کامپیوتر شاپ</span>
+        <span class="heading-primary-main">خشکینجا</span>
         <span class="heading-primary-sub"
-          >بزرگترین مرجع خرید اینترنتی لوازم الکترونیکی</span
+          >خرید اینترنتی انواع خشکبار</span
         >
       </h1>
       <a href="#" class="btn">نمایش محصولات</a>
@@ -24,10 +24,11 @@ export default {};
   position: absolute;
   transform: translate(-50%, -50%);
   text-align: center;
-  background-color: rgba(53, 51, 51, 0.39);
+  background-color: rgba(255, 255, 255, 0.37);
   border-radius: 10px;
   padding: 40px;
   margin-top: 50px;
+  width:400px ;
 
    @include respond(phone) {
     padding: 10px;
@@ -126,7 +127,7 @@ export default {};
   }
 }
 .btn {
-  background-color: crimson;
+  background-color: rgb(231, 94, 31);
   color: white;
   position: relative;
   direction: rtl;
@@ -143,7 +144,7 @@ export default {};
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color: crimson;
+  background-color: rgb(231, 94, 31);
   position: absolute;
   top: 0;
   left: 0;

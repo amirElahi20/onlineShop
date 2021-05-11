@@ -7,18 +7,17 @@
           <ul class="menu r">
             <li>
               <router-link to="/login" class="login" exact>ورود</router-link>
+              <router-link to="/register" class="login" exact
+                >ثبت نام</router-link
+              >
             </li>
             <li>
-              <a href="#">
-                <span class="english">0216400010</span>
-                <fa icon="phone"></fa>
-              </a>
+              <span class="english">0216400010</span>
+              <fa class="fa" icon="phone"></fa>
             </li>
             <li>
-              <a href="#">
-                <span class="english">info@shop.gmail.com</span>
-                <fa icon="envelope"></fa>
-              </a>
+              <span class="english">info@shop.gmail.com</span>
+              <fa class="fa" icon="envelope"></fa>
             </li>
           </ul>
         </div>
@@ -26,34 +25,19 @@
         <div class="left">
           <ul class="menu l">
             <li>
-              <a href=""
-                ><fa class="whatsapp" :icon="['fab', 'whatsapp']"></fa
+              <a href="#">
+                <fa class="whatsapp" :icon="['fab', 'whatsapp']"></fa
               ></a>
             </li>
             <li>
-              <a href=""
-                ><fa class="youtube" :icon="['fab', 'youtube']"></fa
-              ></a>
+              <a href="">
+                <fa class="telegram" :icon="['fab', 'telegram']"></fa>
+              </a>
             </li>
             <li>
-              <a href=""
-                ><fa class="telegram" :icon="['fab', 'telegram']"></fa
-              ></a>
-            </li>
-            <li>
-              <a href=""
-                ><fa class="instagram" :icon="['fab', 'instagram']"></fa
-              ></a>
-            </li>
-            <li>
-              <a href=""
-                ><fa class="twitter" :icon="['fab', 'twitter']"></fa
-              ></a>
-            </li>
-            <li>
-              <a href=""
-                ><fa class="facebook" :icon="['fab', 'facebook']"></fa
-              ></a>
+              <a href="">
+                <fa class="instagram" :icon="['fab', 'instagram']"></fa>
+              </a>
             </li>
           </ul>
         </div>
@@ -61,9 +45,9 @@
     </div>
     <svg height="1" width="98%">
       <line
-        x1="15%"
+        x1="10%"
         y1="0"
-        x2="85%"
+        x2="92%"
         y2="0"
         style="stroke: rgb(220, 220, 220); stroke-width: 2"
       />
@@ -119,31 +103,42 @@ export default {
 }
 .whatsapp {
   transition: all 0.3s;
+  font-size: 30px;
+  // background:green;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
   // font-size: 30px;
 }
 .whatsapp:hover {
-  color: green;
+  background: green;
+  padding: 0px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  color: white;
+  // border-radius: 100%;
 }
-.youtube {
-  transition: all 0.3s;
-}
-.youtube:hover {
-  color: red;
-}
+
 .telegram {
   transition: all 0.3s;
+  font-size: 30px;
 }
 .telegram:hover {
-  color:#2693c9
+  color: #2693c9;
+  background-color: white;
+  border-radius: 40px;
 }
 
-
-.instagram{
-  border-radius: 40px;
+.instagram {
+  border-radius: 10px;
+  height: 30px;
+  width: 30px;
   transition: all 0.3s;
+  font-size: 30px;
 }
 .instagram:hover {
-  border-radius: 40px;
+  // border-radius: 40px;
   background: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
@@ -153,17 +148,19 @@ export default {
     #285aeb 90%
   );
 }
-.twitter{
+.twitter {
   transition: all 0.3s;
 }
-.twitter:hover{
+.twitter:hover {
   color: #6e8deb;
 }
-.facebook{
+.facebook {
   transition: all 0.3s;
 }
-.facebook:hover{
+.facebook:hover {
   color: #0e4b69;
+  background-color: white;
+  border-radius: 40px;
 }
 
 .menu {
@@ -179,24 +176,38 @@ export default {
 }
 .login {
   color: white;
-  background: crimson;
+  background: rgb(231, 94, 31);
   cursor: pointer;
   text-decoration: none;
   padding: 8px 25px;
   border-radius: 15px;
-  position: relative;
-  border: 1px solid crimson;
+  // position: relative;
+  border: 1px solid white;
+  margin-top: -10px;
+  margin-left: 10px;
+  // position: absolute;
+  // top: 20px;
 }
 .login:active {
   color: black;
 }
 .login:hover {
-  color: crimson;
-  border: 1px solid crimson;
+  color: rgb(231, 94, 31);
+  border: 1px solid rgb(231, 94, 31);
   background: white;
   transition: all 0.3s;
 }
+span {
+  color: white;
+}
 a {
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: 17px;
+}
+.fa {
   text-decoration: none;
   cursor: pointer;
   color: white;

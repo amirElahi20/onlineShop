@@ -22,17 +22,17 @@
           <div class="col-1-of-2">
             <div class="composition">
               <img
-                src="../../../public/img/img1.jpg"
+                src="../../../public/img/estudio-bloom-oo3kSFZ7uHk-unsplash.jpg"
                 alt=""
                 class="composition__photo composition__photo--p1"
               />
               <img
-                src="../../../public/img/img2.jpg"
+                src="../../../public/img/oriol-portell-bL6VgDDsS8M-unsplash.jpg"
                 alt=""
                 class="composition__photo composition__photo--p2"
               />
               <img
-                src="../../../public/img/img3.jpg"
+                src="../../../public/img/giorgio-trovato-fczCr7MdE7U-unsplash.jpg"
                 alt=""
                 class="composition__photo composition__photo--p3"
               />
@@ -59,8 +59,9 @@ export default {
 <style lang="scss" scoped>
 @import "../../styles/mixins.scss";
 
-$color-primary-dark: #f30629;
-$color-primary-light: #72151e;
+
+$color-primary-dark: #ff4e00;
+$color-primary-light: #ec9f05;
 .section-about {
   padding: 2rem 0 6rem;
   margin-bottom: 5rem;
@@ -88,9 +89,6 @@ $color-primary-light: #72151e;
     font-size: 1.5rem;
   }
 
-  &:hover {
-    text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
-  }
 }
 .u-center-text {
   text-align: center;
@@ -116,7 +114,7 @@ $color-primary-light: #72151e;
   font-size: 25px;
   font-weight: 700;
   padding-bottom: 10px;
-  color: crimson;
+  color: #ff4e00;
   @media (max-width: 1366px) {
     font-size: 20px;
   }
@@ -134,10 +132,10 @@ $color-primary-light: #72151e;
   &:link,
   &:visited {
     font-size: 18px;
-    color: crimson;
+    color: #ff4e00;
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid crimson;
+    border-bottom: 1px solid #ff4e00;
     padding: 3px;
     transition: all 0.2s;
 
@@ -146,7 +144,7 @@ $color-primary-light: #72151e;
     }
   }
   &:hover {
-    background-color: crimson;
+    background-color: #ff4e00;
     color: white;
     text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
     transform: translateY(-2px);
@@ -160,6 +158,7 @@ $color-primary-light: #72151e;
 .composition {
   position: relative;
   width: 100%;
+  margin-top: -100px;
 
   @include respond(phone){
     
@@ -170,7 +169,7 @@ $color-primary-light: #72151e;
 
   &__photo {
     box-shadow: 0.5rem 1rem 1rem rgba(rgb(77, 75, 75), 0.5);
-    border-radius: 2px;
+    border-radius: 20px;
 
     transition: all 0.2s;
     outline-offset: 15px;
@@ -184,6 +183,7 @@ $color-primary-light: #72151e;
       right: 140px;
       z-index: 5;
       width: 330px;
+      height: 320px;
 
       @media (max-width: 1366px) {
         width: 280px;
@@ -235,9 +235,10 @@ $color-primary-light: #72151e;
     }
     &--p3 {
       right: 300px;
-      width: 330px;
+      width: 300px;
       top: 9.5rem;
       z-index: 15;
+      height: 240px;
        @media (max-width: 1366px) {
         width: 300px;
         right: 280px;
@@ -260,7 +261,7 @@ $color-primary-light: #72151e;
       }
     }
     &:hover {
-      outline: 5px solid crimson;
+      outline: 5px solid #ec9f05;
       transform: scale(1.05) translateY(-0.5rem);
       box-shadow: 0.5rem 1rem 1rem rgba(rgb(77, 75, 75), 0.7);
       z-index: 20;

@@ -85,11 +85,12 @@ export default {
 <style lang="scss" scoped>
 .router {
   text-decoration: none;
+  color: #ff4e00;
 }
 .forget {
   font-size: 15px;
   text-align: center;
-  color:  rgb(18, 18, 126);
+  color: #ff4e00;
 }
 .log {
   display: flex;
@@ -116,10 +117,10 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/h3.png");
+    url("../../../public/img/tatiana-VpZyvTc_9Mg-unsplash.jpg");
   //   background-color: #2d3436;
   background-size: cover;
-  background-position: top;
+  background-position: center;
   position: relative;
   border-radius: 30px;
   box-shadow: 1rem 2rem 2rem rgba(rgb(15, 15, 15), 0.8);
@@ -168,13 +169,15 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: rgb(18, 18, 126);
+  background-color: #ff4e00;
+  border: 1px solid #ff4e00;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
     transform: scale(1.1);
   }
 }
+
 .txt {
   text-align: center;
   padding-right: 1rem;
@@ -188,7 +191,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: purple;
+  background-color:#ec9f05;
   color: white;
   cursor: pointer;
   text-decoration: none;

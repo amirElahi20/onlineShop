@@ -32,8 +32,8 @@ export default {
 .section-product {
   padding: 5rem 0 0 0;
 }
-$color-primary-dark: #f30629;
-$color-primary-light: #72151e;
+$color-primary-dark: #ff4e00;
+$color-primary-light: #ec9f05;
 .heading-secondary {
   font-size: 2rem;
   font-weight: 700;
@@ -47,9 +47,6 @@ $color-primary-light: #72151e;
   color: transparent;
   transition: all 0.3s;
 
-  &:hover {
-    text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
-  }
 }
 .u-center-text {
   text-align: center;

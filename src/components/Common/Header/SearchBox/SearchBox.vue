@@ -15,12 +15,15 @@ export default {};
 
 
 <style scoped>
+input{
+  color: white;
+}
 .search-box {
   margin-left: 10px;
   margin-top: -10px;
   margin-left: 15px;
   transform: translate(-1%);
-  background: #2f3640;
+  background: rgb(231, 94, 31) ;
   height: 40px;
   border-radius: 40px;
   padding: 0px;
@@ -38,12 +41,12 @@ export default {};
   background: white;
 }
 .search-btn {
-  color: crimson;
+  color: rgb(231, 94, 31);
   float: right;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #2f3640;
+  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,5 +63,8 @@ export default {};
   transition: 0.8s;
   line-height: 40px;
   width: 0px;
+}
+::placeholder{
+  color: white;
 }
 </style>

@@ -50,13 +50,13 @@ export default {};
 <style lang="scss" scoped>
 
 .footer{
-   background-image: linear-gradient(to right ,#fdfcfb , #e2d1c3);
+   background-image: linear-gradient(to right ,#ff4e00 , #ec9f05);
 }
 .layout{
     display: none;
 }
 .top-footer{
-    color: black;
+    color:white;
     direction: rtl;
     padding-right: 20px;
     padding-top: 1rem;
@@ -68,7 +68,7 @@ span::after {
     content: "";
     width: 2px;
     height: 19px;
-    background-color : black;
+    background-color : white;
     position: absolute;
     right: 208px;
 }
@@ -85,7 +85,7 @@ span:last-child::after {
     direction: rtl;
     justify-content: space-around;
     padding-top: 2rem;
-    color: black;
+    color: white;
 }
 .sub-txt{
     font-size: 14px;
@@ -95,6 +95,7 @@ span:last-child::after {
     display: flex;
     direction: rtl;
     padding-top: 2rem;
+    color: white;
 }
 .right-column{
     width: 50%;
@@ -111,7 +112,9 @@ span:last-child::after {
 img{
     width: 200px;
     height: 100px;
-    padding-right: 15px;
+    // padding-right: 15px;
+    margin-right: 15px;
+    border-radius: 10px;
  
 }
 
