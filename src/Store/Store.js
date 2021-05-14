@@ -4,7 +4,7 @@ import mostsell from './Modules/MostSell';
 import Mobile from './Modules/Mobile';
 import Monitor from './Modules/Monitor';
 import Menu from './Modules/Menu';
-import user from './Modules/User'
+import auth from './Modules/auth.js';
 
 
 
@@ -18,7 +18,7 @@ export const store = createStore({
         Mobile,
         Monitor,
         Menu,
-        user,
+        auth
 
     }
 })

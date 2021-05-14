@@ -3,7 +3,8 @@
     <transition name="fade">
       <div class="popup" v-show="!activePopup"></div>
     </transition>
-    <div class="total"
+    <div
+      class="total"
       :class="{
         scroll: scrollPosition >= 20,
         container: scrollPosition < 20,
@@ -37,8 +38,8 @@
             <search-box></search-box>
             <li class="shopping">
               <a href="#">
-                <span class="badge">1</span>
-                <fa icon="shopping-cart"></fa>
+                <span class="badge"><h5 class="h4">10</h5></span>
+                <fa class="fa" icon="shopping-cart"></fa>
               </a>
             </li>
           </ul>
@@ -108,6 +109,15 @@ export default {
 .r li {
   margin-left: 20px;
 }
+.fa {
+  font-size: 35px;
+  // z-index: -1;
+  margin-top: -5px;
+  margin-right: 10px;
+  transition:  all 0.3s;
+
+}
+
 .container {
   display: flex;
   margin: 0 auto;
@@ -139,7 +149,11 @@ export default {
   width: 100%;
   position: fixed;
   z-index: 999;
-  // top: 0;
+
+ .badge{
+
+   margin-top: -85px;
+ }
 
   @media (max-width: 1260px) {
     display: none;
@@ -199,10 +213,15 @@ a {
   font-size: 20px;
 }
 .badge {
-  margin-left: 10px;
+  // margin-left: 10px;
   background-color: rgb(231, 94, 31);
-  padding: 0px 6px;
-  border-radius: 50%;
+  z-index: 999;
+  position: absolute;
+  border-radius: 50px;
+  padding-top: 2px;
+  padding-right: 7px;
+  padding-left: 7px;
+  top: 6rem;
 }
 .popup {
   height: 100vh;

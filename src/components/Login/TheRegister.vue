@@ -5,7 +5,7 @@
         <div class="row">
           <div class="form">
             <div class="form__login">
-              <form action="#" class="list" @submit.prevent="RegisterUser()">
+              <form action="#" class="list" @submit.prevent="RegisterUser">
                 <h2 class="topform">ثبت نام</h2>
                 <div
                   class="list__group"
@@ -104,12 +104,13 @@
                   >
                     ایمیل نامعتبر است
                   </div>
-                  <div class="alert" v-if="check">ایمیل تکراری میباشد</div>
+                  <div class="error" v-if="error">{{ error }}</div>
                 </div>
                 <button class="submit-btn" type="submit">ثبت نام</button>
               </form>
               <h5 class="txt">
-                عضو هستید؟؟ پس <router-link class="router" to="/login">وارد شوید</router-link>
+                عضو هستید؟؟ پس
+                <router-link class="router" to="/login">وارد شوید</router-link>
               </h5>
               <router-link class="back-btn" to="/">بازگشت</router-link>
             </div>
@@ -125,6 +126,7 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
+
 // import axios from "axios";
 export default {
   data() {
@@ -135,6 +137,7 @@ export default {
       password: "",
       check: false,
       checknum: false,
+      error: null,
     };
   },
 
@@ -156,18 +159,36 @@ export default {
   },
   methods: {
     RegisterUser() {
-      const register = {
-        username: this.username,
-        email: this.email,
-        password: this.password,
-      };
       this.v$.$validate();
       if (!this.v$.$error) {
-        alert("form successfully submitted");
-        this.$store.dispatch("RegisterUser", register);
-        this.$router.push("/login");
-      } else {
-        alert("form failed");
+        this.error = null;
+        fetch("https://onshop321.herokuapp.com/accounts/v1/auth/register/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: this.username,
+            email: this.email,
+            password: this.password,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log(response.body);
+              alert("ثبت نام با موفقیت انجام شد");
+              this.$router.push("/login");
+            } else {
+              console.log("the response from server", response);
+              throw new Error("نام کاربری یا ایمیل تکراری است");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            this.error = error.message;
+          });
+      }else{
+        alert('form failed');
       }
     },
   },
@@ -176,7 +197,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .invalid input {
   border: 1px solid red !important;
 }
@@ -188,7 +208,10 @@ export default {
   color: red;
   text-align: start;
 }
-
+.error{
+  color: red;
+  text-align: center;
+}
 .log {
   display: flex;
   justify-content: center;
@@ -202,7 +225,7 @@ export default {
   text-align: center;
   margin-top: -75px;
 }
-.router{
+.router {
   text-decoration: none;
   color: #ff4e00;
 }
@@ -240,7 +263,7 @@ export default {
     background-color: rgba(rgb(255, 255, 255), 0.9);
     border: none;
     text-align: right;
-    border-bottom: 3px solid transparent;
+    border: 1px solid black;
     width: 90%;
     display: block;
     color: inherit;
@@ -287,7 +310,7 @@ export default {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color:#ec9f05;
+  background-color: #ec9f05;
   color: white;
   cursor: pointer;
   text-decoration: none;

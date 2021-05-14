@@ -7,7 +7,13 @@
             <div class="form__login">
               <form class="list" @submit.prevent="submit">
                 <h2 class="topform">ورود</h2>
-                <div class="list__group">
+                <div
+                  class="list__group"
+                  :class="{
+                    invalid:
+                      v$.username.$dirty && !v$.username.required.$response,
+                  }"
+                >
                   <label for="name" class="list__label">نام کاربری</label>
                   <input
                     type="text"
@@ -17,10 +23,22 @@
                     v-model="username"
                     autofocus="autofocus"
                     maxlength="100"
-                    required
+                    @input="v$.username.$touch"
                   />
+                  <div
+                    class="alert"
+                    v-if="v$.username.$dirty && v$.username.required.$invalid"
+                  >
+                    نام کاربری نمیتواند خالی باشد
+                  </div>
                 </div>
-                <div class="list__group">
+                <div
+                  class="list__group"
+                  :class="{
+                    invalid:
+                      v$.password.$dirty && !v$.password.required.$response,
+                  }"
+                >
                   <label for="name" class="list__label">رمز عبور</label>
                   <input
                     type="password"
@@ -28,9 +46,16 @@
                     placeholder="رمز عبورتو وارد کن"
                     id="password"
                     v-model="password"
-                    required
+                    @input="v$.password.$touch"
                   />
+                  <div
+                    class="alert"
+                    v-if="v$.password.$dirty && v$.password.required.$invalid"
+                  >
+                    رمز عبور نمیتواند خالی باشد
+                  </div>
                 </div>
+                <div class="error" v-if="error">{{ error }}</div>
                 <button class="submit-btn" type="submit">ورود</button>
               </form>
               <h5 class="txt">
@@ -55,27 +80,52 @@
 
 
 <script>
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+// import Vue from 'vue';
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
       username: "",
       password: "",
+      error: null,
+      v$: useVuelidate(),
     };
   },
-
+  validations() {
+    return {
+      username: {
+        required,
+      },
+      password: {
+        required,
+      },
+    };
+  },
+  computed: {
+    ...mapGetters("auth", {
+      getloginApiStatus: "getloginApiStatus",
+    }),
+  },
   methods: {
+    ...mapActions("auth", {
+      userLogin: "userLogin",
+    }),
     async submit() {
-      await fetch(
-        "https://onshop321.herokuapp.com/accounts/v1/auth/obtain_token/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify(this.$data),
-
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        const payload = {
+          username: this.username,
+          password: this.password,
+        };
+        await this.userLogin(payload);
+        if (this.getloginApiStatus == "success") {
+          this.$router.push("/");
+        } else {
+          alert("Error!");
         }
-      );
-      console.log(this.$data);
+      }
     },
   },
 };
@@ -86,6 +136,20 @@ export default {
 .router {
   text-decoration: none;
   color: #ff4e00;
+}
+.invalid input {
+  border: 1px solid red !important;
+}
+.invalid label {
+  color: red;
+}
+.alert {
+  color: red;
+  text-align: start;
+}
+.error {
+  color: red;
+  text-align: center;
 }
 .forget {
   font-size: 15px;
@@ -143,7 +207,7 @@ p {
     background-color: rgba(rgb(255, 255, 255), 0.9);
     border: none;
     text-align: right;
-    border-bottom: 3px solid transparent;
+    border: 1px solid black;
     width: 90%;
     display: block;
     color: inherit;
@@ -191,7 +255,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color:#ec9f05;
+  background-color: #ec9f05;
   color: white;
   cursor: pointer;
   text-decoration: none;

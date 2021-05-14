@@ -6,6 +6,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { createRouter, createWebHistory } from 'vue-router';
 import { store } from './Store/Store';
+// import { VueCookie } from 'vue-cookie'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import MainContent from './components/Content/MainContent.vue';
@@ -46,6 +47,6 @@ app.component('fa', FontAwesomeIcon);
 app.use(router);
 app.use(store);
 app.use(VueAxios, axios);
-
+// app.use(VueCookie);
 
 app.mount('#app');

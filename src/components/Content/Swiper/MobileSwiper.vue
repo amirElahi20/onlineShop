@@ -109,6 +109,7 @@ export default {
   border-radius: 50px;
   transition: all 0.3s;
   top: 0;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.09);
@@ -164,7 +165,7 @@ h1 {
   display: flex;
   height: 570px;
   justify-content: space-between;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: hidden;
 
   &::-webkit-scrollbar {
@@ -185,7 +186,7 @@ h1 {
   border-radius: 50px;
   text-align: center;
   border: 3px solid #ff4e00;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .btn:link,

@@ -29,7 +29,7 @@ const actions = {
             })
             .then(res => {
                 commit("SetMostSellProducts", res.data.results);
-                // console.log(data);
+                console.log(res);
 
             })
     }

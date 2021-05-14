@@ -134,10 +134,11 @@ export default {
   border-radius: 10px;
   height: 30px;
   width: 30px;
-  transition: all 0.3s;
+
   font-size: 30px;
 }
 .instagram:hover {
+
   // border-radius: 40px;
   background: radial-gradient(
     circle at 30% 107%,
@@ -209,7 +210,6 @@ a {
 }
 .fa {
   text-decoration: none;
-  cursor: pointer;
   color: white;
   font-weight: 400;
   font-size: 17px;
