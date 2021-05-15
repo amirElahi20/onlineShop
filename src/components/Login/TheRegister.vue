@@ -7,16 +7,14 @@
             <div class="form__login">
               <form action="#" class="list" @submit.prevent="RegisterUser">
                 <h2 class="topform">ثبت نام</h2>
+                <div class="error" v-if="error">{{ error }}</div>
                 <div
                   class="list__group"
                   :class="{
-                    invalid:
-                      (v$.username.$dirty && !v$.username.required.$response) ||
-                      !v$.username.minLength.$response ||
-                      checknum,
+                    invalid : v$.username.$error || checkUser 
                   }"
                 >
-                  <label for="name" class="list__label">نام کاربری</label>
+                  <label for="name" class="list__label"> <fa class="fa" icon="user"></fa>نام کاربری</label>
                   <input
                     type="text"
                     class="list__input"
@@ -31,31 +29,27 @@
                   >
                     نام کاربری نمیتواند خالی باشد
                   </div>
-                  <div class="alert" v-if="checknum">
-                    نام کاربری تکراری میباشد
-                  </div>
                   <span
                     class="alert"
-                    v-if="
-                      v$.username.$dirty && !v$.username.minLength.$response
-                    "
+                    v-if="v$.username.$dirty && v$.username.alphaNum.$invalid"
                   >
-                    نام کاربری نمیتواند کمتر از 2 کاراکتر باشد
-                  </span>
+                    نام کاربری باید شامل اعداد و حروف انگلیسی باشد</span
+                  >
                 </div>
                 <div
                   class="list__group"
                   :class="{ invalid: v$.password.$error }"
                 >
-                  <label for="name" class="list__label">رمز عبور</label>
+                  <label for="name" class="list__label"> <fa class="fa" icon="lock"></fa>رمز عبور</label>
                   <input
                     v-model.trim="password"
-                    type="password"
+                    :type="visibility"
                     class="list__input"
                     placeholder="رمز عبورتو وارد کن"
                     id="password"
                     @input="v$.password.$touch"
                   />
+                  <fa @click="hidePassword" v-if="visibility == 'text'" class="eye eye-slash" icon="eye-slash"></fa><fa @click="showPassword" v-if="visibility == 'password'" class="eye eye-on" icon="eye"></fa>
                   <div
                     class="alert"
                     v-if="v$.password.$dirty && v$.password.required.$invalid"
@@ -76,14 +70,11 @@
                   class="list__group"
                   :class="{
                     invalid:
-                      (v$.email.$dirty && !v$.email.required.$response) ||
-                      v$.email.email.$invalid ||
-                      check,
+                      (v$.email.$invalid && v$.email.$dirty) || checkEmail,
                   }"
                 >
-                  <label for="name" class="list__label">ایمیل</label>
-                  <!-- <div>{{ check }}</div> -->
-                  <!-- <div>{{ v$.email }}</div> -->
+                  <label for="name" class="list__label"> <fa class="fa" icon="envelope"></fa>ایمیل</label>
+
                   <input
                     v-model="email"
                     type="email"
@@ -91,7 +82,7 @@
                     placeholder="ایمیلتو وارد کن"
                     id="email"
                     @input="v$.email.$touch"
-                  />
+                  >
                   <div
                     class="alert"
                     v-if="v$.email.$dirty && v$.email.required.$invalid"
@@ -104,7 +95,6 @@
                   >
                     ایمیل نامعتبر است
                   </div>
-                  <div class="error" v-if="error">{{ error }}</div>
                 </div>
                 <button class="submit-btn" type="submit">ثبت نام</button>
               </form>
@@ -125,7 +115,7 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import { required, email, minLength, alphaNum } from "@vuelidate/validators";
 
 // import axios from "axios";
 export default {
@@ -138,6 +128,9 @@ export default {
       check: false,
       checknum: false,
       error: null,
+      checkUser: null,
+      checkEmail: null,
+      visibility : 'password'
     };
   },
 
@@ -145,7 +138,8 @@ export default {
     return {
       username: {
         required,
-        minLength: minLength(2),
+
+        alphaNum,
       },
       email: {
         required,
@@ -173,24 +167,27 @@ export default {
             password: this.password,
           }),
         })
-          .then((response) => {
-            if (response.ok) {
-              console.log(response.body);
+          .then((response) => response.json())
+          .then((json) => {
+            if (json.user == false) {
+              this.error = "نام کاربری تکراری میباشد";
+              this.checkUser = "yes";
+            } else if (json.email == false) {
+              this.error = "ایمیل وارد شده تکراری است";
+              this.checkEmail = "yes";
+            } else {
               alert("ثبت نام با موفقیت انجام شد");
               this.$router.push("/login");
-            } else {
-              console.log("the response from server", response);
-              throw new Error("نام کاربری یا ایمیل تکراری است");
             }
-          })
-          .catch((error) => {
-            console.log(error);
-            this.error = error.message;
           });
-      }else{
-        alert('form failed');
       }
     },
+    showPassword(){
+      this.visibility = 'text'
+    },
+    hidePassword(){
+      this.visibility = 'password'
+    }
   },
 };
 </script>
@@ -203,14 +200,32 @@ export default {
 .invalid label {
   color: red;
 }
+.valid input{
+  border: 1px solid green;
+}
+.valid label{
+  color: green;
+}
+.eye{
+  position: absolute;
+  // top: 13.7rem;
+  margin-top: -34px;
+  margin-left: 10px;
+  color: rgb(90, 92, 92);
+  cursor: pointer;
+}
+.fa{
+  margin-left: 5px;
+}
 
 .alert {
   color: red;
   text-align: start;
 }
-.error{
+.error {
   color: red;
   text-align: center;
+  font-weight: bold;
 }
 .log {
   display: flex;
@@ -231,7 +246,7 @@ export default {
 }
 .form {
   width: 100%;
-  height: 40rem;
+  height: 41rem;
   background-image: linear-gradient(
       105deg,
       rgba(white, 0.9) 0%,

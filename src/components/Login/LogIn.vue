@@ -7,6 +7,7 @@
             <div class="form__login">
               <form class="list" @submit.prevent="submit">
                 <h2 class="topform">ورود</h2>
+                 <div class="error" v-if="error">{{ error }}</div>
                 <div
                   class="list__group"
                   :class="{
@@ -41,13 +42,13 @@
                 >
                   <label for="name" class="list__label">رمز عبور</label>
                   <input
-                    type="password"
+                    :type="visibility"
                     class="list__input"
                     placeholder="رمز عبورتو وارد کن"
                     id="password"
                     v-model="password"
                     @input="v$.password.$touch"
-                  />
+                  /> <fa @click="hidePassword" v-if="visibility == 'text'" class="eye eye-slash" icon="eye-slash"></fa><fa @click="showPassword" v-if="visibility == 'password'" class="eye eye-on" icon="eye"></fa>
                   <div
                     class="alert"
                     v-if="v$.password.$dirty && v$.password.required.$invalid"
@@ -55,7 +56,7 @@
                     رمز عبور نمیتواند خالی باشد
                   </div>
                 </div>
-                <div class="error" v-if="error">{{ error }}</div>
+               
                 <button class="submit-btn" type="submit">ورود</button>
               </form>
               <h5 class="txt">
@@ -89,6 +90,7 @@ export default {
     return {
       username: "",
       password: "",
+      visibility : 'password',
       error: null,
       v$: useVuelidate(),
     };
@@ -115,6 +117,7 @@ export default {
     async submit() {
       this.v$.$validate();
       if (!this.v$.$error) {
+        this.error = null
         const payload = {
           username: this.username,
           password: this.password,
@@ -123,10 +126,16 @@ export default {
         if (this.getloginApiStatus == "success") {
           this.$router.push("/");
         } else {
-          alert("Error!");
+          this.error = 'کاربری با این مشخصات وجود ندارد'
         }
       }
     },
+    showPassword(){
+      this.visibility = 'text'
+    },
+    hidePassword(){
+      this.visibility = 'password'
+    }
   },
 };
 </script>
@@ -147,9 +156,19 @@ export default {
   color: red;
   text-align: start;
 }
+.eye{
+  position: absolute;
+  // top: 15.7rem;
+  margin-top: -34px;
+  margin-left: 10px;
+  color: rgb(90, 92, 92);
+  cursor: pointer;
+}
+
 .error {
   color: red;
   text-align: center;
+  font-weight: bold;
 }
 .forget {
   font-size: 15px;
