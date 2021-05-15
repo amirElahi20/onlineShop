@@ -19,5 +19,5 @@ app.use(serveStatic(path.join(__dirname, '/dist')))
 var port = process.env.PORT || 8080
 
 app.listen(port, () => {
-    console.log('Server started at http://localhost:5000')
+    console.log('Server started at http://localhost:8080')
 })
