@@ -6,7 +6,8 @@ const state = () => ({
         id: "",
         username: "",
         password: "",
-    }
+    },
+    logOut: false,
 
 });
 
@@ -29,6 +30,9 @@ const mutations = {
             username: payload.username,
             password: payload.password,
         }
+    },
+    setLogout(state, payload) {
+        state.logOut = payload
     }
 
 };
@@ -49,13 +53,23 @@ const actions = {
         }
     },
     async userProfile({ commit }) {
-        const response = await axios.get("https://onshop321.herokuapp.com/accounts/v1/auth/obtain_token/", {
+        const response = await axios.get("https://onshop321.herokuapp.com/accounts/v1/auth/user/", {
             withCredentials: true
         }).catch((err) => {
             console.log(err)
         });
         if (response && response.data) {
             commit('setuserProfile', response.data)
+        }
+    },
+    async userLogOut({ commit }) {
+        const response = await axios.get("https://onshop321.herokuapp.com/accounts/v1/auth/logout/", {
+            withCredentials: true
+        }).catch((err) => {
+            console.log(err)
+        });
+        if (response && response.data) {
+            commit('setLogout', true)
         }
     }
 };

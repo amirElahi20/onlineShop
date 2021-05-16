@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <header class="header" :class="{'layout' : $route.path == '/register' || $route.path == '/login'}">
+    <header class="header" :class="{'layout' : $route.path == '/register' || $route.path == '/login' || $route.path == '/forget'}">
       <top-nav></top-nav>
       <the-menu></the-menu>
       <text-header></text-header>
@@ -30,7 +30,7 @@ export default {
 @import '../../styles/mixins.scss';
 .header {
   width: 100%;
-  height: 90vh;
+  height: 75vh;
   // overflow: hidden;
   background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
     url("../../../public/img/rayia-soderberg-I_GMMiniWYQ-unsplash.jpg");

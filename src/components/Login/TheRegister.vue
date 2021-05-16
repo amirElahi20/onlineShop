@@ -208,7 +208,6 @@ export default {
 }
 .eye{
   position: absolute;
-  // top: 13.7rem;
   margin-top: -34px;
   margin-left: 10px;
   color: rgb(90, 92, 92);

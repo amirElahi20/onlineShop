@@ -27,10 +27,21 @@
                 ></sub-menu>
               </transition>
             </li>
-            <li><a href="">راهنما</a></li>
-            <li><a href="">گارانتی</a></li>
-            <li><a href="">دست دوم</a></li>
-            <li><a href="">ارتباط با ما</a></li>
+            <li>
+              <router-link class="router forget" to="/product"
+                >محصولات</router-link
+              >
+            </li>
+            <li>
+              <router-link class="router forget" to="/aboutus"
+                >درباره ما</router-link
+              >
+            </li>
+            <li>
+              <router-link class="router forget" to="/contactus"
+                >ارتباط با ما</router-link
+              >
+            </li>
           </ul>
         </div>
         <div class="left">
@@ -114,8 +125,7 @@ export default {
   // z-index: -1;
   margin-top: -5px;
   margin-right: 10px;
-  transition:  all 0.3s;
-
+  transition: all 0.3s;
 }
 
 .container {
@@ -150,10 +160,9 @@ export default {
   position: fixed;
   z-index: 999;
 
- .badge{
-
-   margin-top: -85px;
- }
+  .badge {
+    margin-top: -85px;
+  }
 
   @media (max-width: 1260px) {
     display: none;

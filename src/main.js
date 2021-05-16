@@ -12,8 +12,8 @@ import VueAxios from 'vue-axios';
 import MainContent from './components/Content/MainContent.vue';
 import LogIn from './components/Login/LogIn.vue';
 import TheRegister from './components/Login/TheRegister.vue';
-
-
+import ForgetPassword from './components/Login/ForgetPassword.vue';
+import AboutUs from './MenuPages/AboutUs.vue';
 
 
 
@@ -31,6 +31,14 @@ const router = createRouter({
         {
             path: '/register',
             component: TheRegister
+        },
+        {
+            path: '/forget',
+            component: ForgetPassword
+        },
+        {
+            path: '/aboutus',
+            component: AboutUs,
 
         }
     ]

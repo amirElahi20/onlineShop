@@ -6,7 +6,7 @@
           <div class="form">
             <div class="form__login">
               <form class="list" @submit.prevent="submit">
-                <h2 class="topform">ورود</h2>
+                <h2 class="topform">فراموشی رمز</h2>
                  <div class="error" v-if="error">{{ error }}</div>
                 <div
                   class="list__group"
@@ -33,42 +33,19 @@
                     نام کاربری نمیتواند خالی باشد
                   </div>
                 </div>
-                <div
-                  class="list__group"
-                  :class="{
-                    invalid:
-                      v$.password.$dirty && !v$.password.required.$response,
-                  }"
-                >
-                  <label for="name" class="list__label"><fa class="fa" icon="lock"></fa>رمز عبور</label>
-                  <input
-                    :type="visibility"
-                    class="list__input"
-                    placeholder="رمز عبورتو وارد کن"
-                    id="password"
-                    v-model="password"
-                    @input="v$.password.$touch"
-                  /> <fa @click="hidePassword" v-if="visibility == 'text'" class="eye eye-slash" icon="eye-slash"></fa><fa @click="showPassword" v-if="visibility == 'password'" class="eye eye-on" icon="eye"></fa>
-                  <div
-                    class="alert"
-                    v-if="v$.password.$dirty && v$.password.required.$invalid"
-                  >
-                    رمز عبور نمیتواند خالی باشد
-                  </div>
-                </div>
                
                 <button class="submit-btn" type="submit">ورود</button>
               </form>
               <h5 class="txt">
-                عضو نیستید؟؟
+                میتوانید
                 <router-link class="router" to="/register"
-                  >پس ثبت نام کنید</router-link
+                  >ثبت نام کنید</router-link
                 >
               </h5>
               <router-link class="back-btn" to="/">بازگشت</router-link>
               <h5 class="txt">
-                <router-link class="router forget" to="/forget"
-                  >رمز خود را فراموش کرده اید؟</router-link
+                <router-link class="router forget" to="/login"
+                  >بازگشت به صفحه ورود</router-link
                 >
               </h5>
             </div>
@@ -83,8 +60,7 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-// import Vue from 'vue';
-import { mapActions, mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -100,42 +76,12 @@ export default {
       username: {
         required,
       },
-      password: {
-        required,
-      },
+     
     };
   },
-  computed: {
-    ...mapGetters("auth", {
-      getloginApiStatus: "getloginApiStatus",
-    }),
-  },
+
   methods: {
-    ...mapActions("auth", {
-      userLogin: "userLogin",
-    }),
-    async submit() {
-      this.v$.$validate();
-      if (!this.v$.$error) {
-        this.error = null
-        const payload = {
-          username: this.username,
-          password: this.password,
-        };
-        await this.userLogin(payload);
-        if (this.getloginApiStatus == "success") {
-          this.$router.push("/");
-        } else {
-          this.error = 'کاربری با این مشخصات وجود ندارد'
-        }
-      }
-    },
-    showPassword(){
-      this.visibility = 'text'
-    },
-    hidePassword(){
-      this.visibility = 'password'
-    }
+  
   },
 };
 </script>
@@ -203,7 +149,7 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/tatiana-VpZyvTc_9Mg-unsplash.jpg");
+    url("../../../public/img/neha-deshmukh-GoKXJaQoLQs-unsplash.jpg");
   //   background-color: #2d3436;
   background-size: cover;
   background-position: center;

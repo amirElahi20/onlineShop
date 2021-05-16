@@ -1,6 +1,6 @@
 <template>
  <div>
-    <div class="footer" :class="{'layout' : $route.path == '/register' || $route.path == '/login'}">
+    <div class="footer" :class="{'layout' : $route.path == '/register' || $route.path == '/login' || $route.path == '/forget'}">
         <div class="top-footer">
             <h3 class="txt">کامپیوتر شاپ</h3>
             <span>تلفن پشتیبانی : 025895211</span>
