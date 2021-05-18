@@ -24,6 +24,7 @@ export default {
     // LogIn,
     // ResponsiveHeader,
   },
+
 };
 </script>
 

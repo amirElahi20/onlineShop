@@ -5,10 +5,16 @@
       <div class="container">
         <div class="right">
           <ul class="menu r">
-            <li>
+            <li v-if="!IsUserAuthenticated">
               <router-link to="/login" class="login" exact>ورود</router-link>
               <router-link to="/register" class="login" exact
                 >ثبت نام</router-link
+              >
+            </li>
+              <li v-else>
+              <router-link to="/login" class="login" exact>خوش آمدید {{UserName.username}}</router-link>
+              <router-link to="/register" class="login" exact
+                >خروج</router-link
               >
             </li>
             <li>
@@ -60,6 +66,22 @@ import TopResponsive from "../../../../responsive/TopResponsive.vue";
 
 export default {
   components: { TopResponsive },
+  computed:{
+    IsUserAuthenticated(){
+      return this.$store.getters.getAuth;
+    },
+    UserName(){
+      return this.$store.getters.getUserName;
+    }
+  },
+  methods:{
+    checkForLogin(){
+      this.$store.dispatch("CheckForLogin")
+    }
+  },
+  created(){
+    this.checkForLogin();
+  }
 };
 </script>
 

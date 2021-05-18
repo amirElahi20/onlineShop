@@ -1,83 +1,40 @@
-import axios from "axios";
-// import Vue from 'vue';
-const state = () => ({
-    loginApiStatus: "",
-    userProfile: {
-        id: "",
-        username: "",
-        password: "",
-    },
-    logOut: false,
+import Vue from 'vue'
+// import Vuex from 'vuex'
+import axios from 'axios'
 
-});
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
-const getters = {
-    getloginApiStatus(state) {
-        return state.loginApiStatus;
-    },
-    getsetuserProfile(state) {
-        return state.userProfile;
+
+const state = {
+    authUser: {},
+    isAuthenticated: false,
+    jwt: localStorage.getItem('token'),
+    endpoints: {
+        obtainJWT: 'https://onshop321.herokuapp.com/accounts/v1/auth/obtain_token/',
+        refreshJWT: 'https://onshop321.herokuapp.com/accounts/v1/auth/refresh_token/',
+        baseUrl: 'https://onshop321.herokuapp.com/accounts/v1/auth'
     }
 };
 
 const mutations = {
-    setloginApiStatus(state, payload) {
-        state.loginApiStatus = payload;
+    setAuthUser(state, {
+        authUser,
+        isAuthenticated
+    }) {
+        Vue.set(state, 'authUser', authUser)
+        Vue.set(state, 'isAuthenticated', isAuthenticated)
     },
-    setuserProfile(state, payload) {
-        state.userProfile = {
-            id: payload.id,
-            username: payload.username,
-            password: payload.password,
-        }
+    updateToken(state, newToken) {
+        localStorage.setItem('token', newToken);
+        state.jwt = newToken;
     },
-    setLogout(state, payload) {
-        state.logOut = payload
-    }
-
-};
-
-
-const actions = {
-    async userLogin({ commit }, payload) {
-        const response = await axios.post("https://onshop321.herokuapp.com/accounts/v1/auth/obtain_token/", payload, {
-            withCredentials: true
-        }).catch((err) => {
-            console.log(err)
-        });
-        if (response && response.data) {
-            commit('setloginApiStatus', 'success');
-            console.log(response);
-        } else {
-            commit('setloginApiStatus', 'failed');
-        }
-    },
-    async userProfile({ commit }) {
-        const response = await axios.get("https://onshop321.herokuapp.com/accounts/v1/auth/user/", {
-            withCredentials: true
-        }).catch((err) => {
-            console.log(err)
-        });
-        if (response && response.data) {
-            commit('setuserProfile', response.data)
-        }
-    },
-    async userLogOut({ commit }) {
-        const response = await axios.get("https://onshop321.herokuapp.com/accounts/v1/auth/logout/", {
-            withCredentials: true
-        }).catch((err) => {
-            console.log(err)
-        });
-        if (response && response.data) {
-            commit('setLogout', true)
-        }
+    removeToken(state) {
+        localStorage.removeItem('token');
+        state.jwt = null;
     }
 };
-
 export default {
-    namespaced: true,
     state,
-    getters,
-    mutations,
-    actions,
-};
+    mutations
+}

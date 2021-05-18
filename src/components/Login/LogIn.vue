@@ -5,9 +5,9 @@
         <div class="row">
           <div class="form">
             <div class="form__login">
-              <form class="list" @submit.prevent="submit">
+              <form class="list" @submit.prevent="authenticate">
                 <h2 class="topform">ورود</h2>
-                 <div class="error" v-if="error">{{ error }}</div>
+                <div class="error" v-if="error">{{ error }}</div>
                 <div
                   class="list__group"
                   :class="{
@@ -15,7 +15,9 @@
                       v$.username.$dirty && !v$.username.required.$response,
                   }"
                 >
-                  <label for="name" class="list__label"><fa class="fa" icon="user"></fa>نام کاربری</label>
+                  <label for="name" class="list__label"
+                    ><fa class="fa" icon="user"></fa>نام کاربری</label
+                  >
                   <input
                     type="text"
                     class="list__input"
@@ -40,7 +42,9 @@
                       v$.password.$dirty && !v$.password.required.$response,
                   }"
                 >
-                  <label for="name" class="list__label"><fa class="fa" icon="lock"></fa>رمز عبور</label>
+                  <label for="name" class="list__label"
+                    ><fa class="fa" icon="lock"></fa>رمز عبور</label
+                  >
                   <input
                     :type="visibility"
                     class="list__input"
@@ -48,7 +52,19 @@
                     id="password"
                     v-model="password"
                     @input="v$.password.$touch"
-                  /> <fa @click="hidePassword" v-if="visibility == 'text'" class="eye eye-slash" icon="eye-slash"></fa><fa @click="showPassword" v-if="visibility == 'password'" class="eye eye-on" icon="eye"></fa>
+                  />
+                  <fa
+                    @click="hidePassword"
+                    v-if="visibility == 'text'"
+                    class="eye eye-slash"
+                    icon="eye-slash"
+                  ></fa
+                  ><fa
+                    @click="showPassword"
+                    v-if="visibility == 'password'"
+                    class="eye eye-on"
+                    icon="eye"
+                  ></fa>
                   <div
                     class="alert"
                     v-if="v$.password.$dirty && v$.password.required.$invalid"
@@ -56,7 +72,7 @@
                     رمز عبور نمیتواند خالی باشد
                   </div>
                 </div>
-               
+
                 <button class="submit-btn" type="submit">ورود</button>
               </form>
               <h5 class="txt">
@@ -81,18 +97,17 @@
 
 
 <script>
+import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-// import Vue from 'vue';
-import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
       username: "",
       password: "",
-      visibility : 'password',
       error: null,
       v$: useVuelidate(),
+      visibility: "password",
     };
   },
   validations() {
@@ -105,40 +120,60 @@ export default {
       },
     };
   },
-  computed: {
-    ...mapGetters("auth", {
-      getloginApiStatus: "getloginApiStatus",
-    }),
-  },
   methods: {
-    ...mapActions("auth", {
-      userLogin: "userLogin",
-    }),
-    async submit() {
-      this.v$.$validate();
-      if (!this.v$.$error) {
-        this.error = null
-        const payload = {
-          username: this.username,
-          password: this.password,
-        };
-        await this.userLogin(payload);
-        if (this.getloginApiStatus == "success") {
+    authenticate() {
+      const payload = {
+        username: this.username,
+        password: this.password,
+      };
+      axios
+        .post(this.$store.state.endpoints.obtainJWT, payload, {
+          // headers: { Authorization: localStorage.getItem("token") },
+        })
+        .then((response) => {
+          this.$store.commit("updateToken", response.data.access);
+          // get and set auth user
+          const base = {
+            baseURL: this.$store.state.endpoints.baseUrl,
+            headers: {
+              // Set your Authorization to 'JWT', not Bearer!!!
+              Authorization: `Bearer ${this.$store.state.jwt}`,
+              "Content-Type": "application/json",
+            },
+            xhrFields: {
+              withCredentials: true,
+            },
+          };
+          // Even though the authentication returned a user object that can be
+          // decoded, we fetch it again. This way we aren't super dependant on
+          // JWT and can plug in something else.
+          const axiosInstance = axios.create(base);
+          axiosInstance({
+            url: "/username/",
+            method: "get",
+            params: {},
+          }).then((response) => {
+            console.log("this is my log",response);
+            this.$store.commit("setUserName", response.data);
+            this.$store.commit("setAuth", true);
+          });
           this.$router.push("/");
-        } else {
-          this.error = 'کاربری با این مشخصات وجود ندارد'
-        }
-      }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.error = "مشخصات وارد شده صحیح نیستند";
+        });
     },
-    showPassword(){
-      this.visibility = 'text'
+    showPassword() {
+      this.visibility = "text";
     },
-    hidePassword(){
-      this.visibility = 'password'
-    }
+    hidePassword() {
+      this.visibility = "password";
+    },
   },
 };
 </script>
+
 
 
 <style lang="scss" scoped>
@@ -156,7 +191,7 @@ export default {
   color: red;
   text-align: start;
 }
-.eye{
+.eye {
   position: absolute;
   // top: 15.7rem;
   margin-top: -34px;
@@ -188,7 +223,7 @@ export default {
   text-align: center;
   margin-top: -50px;
 }
-.fa{
+.fa {
   margin-left: 5px;
 }
 p {
