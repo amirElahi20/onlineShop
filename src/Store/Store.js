@@ -48,11 +48,10 @@ export const store = createStore({
             localStorage.setItem('token', newToken);
             state.jwt = newToken;
         },
-        removeToken(state) {
-            // TODO: For security purposes, take localStorage out of the project.
-            localStorage.removeItem('token');
-            state.jwt = null;
+        DeleteToken() {
+            return localStorage.removeItem('token')
         }
+
     },
 
     actions: {
@@ -66,8 +65,12 @@ export const store = createStore({
                         context.commit('setAuth', true);
                     }
                 })
+        },
+        removeToken(context) {
+            context.commit('setUserName', '');
+            context.commit('setAuth', false);
+            context.commit('DeleteToken');
         }
-
 
     },
     modules: {

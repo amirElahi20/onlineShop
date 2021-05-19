@@ -12,8 +12,8 @@
               >
             </li>
               <li v-else>
-              <router-link to="/login" class="login" exact>خوش آمدید {{UserName.username}}</router-link>
-              <router-link to="/register" class="login" exact
+              <router-link to="/login" class="login" exact> <span class="tit english">{{UserName.username}}</span> عزیز خوش آمدید</router-link>
+              <router-link @click="SignOut" to="/" class="login" exact
                 >خروج</router-link
               >
             </li>
@@ -77,6 +77,9 @@ export default {
   methods:{
     checkForLogin(){
       this.$store.dispatch("CheckForLogin")
+    },
+    SignOut(){
+      this.$store.dispatch("removeToken");
     }
   },
   created(){
@@ -199,7 +202,7 @@ export default {
 }
 .login {
   color: white;
-  background: rgb(231, 94, 31);
+  background: rgb(231, 31, 171);
   cursor: pointer;
   text-decoration: none;
   padding: 8px 25px;
@@ -215,10 +218,16 @@ export default {
   color: black;
 }
 .login:hover {
-  color: rgb(231, 94, 31);
-  border: 1px solid rgb(231, 94, 31);
+  color: rgb(231, 31, 171);
+  border: 1px solid rgb(231, 31, 171);
   background: white;
-  transition: all 0.3s;
+  transition: all 0.5s;
+
+  
+  &:hover .tit{
+    color: rgb(231, 31, 171);
+     transition: all 0.5s;
+  }
 }
 span {
   color: white;

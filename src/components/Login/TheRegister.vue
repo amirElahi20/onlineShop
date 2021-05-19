@@ -11,10 +11,12 @@
                 <div
                   class="list__group"
                   :class="{
-                    invalid : v$.username.$error || checkUser 
+                    invalid: v$.username.$error || checkUser,
                   }"
                 >
-                  <label for="name" class="list__label"> <fa class="fa" icon="user"></fa>نام کاربری</label>
+                  <label for="name" class="list__label">
+                    <fa class="fa" icon="user"></fa>نام کاربری</label
+                  >
                   <input
                     type="text"
                     class="list__input"
@@ -40,7 +42,9 @@
                   class="list__group"
                   :class="{ invalid: v$.password.$error }"
                 >
-                  <label for="name" class="list__label"> <fa class="fa" icon="lock"></fa>رمز عبور</label>
+                  <label for="name" class="list__label">
+                    <fa class="fa" icon="lock"></fa>رمز عبور</label
+                  >
                   <input
                     v-model.trim="password"
                     :type="visibility"
@@ -49,7 +53,18 @@
                     id="password"
                     @input="v$.password.$touch"
                   />
-                  <fa @click="hidePassword" v-if="visibility == 'text'" class="eye eye-slash" icon="eye-slash"></fa><fa @click="showPassword" v-if="visibility == 'password'" class="eye eye-on" icon="eye"></fa>
+                  <fa
+                    @click="hidePassword"
+                    v-if="visibility == 'text'"
+                    class="eye eye-slash"
+                    icon="eye-slash"
+                  ></fa
+                  ><fa
+                    @click="showPassword"
+                    v-if="visibility == 'password'"
+                    class="eye eye-on"
+                    icon="eye"
+                  ></fa>
                   <div
                     class="alert"
                     v-if="v$.password.$dirty && v$.password.required.$invalid"
@@ -73,7 +88,9 @@
                       (v$.email.$invalid && v$.email.$dirty) || checkEmail,
                   }"
                 >
-                  <label for="name" class="list__label"> <fa class="fa" icon="envelope"></fa>ایمیل</label>
+                  <label for="name" class="list__label">
+                    <fa class="fa" icon="envelope"></fa>ایمیل</label
+                  >
 
                   <input
                     v-model="email"
@@ -82,7 +99,7 @@
                     placeholder="ایمیلتو وارد کن"
                     id="email"
                     @input="v$.email.$touch"
-                  >
+                  />
                   <div
                     class="alert"
                     v-if="v$.email.$dirty && v$.email.required.$invalid"
@@ -102,7 +119,7 @@
                 عضو هستید؟؟ پس
                 <router-link class="router" to="/login">وارد شوید</router-link>
               </h5>
-              <router-link class="back-btn" to="/">بازگشت</router-link>
+              <router-link class="back-btn" to="/">بازگشت به صفحه اصلی</router-link>
             </div>
           </div>
         </div>
@@ -130,7 +147,7 @@ export default {
       error: null,
       checkUser: null,
       checkEmail: null,
-      visibility : 'password'
+      visibility: "password",
     };
   },
 
@@ -182,12 +199,12 @@ export default {
           });
       }
     },
-    showPassword(){
-      this.visibility = 'text'
+    showPassword() {
+      this.visibility = "text";
     },
-    hidePassword(){
-      this.visibility = 'password'
-    }
+    hidePassword() {
+      this.visibility = "password";
+    },
   },
 };
 </script>
@@ -200,20 +217,20 @@ export default {
 .invalid label {
   color: red;
 }
-.valid input{
+.valid input {
   border: 1px solid green;
 }
-.valid label{
+.valid label {
   color: green;
 }
-.eye{
+.eye {
   position: absolute;
   margin-top: -34px;
   margin-left: 10px;
   color: rgb(90, 92, 92);
   cursor: pointer;
 }
-.fa{
+.fa {
   margin-left: 5px;
 }
 
@@ -241,7 +258,7 @@ export default {
 }
 .router {
   text-decoration: none;
-  color: #ff4e00;
+  color: #500a61;
 }
 .form {
   width: 100%;
@@ -252,9 +269,9 @@ export default {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/tamas-tuzes-katai-GZ9_EfvDCFU-unsplash.jpg");
+    url("../../../public/img/wp3997775-purple-grapes-wallpapers.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   position: relative;
   border-radius: 30px;
   box-shadow: 1rem 2rem 2rem rgba(rgb(15, 15, 15), 0.8);
@@ -282,7 +299,8 @@ export default {
     display: block;
     color: inherit;
   }
-
+  $color-primary-dark: #fc5296;
+  $color-primary-light: #f67062;
   &__label {
     font-size: 1rem;
     font-weight: 700;
@@ -303,8 +321,8 @@ export default {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #ff4e00;
-  border: 1px solid #ff4e00;
+  background-color: #500a61;
+  border: 1px solid #500a61;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -324,7 +342,7 @@ export default {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #ec9f05;
+  background-color: #9e2abb;
   color: white;
   cursor: pointer;
   text-decoration: none;

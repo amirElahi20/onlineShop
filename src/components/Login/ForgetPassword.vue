@@ -7,34 +7,41 @@
             <div class="form__login">
               <form class="list" @submit.prevent="submit">
                 <h2 class="topform">فراموشی رمز</h2>
-                 <div class="error" v-if="error">{{ error }}</div>
+                <div class="error" v-if="error">{{ error }}</div>
                 <div
                   class="list__group"
                   :class="{
                     invalid:
-                      v$.username.$dirty && !v$.username.required.$response,
+                      (v$.email.$invalid && v$.email.$dirty) || checkEmail,
                   }"
                 >
-                  <label for="name" class="list__label"><fa class="fa" icon="user"></fa>نام کاربری</label>
+                  <label for="name" class="list__label">
+                    <fa class="fa" icon="envelope"></fa>ایمیل</label
+                  >
+
                   <input
-                    type="text"
+                    v-model="email"
+                    type="email"
                     class="list__input"
-                    placeholder="اسمتو بنویس "
-                    id="name"
-                    v-model="username"
-                    autofocus="autofocus"
-                    maxlength="100"
-                    @input="v$.username.$touch"
+                    placeholder="ایمیلتو وارد کن"
+                    id="email"
+                    @input="v$.email.$touch"
                   />
                   <div
                     class="alert"
-                    v-if="v$.username.$dirty && v$.username.required.$invalid"
+                    v-if="v$.email.$dirty && v$.email.required.$invalid"
                   >
-                    نام کاربری نمیتواند خالی باشد
+                    ایمیل نباید خالی باشد
+                  </div>
+                  <div
+                    class="alert"
+                    v-if="v$.email.$dirty && !v$.email.email.$response"
+                  >
+                    ایمیل نامعتبر است
                   </div>
                 </div>
-               
-                <button class="submit-btn" type="submit">ورود</button>
+
+                <button class="submit-btn" type="submit">ارسال</button>
               </form>
               <h5 class="txt">
                 میتوانید
@@ -42,7 +49,7 @@
                   >ثبت نام کنید</router-link
                 >
               </h5>
-              <router-link class="back-btn" to="/">بازگشت</router-link>
+              <router-link class="back-btn" to="/">بازگشت به صفحه اصلی</router-link>
               <h5 class="txt">
                 <router-link class="router forget" to="/login"
                   >بازگشت به صفحه ورود</router-link
@@ -59,30 +66,27 @@
 
 <script>
 import useVuelidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { required, email } from "@vuelidate/validators";
 
 export default {
   data() {
     return {
-      username: "",
-      password: "",
-      visibility : 'password',
+      email: "",
+      visibility: "password",
       error: null,
       v$: useVuelidate(),
     };
   },
   validations() {
     return {
-      username: {
+      email: {
         required,
+        email
       },
-     
     };
   },
 
-  methods: {
-  
-  },
+  methods: {},
 };
 </script>
 
@@ -90,7 +94,7 @@ export default {
 <style lang="scss" scoped>
 .router {
   text-decoration: none;
-  color: #ff4e00;
+  color: #500a61;
 }
 .invalid input {
   border: 1px solid red !important;
@@ -102,7 +106,7 @@ export default {
   color: red;
   text-align: start;
 }
-.eye{
+.eye {
   position: absolute;
   // top: 15.7rem;
   margin-top: -34px;
@@ -119,7 +123,7 @@ export default {
 .forget {
   font-size: 15px;
   text-align: center;
-  color: #ff4e00;
+  color: #500a61;
 }
 .log {
   display: flex;
@@ -134,7 +138,7 @@ export default {
   text-align: center;
   margin-top: -50px;
 }
-.fa{
+.fa {
   margin-left: 5px;
 }
 p {
@@ -149,10 +153,10 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/neha-deshmukh-GoKXJaQoLQs-unsplash.jpg");
+    url("../../../public/img/forget.jpg");
   //   background-color: #2d3436;
   background-size: cover;
-  background-position: center;
+  background-position: right;
   position: relative;
   border-radius: 30px;
   box-shadow: 1rem 2rem 2rem rgba(rgb(15, 15, 15), 0.8);
@@ -201,8 +205,8 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #ff4e00;
-  border: 1px solid #ff4e00;
+  background-color: #500a61;
+  border: 1px solid #500a61;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -223,7 +227,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #ec9f05;
+  background-color: #9e2abb;
   color: white;
   cursor: pointer;
   text-decoration: none;

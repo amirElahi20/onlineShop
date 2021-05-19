@@ -32,8 +32,8 @@ export default {
 .section-product {
   padding: 5rem 0 0 0;
 }
-$color-primary-dark: #ff4e00;
-$color-primary-light: #ec9f05;
+$color-primary-dark: #fc5296;
+$color-primary-light: #f67062;
 .heading-secondary {
   font-size: 2rem;
   font-weight: 700;

@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="textheader">
+      <img class="head2" src="../../../../../public/img/header2.png" alt="" />
+      <img class="head1" src="../../../../../public/img/header1.png" alt="" />
+      <img class="head3" src="../../../../../public/img/header3.png" alt="">
       <h1 class="heading-primary">
         <span class="heading-primary-main">خشکینجا</span>
-        <span class="heading-primary-sub"
-          >خرید اینترنتی انواع خشکبار</span
-        >
+        <span class="heading-primary-sub">خرید اینترنتی انواع خشکبار</span>
       </h1>
       <a href="#" class="btn">نمایش محصولات</a>
     </div>
@@ -17,7 +18,7 @@ export default {};
 </script>
 
 <style scoped lang="scss">
-@import '../../../../styles/mixins.scss';
+@import "../../../../styles/mixins.scss";
 .textheader {
   left: 50%;
   top: 50%;
@@ -28,12 +29,31 @@ export default {};
   border-radius: 10px;
   padding: 40px;
   margin-top: 50px;
-  width:400px ;
+  width: 450px;
 
-   @include respond(phone) {
+  @include respond(phone) {
     padding: 10px;
     padding-bottom: 15px;
   }
+}
+.head1 {
+  background-image: none !important;
+  width: 110px;
+  position: absolute;
+  top: -40px;
+  margin-left: -220px;
+  // background-color: black;
+}
+.head2 {
+  background-image: none !important;
+  width: 190px;
+  position: absolute;
+  bottom: -110px;
+  margin-left: 180px;
+  // background-color: black;
+}
+.head3{
+  width: 80px;
 }
 .heading-primary {
   color: white;
@@ -53,14 +73,14 @@ export default {};
     font-size: 30px;
     padding-bottom: 15px;
   }
-  
-@include respond(tab-port){
-  padding-bottom: 10px; 
-}
-  
-@include respond(tab-port){
-  font-size: 25px; 
-}
+
+  @include respond(tab-port) {
+    padding-bottom: 10px;
+  }
+
+  @include respond(tab-port) {
+    font-size: 25px;
+  }
 }
 .heading-primary-sub {
   display: block;
@@ -68,15 +88,14 @@ export default {};
   font-weight: 400;
   letter-spacing: 0;
 
-    @include respond(phone) {
+  @include respond(phone) {
     font-size: 15px;
     padding-bottom: 10px;
   }
 
-  
-@include respond(tab-port){
-  font-size: 22px; 
-}
+  @include respond(tab-port) {
+    font-size: 22px;
+  }
 
   animation-name: moveInLeft;
   animation-duration: 2s;
@@ -122,12 +141,12 @@ export default {};
   animation-delay: 0.75s;
   animation-fill-mode: backwards;
 
-   @include respond(phone) {
+  @include respond(phone) {
     font-size: 12px;
   }
 }
 .btn {
-  background-color: rgb(231, 94, 31);
+  background-color: rgb(231, 31, 171);
   color: white;
   position: relative;
   direction: rtl;
@@ -144,7 +163,7 @@ export default {};
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color: rgb(231, 94, 31);
+  background-color: rgb(231, 31, 171);
   position: absolute;
   top: 0;
   left: 0;

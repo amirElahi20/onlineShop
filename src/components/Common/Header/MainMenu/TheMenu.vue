@@ -147,7 +147,7 @@ export default {
   }
 }
 .scroll {
-  background-color: rgb(190, 71, 16);
+  background-color: rgb(138, 10, 99);
   border-radius: 0px;
   margin-top: -100px;
   justify-content: space-around;
@@ -194,7 +194,7 @@ a {
   display: flex;
   text-decoration: none;
   list-style: none;
-  background-color: red;
+  // background-color: red;
 }
 .rightmenu li {
   padding-right: 30px;
@@ -207,7 +207,7 @@ a {
   display: flex;
   text-decoration: none;
   list-style: none;
-  background-color: blue;
+  // background-color: blue;
 }
 .leftmenu li {
   margin: 15px 10px 15px 0px;
@@ -223,7 +223,7 @@ a {
 }
 .badge {
   // margin-left: 10px;
-  background-color: rgb(231, 94, 31);
+  background-color: rgb(231, 31, 171);
   z-index: 999;
   position: absolute;
   border-radius: 50px;

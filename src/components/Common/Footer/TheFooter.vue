@@ -48,9 +48,10 @@ export default {};
 
 
 <style lang="scss" scoped>
-
+$color-primary-dark: #fc5296;
+$color-primary-light: #f67062;
 .footer{
-   background-image: linear-gradient(to right ,#ff4e00 , #ec9f05);
+   background-image: linear-gradient(to right ,$color-primary-dark , $color-primary-light);
 }
 .layout{
     display: none;

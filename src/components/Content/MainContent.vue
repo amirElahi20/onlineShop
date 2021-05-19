@@ -22,17 +22,17 @@
           <div class="col-1-of-2">
             <div class="composition">
               <img
-                src="../../../public/img/estudio-bloom-oo3kSFZ7uHk-unsplash.jpg"
+                src="../../../public/img/661793.jpg"
                 alt=""
                 class="composition__photo composition__photo--p1"
               />
               <img
-                src="../../../public/img/oriol-portell-bL6VgDDsS8M-unsplash.jpg"
+                src="../../../public/img/picture2.jpg"
                 alt=""
                 class="composition__photo composition__photo--p2"
               />
               <img
-                src="../../../public/img/giorgio-trovato-fczCr7MdE7U-unsplash.jpg"
+                src="../../../public/img/picture3.jpg"
                 alt=""
                 class="composition__photo composition__photo--p3"
               />
@@ -58,10 +58,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/mixins.scss";
-
-
-$color-primary-dark: #ff4e00;
-$color-primary-light: #ec9f05;
+ 
+$color-primary-dark: #fc5296;
+$color-primary-light: #f67062;
 .section-about {
   padding: 2rem 0 6rem;
   margin-bottom: 5rem;
@@ -114,7 +113,7 @@ $color-primary-light: #ec9f05;
   font-size: 25px;
   font-weight: 700;
   padding-bottom: 10px;
-  color: #ff4e00;
+  color:#fc5296;
   @media (max-width: 1366px) {
     font-size: 20px;
   }
@@ -132,10 +131,10 @@ $color-primary-light: #ec9f05;
   &:link,
   &:visited {
     font-size: 18px;
-    color: #ff4e00;
+    color: #fc5296;
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid #ff4e00;
+    border-bottom: 1px solid #fc5296;
     padding: 3px;
     transition: all 0.2s;
 
@@ -144,7 +143,7 @@ $color-primary-light: #ec9f05;
     }
   }
   &:hover {
-    background-color: #ff4e00;
+    background-color: #fc5296;
     color: white;
     text-shadow: 0.5rem 1rem 2rem rgba(rgb(77, 75, 75), 0.5);
     transform: translateY(-2px);
@@ -261,7 +260,7 @@ $color-primary-light: #ec9f05;
       }
     }
     &:hover {
-      outline: 5px solid #ec9f05;
+      outline: 5px solid #fc5296;
       transform: scale(1.05) translateY(-0.5rem);
       box-shadow: 0.5rem 1rem 1rem rgba(rgb(77, 75, 75), 0.7);
       z-index: 20;

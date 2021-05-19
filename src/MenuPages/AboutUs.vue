@@ -44,7 +44,7 @@
           y1="0"
           x2="85%"
           y2="0"
-          style="stroke: #ec9f05; stroke-width: 2"
+          style="stroke: #f67062; stroke-width: 2"
         />
       </svg>
     </div>
@@ -89,7 +89,7 @@
           y1="0"
           x2="85%"
           y2="0"
-          style="stroke: #ec9f05; stroke-width: 2"
+          style="stroke: #f67062; stroke-width: 2"
         />
       </svg>
     </div>
@@ -128,6 +128,8 @@ export default {};
 
 
 <style lang="scss" scoped>
+$color-primary-dark: #fc5296;
+$color-primary-light: #f67062;
 .aboutus {
   width: 1200px;
   margin: 0 auto;
@@ -142,18 +144,18 @@ export default {};
   font-size: 2rem;
   font-weight: 700;
   margin-top: 3rem;
-  background-image: linear-gradient(to right, #ff4e00, #ec9f05);
+  background-image: linear-gradient(to right, #fc5296, #f67062);
   -webkit-background-clip: text;
   display: inline-block;
   color: transparent;
   transition: all 0.3s;
-//   display: block;
+  //   display: block;
 }
 .subtitle {
   font-weight: 700;
   margin-bottom: 2rem;
-//   display: block;
-  background-image: linear-gradient(to right, #ff4e00, #ec9f05);
+  //   display: block;
+  background-image: linear-gradient(to right, #fc5296, #f67062);
   -webkit-background-clip: text;
 
   color: transparent;
@@ -163,9 +165,9 @@ export default {};
   height: 400px;
   border-radius: 30px;
   margin-bottom: 20px;
-//   display: block;
+  //   display: block;
 }
-.last{
-    margin-bottom: 10rem;
+.last {
+  margin-bottom: 10rem;
 }
 </style>

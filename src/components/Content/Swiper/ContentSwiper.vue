@@ -26,13 +26,12 @@
         y1="0"
         x2="85%"
         y2="0"
-        style="stroke: #ec9f05; stroke-width: 2"
+        style="stroke: #f67062; stroke-width: 2"
       />
     </svg>
   </div>
 </template>
-$color-primary-dark: #ff4e00;
-$color-primary-light: #ec9f05;
+
 
 <script>
 // import {mapState} from 'vuex';
@@ -148,7 +147,7 @@ h1 {
   margin-top: 140px;
   font-size: 60px;
   font-weight: bold;
-  color: #ff4e00;
+  color: #fc5296;
   cursor: pointer;
   left: 0.5%;
   z-index: 1;
@@ -161,7 +160,7 @@ h1 {
   }
 
   &.deactive {
-    color: #ff4d003f;
+    color: #fc529628;
   }
 }
 .s1 {
@@ -193,7 +192,7 @@ h1 {
   left: 0px;
   border-radius: 50px;
   text-align: center;
-  border: 3px solid #ff4e00;
+  border: 3px solid #fc5296;
   // cursor: pointer;
 }
 
@@ -213,7 +212,7 @@ h1 {
 }
 
 .btn {
-  background-color: #ff4e00;
+  background-color: #fc5296;
   color: white;
   position: relative;
   direction: rtl;
@@ -239,7 +238,7 @@ h1 {
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color: #ff4e00;
+  background-color:#fc5296;
   position: absolute;
   top: 0;
   left: 0;
@@ -253,7 +252,7 @@ h1 {
 .product-btn {
   padding: 10px 50px;
   border-radius: 10px;
-  border: 3px solid #ff4e00;
+  border: 3px solid #fc5296;
   background-color: white;
   margin-top: 15px;
   font-size: 15px;
@@ -262,7 +261,7 @@ h1 {
   cursor: pointer;
 
   &:hover {
-    background-color: #ff4e00;
+    background-color:#fc5296;
     color: white;
   }
 }
@@ -282,8 +281,8 @@ h1 {
   text-align: center;
   padding-bottom: 4rem;
 }
-$color-primary-dark: #ff4e00;
-$color-primary-light: #ec9f05;
+$color-primary-dark: #fc5296;
+$color-primary-light: #f67062;
 .heading-secondary {
   font-size: 2rem;
   font-weight: 700;

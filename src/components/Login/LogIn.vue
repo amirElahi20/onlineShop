@@ -81,7 +81,7 @@
                   >پس ثبت نام کنید</router-link
                 >
               </h5>
-              <router-link class="back-btn" to="/">بازگشت</router-link>
+              <router-link class="back-btn" to="/">بازگشت به صفحه اصلی</router-link>
               <h5 class="txt">
                 <router-link class="router forget" to="/forget"
                   >رمز خود را فراموش کرده اید؟</router-link
@@ -179,7 +179,7 @@ export default {
 <style lang="scss" scoped>
 .router {
   text-decoration: none;
-  color: #ff4e00;
+  color: #500a61;
 }
 .invalid input {
   border: 1px solid red !important;
@@ -208,7 +208,7 @@ export default {
 .forget {
   font-size: 15px;
   text-align: center;
-  color: #ff4e00;
+  color:#500a61;
 }
 .log {
   display: flex;
@@ -238,10 +238,10 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/tatiana-VpZyvTc_9Mg-unsplash.jpg");
+    url("../../../public/img/prunes2.jpg");
   //   background-color: #2d3436;
   background-size: cover;
-  background-position: center;
+  background-position: left;
   position: relative;
   border-radius: 30px;
   box-shadow: 1rem 2rem 2rem rgba(rgb(15, 15, 15), 0.8);
@@ -290,8 +290,8 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #ff4e00;
-  border: 1px solid #ff4e00;
+  background-color: #500a61;
+  border: 1px solid #500a61;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -312,7 +312,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #ec9f05;
+  background-color: #c820f1;
   color: white;
   cursor: pointer;
   text-decoration: none;

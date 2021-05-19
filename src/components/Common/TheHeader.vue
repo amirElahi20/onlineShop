@@ -33,9 +33,9 @@ export default {
   height: 75vh;
   // overflow: hidden;
   background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
-    url("../../../public/img/rayia-soderberg-I_GMMiniWYQ-unsplash.jpg");
+    url("../../../public/img/picture1.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   position: relative;
 
   @include respond(phone) {
