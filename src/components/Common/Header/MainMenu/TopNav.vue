@@ -5,12 +5,14 @@
       <div class="container">
         <div class="right">
           <ul class="menu r">
+              
             <li v-if="!IsUserAuthenticated">
               <router-link to="/login" class="login" exact>ورود</router-link>
               <router-link to="/register" class="login" exact
                 >ثبت نام</router-link
               >
             </li>
+            
               <li v-else>
               <router-link to="/login" class="login" exact> <span class="tit english">{{UserName.username}}</span> عزیز خوش آمدید</router-link>
               <router-link @click="SignOut" to="/" class="login" exact

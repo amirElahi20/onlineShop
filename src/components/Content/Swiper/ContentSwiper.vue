@@ -13,13 +13,11 @@
           <span class="text">{{product.name }}</span>
           <span class="text--sub">{{product.description_one}}</span>
           <span class="cost">{{product.cost}} تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
+          <button class="product-mbtn">مشاهده محصول</button>
         </div>
       </div>
     </section>
-    <div class="btn-btn1">
       <a class="btn">نمایش همه</a>
-    </div>
     <svg height="1" width="100%">
       <line
         x1="15%"
@@ -106,6 +104,9 @@ export default {
 <style lang="scss" scoped>
 .cmp {
   padding: 1rem 2rem;
+  //  position: absolute;
+  // transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .swipimg img {
@@ -195,36 +196,17 @@ h1 {
   border: 3px solid #fc5296;
   // cursor: pointer;
 }
-
-.btn:link,
-.btn.visited {
-  text-decoration: none;
-  padding: 15px 40px;
+.btn{
+   text-decoration: none;
+  padding: 20px 40px;
   display: inline-block;
   border-radius: 100px;
   transition: all 0.2s;
   position: relative;
-  animation-name: moveInBottom;
-  animation-duration: 1s;
-  animation-delay: 0.75s;
-  animation-fill-mode: backwards;
-  align-items: center;
-}
-
-.btn {
   background-color: #fc5296;
-  color: white;
-  position: relative;
-  direction: rtl;
-  padding: 20px 50px;
-  border-radius: 100px;
+  margin-bottom: 2rem;
   cursor: pointer;
-  text-align: center;
-
-  &-btn1 {
-    padding: 0rem 0 3rem 0;
-    text-align: center;
-  }
+  color: white;
 }
 .btn:hover {
   transform: translateY(-5px);
@@ -238,7 +220,7 @@ h1 {
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color:#fc5296;
+  background-color: #fc5296;
   position: absolute;
   top: 0;
   left: 0;
@@ -249,7 +231,8 @@ h1 {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
-.product-btn {
+
+.product-mbtn {
   padding: 10px 50px;
   border-radius: 10px;
   border: 3px solid #fc5296;

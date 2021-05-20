@@ -5,36 +5,9 @@
         <div class="row">
           <div class="form">
             <div class="form__login">
-              <form class="list" @submit.prevent="authenticate">
-                <h2 class="topform">ورود</h2>
+              <form class="list" @submit.prevent="Reset">
+                <h2 class="topform">بازنشانی رمز</h2>
                 <div class="error" v-if="error">{{ error }}</div>
-                <div
-                  class="list__group"
-                  :class="{
-                    invalid:
-                      v$.username.$dirty && !v$.username.required.$response,
-                  }"
-                >
-                  <label for="name" class="list__label"
-                    ><fa class="fa" icon="user"></fa>نام کاربری</label
-                  >
-                  <input
-                    type="text"
-                    class="list__input"
-                    placeholder="اسمتو بنویس "
-                    id="name"
-                    v-model="username"
-                    autofocus="autofocus"
-                    maxlength="100"
-                    @input="v$.username.$touch"
-                  />
-                  <div
-                    class="alert"
-                    v-if="v$.username.$dirty && v$.username.required.$invalid"
-                  >
-                    نام کاربری نمیتواند خالی باشد
-                  </div>
-                </div>
                 <div
                   class="list__group"
                   :class="{
@@ -73,20 +46,11 @@
                   </div>
                 </div>
 
-                <button class="submit-btn" type="submit">ورود</button>
+                <button class="submit-btn" type="submit">تغییر رمز</button>
               </form>
-              <h5 class="txt">
-                عضو نیستید؟؟
-                <router-link class="router" to="/register"
-                  >پس ثبت نام کنید</router-link
-                >
-              </h5>
-              <router-link class="back-btn" to="/">بازگشت به صفحه اصلی</router-link>
-              <h5 class="txt">
-                <router-link class="router forget" to="/forget"
-                  >رمز خود را فراموش کرده اید؟</router-link
-                >
-              </h5>
+              <router-link class="back-btn" to="/"
+                >بازگشت به صفحه اصلی</router-link
+              >
             </div>
           </div>
         </div>
@@ -99,12 +63,13 @@
 <script>
 import axios from "axios";
 import useVuelidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { required, minLength } from "@vuelidate/validators";
 export default {
   data() {
     return {
-      username: "",
       password: "",
+      token: this.$route.params.token,
+      uidb64:this.$route.params.uidb64,
       error: null,
       v$: useVuelidate(),
       visibility: "password",
@@ -112,61 +77,25 @@ export default {
   },
   validations() {
     return {
-      username: {
-        required,
-      },
       password: {
         required,
+        minLength: minLength(6),
       },
     };
   },
   methods: {
-    authenticate() {
-       this.v$.$validate();
-      if (!this.v$.$error){
-
-      const payload = {
-        username: this.username,
-        password: this.password,
-      };
-      axios
-        .post(this.$store.state.endpoints.obtainJWT, payload, {
-          // headers: { Authorization: localStorage.getItem("token") },
+    Reset() {
+        axios.patch('https://onshop321.herokuapp.com/accounts/v1/change_password/',{
+            token : this.token,
+            password: this.password,
+            uidb64:this.uidb64
         })
-        .then((response) => {
-          this.$store.commit("updateToken", response.data.access);
-          // get and set auth user
-          const base = {
-            baseURL: this.$store.state.endpoints.baseUrl,
-            headers: {
-              // Set your Authorization to 'JWT', not Bearer!!!
-              Authorization: `Bearer ${this.$store.state.jwt}`,
-              "Content-Type": "application/json",
-            },
-            xhrFields: {
-              withCredentials: true,
-            },
-          };
-          // Even though the authentication returned a user object that can be
-          // decoded, we fetch it again. This way we aren't super dependant on
-          // JWT and can plug in something else.
-          const axiosInstance = axios.create(base);
-          axiosInstance({
-            url: "/username/",
-            method: "get",
-            params: {},
-          }).then((response) => {
-            console.log("this is my log",response);
-            this.$store.commit("setUserName", response.data);
-            this.$store.commit("setAuth", true);
-          });
-          this.$router.push("/");
+        .then(response=>{
+            console.log(response)
+            this.$router.push('/login');
+        }).catch(error =>{
+            console.log(error)
         })
-        .catch((error) => {
-          console.log(error);
-          this.error = "مشخصات وارد شده صحیح نیستند";
-        });
-      }
     },
     showPassword() {
       this.visibility = "text";
@@ -212,7 +141,7 @@ export default {
 .forget {
   font-size: 15px;
   text-align: center;
-  color:#500a61;
+  color: #500a61;
 }
 .log {
   display: flex;

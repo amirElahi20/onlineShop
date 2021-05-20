@@ -14,6 +14,8 @@ import LogIn from './components/Login/LogIn.vue';
 import TheRegister from './components/Login/TheRegister.vue';
 import ForgetPassword from './components/Login/ForgetPassword.vue';
 import AboutUs from './MenuPages/AboutUs.vue';
+import ResetPassword from './components/Login/ResetPassword.vue';
+import ConfirmEmail from './components/Login/ConfirmEmail.vue';
 
 
 axios.interceptors.request.use(function(config) {
@@ -52,7 +54,11 @@ const router = createRouter({
         {
             path: '/aboutus',
             component: AboutUs,
-
+        },
+        {
+            path: '/accounts/v1/check_reset_token/:uidb64/:token',
+            component: ResetPassword,
+            name: 'resetpassword'
         }
     ]
 });

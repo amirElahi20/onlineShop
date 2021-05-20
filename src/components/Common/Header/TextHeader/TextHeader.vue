@@ -17,7 +17,7 @@
 export default {};
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../../../../styles/mixins.scss";
 .textheader {
   left: 50%;
@@ -150,6 +150,7 @@ export default {};
   color: white;
   position: relative;
   direction: rtl;
+  // padding: 50px;
 }
 .btn:hover {
   transform: translateY(-5px);

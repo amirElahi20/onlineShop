@@ -5,7 +5,7 @@
         <div class="row">
           <div class="form">
             <div class="form__login">
-              <form class="list" @submit.prevent="submit">
+              <form class="list" @submit.prevent="sendEmail">
                 <h2 class="topform">فراموشی رمز</h2>
                 <div class="error" v-if="error">{{ error }}</div>
                 <div
@@ -67,7 +67,7 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
-
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -86,7 +86,18 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    sendEmail(){
+      axios.post('https://onshop321.herokuapp.com/accounts/v1/request_reset_email/',{
+        email : this.email,
+      }).then(response =>{
+        console.log(response);
+        alert(' لینک بازنشانی رمز به ایمیلتان ارسال شد')
+      }).catch(error=>{
+        console.log(error)
+      })
+    }
+  },
 };
 </script>
 

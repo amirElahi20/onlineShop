@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <header class="header" :class="{'layout' : $route.path == '/register' || $route.path == '/login' || $route.path == '/forget'}">
+    <header class="header" :class="{'layout' : $route.path == '/register' || $route.path == '/login' || $route.path == '/forget' || $route.name == 'resetpassword'}">
       <top-nav></top-nav>
       <the-menu></the-menu>
       <text-header></text-header>
