@@ -1,5 +1,9 @@
 <template>
   <div>
+       <transition name="fade">
+      <div class="popup" v-if="popup"></div>
+    </transition>
+    <success-login @popup-ok="ok" v-if="popup"></success-login>
     <div class="log">
       <section class="login">
         <div class="row">
@@ -100,12 +104,18 @@
 import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
+import SuccessLogin from './../Dialogs/LoginDialog/SuccessLogin'
+
 export default {
+  components:{
+    SuccessLogin
+  },
   data() {
     return {
       username: "",
       password: "",
       error: null,
+      popup : false,
       v$: useVuelidate(),
       visibility: "password",
     };
@@ -124,7 +134,6 @@ export default {
     authenticate() {
        this.v$.$validate();
       if (!this.v$.$error){
-
       const payload = {
         username: this.username,
         password: this.password,
@@ -159,8 +168,11 @@ export default {
             console.log("this is my log",response);
             this.$store.commit("setUserName", response.data);
             this.$store.commit("setAuth", true);
+           
           });
-          this.$router.push("/");
+          // this.$router.push("/");
+           this.popup = true
+         
         })
         .catch((error) => {
           console.log(error);
@@ -174,6 +186,13 @@ export default {
     hidePassword() {
       this.visibility = "password";
     },
+    ok(popupstatus){
+      this.popup = popupstatus
+      console.log(popupstatus)
+    },
+    showpop(){
+      this.popup = true
+    }
   },
 };
 </script>
@@ -181,6 +200,40 @@ export default {
 
 
 <style lang="scss" scoped>
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.836);
+  opacity: 1;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.4s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 0.4s;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
 .router {
   text-decoration: none;
   color: #500a61;

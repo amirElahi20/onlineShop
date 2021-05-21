@@ -164,7 +164,7 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/forget.jpg");
+    url("../../../public/img/aliona-gumeniuk-Y9WTwredge0-unsplash.jpg");
   //   background-color: #2d3436;
   background-size: cover;
   background-position: right;

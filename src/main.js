@@ -59,6 +59,11 @@ const router = createRouter({
             path: '/accounts/v1/check_reset_token/:uidb64/:token',
             component: ResetPassword,
             name: 'resetpassword'
+        },
+        {
+            path: '/accounts/v1/check_confirm_email/:token',
+            component: ConfirmEmail,
+            name: 'Confirm'
         }
     ]
 });

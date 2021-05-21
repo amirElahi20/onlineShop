@@ -1,5 +1,9 @@
 <template>
   <div>
+       <transition name="fade">
+      <div class="popup" v-if="popup"></div>
+    </transition>
+    <success-register @popup-ok="ok" v-if="popup"></success-register>
     <div class="log">
       <section class="login">
         <div class="row">
@@ -133,9 +137,13 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, alphaNum } from "@vuelidate/validators";
+import SuccessRegister from "../Dialogs/RegisterDialog/SuccessRegister.vue";
 
 // import axios from "axios";
 export default {
+  components:{
+    SuccessRegister
+  },
   data() {
     return {
       v$: useVuelidate(),
@@ -148,6 +156,7 @@ export default {
       checkUser: null,
       checkEmail: null,
       visibility: "password",
+      popup : false
     };
   },
 
@@ -193,8 +202,8 @@ export default {
               this.error = "ایمیل وارد شده تکراری است";
               this.checkEmail = "yes";
             } else {
-              alert("ثبت نام با موفقیت انجام شد");
-              this.$router.push("/login");
+              this.popup = true
+              // this.$router.push("/login");
             }
           });
       }
@@ -205,6 +214,10 @@ export default {
     hidePassword() {
       this.visibility = "password";
     },
+    ok(popupstatus){
+      this.popup = popupstatus
+      console.log(popupstatus)
+    },
   },
 };
 </script>
@@ -213,6 +226,39 @@ export default {
 <style lang="scss" scoped>
 .invalid input {
   border: 1px solid red !important;
+}
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.836);
+  opacity: 1;
+}
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.4s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 0.4s;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 .invalid label {
   color: red;

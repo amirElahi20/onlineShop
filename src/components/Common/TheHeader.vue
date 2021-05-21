@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <header class="header" :class="{'layout' : $route.path == '/register' || $route.path == '/login' || $route.path == '/forget' || $route.name == 'resetpassword'}">
+    <header class="header" :class="{'layout' : $route.path == '/register' || $route.path == '/login' || $route.path == '/forget' || $route.name == 'resetpassword' || $route.name == 'Confirm'}">
       <top-nav></top-nav>
       <the-menu></the-menu>
       <text-header></text-header>
@@ -40,8 +40,6 @@ export default {
 
   @include respond(phone) {
     height: 450px;
-     background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
-    url("../../../public/img/phoneheader.jpg");
   background-size: cover;
   background-position: top;
   position: relative;
