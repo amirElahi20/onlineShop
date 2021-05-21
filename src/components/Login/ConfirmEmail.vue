@@ -5,7 +5,6 @@
         </div>
         <div class="mainalert">با کلیک بر روی دکمه ی زیر به سایت برگردید</div>
         <router-link class="btn" @click="confirm" to="/login"> بازگشت به سایت</router-link>
-        <div>{{ token }}</div>
     </div>
 </template>
 
