@@ -2,7 +2,7 @@ import axios from "axios";
 
 const state = {
     MostSellProducts: [],
-    ProductImageAddress: "https://onshop321.herokuapp.com/product/products//"
+    // ProductImageAddress: "https://onshop321.herokuapp.com/product/products//"
 
 };
 
@@ -28,7 +28,7 @@ const actions = {
                 responseType: 'json'
             })
             .then(res => {
-                commit("SetMostSellProducts", res.data.results);
+                commit("SetMostSellProducts", res.data);
                 console.log(res);
 
             })

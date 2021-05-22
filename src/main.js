@@ -16,7 +16,7 @@ import ForgetPassword from './components/Login/ForgetPassword.vue';
 import AboutUs from './MenuPages/AboutUs.vue';
 import ResetPassword from './components/Login/ResetPassword.vue';
 import ConfirmEmail from './components/Login/ConfirmEmail.vue';
-
+import ContactUs from './MenuPages/ContactUs.vue';
 
 axios.interceptors.request.use(function(config) {
     const token = localStorage.getItem('token')
@@ -64,6 +64,11 @@ const router = createRouter({
             path: '/accounts/v1/check_confirm_email/:token',
             component: ConfirmEmail,
             name: 'Confirm'
+        },
+        {
+            path: '/contactus',
+            component: ContactUs
+
         }
     ]
 });

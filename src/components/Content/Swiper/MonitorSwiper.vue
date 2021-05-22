@@ -179,9 +179,9 @@ h1 {
   overflow-x: auto;
   overflow-y: hidden;
 
-  &::-webkit-scrollbar {
-    visibility: hidden;
-  }
+  // &::-webkit-scrollbar {
+  //   visibility: hidden;
+  // }
 }
 .cards {
   min-width: 22%;

@@ -156,7 +156,9 @@ export default {
   background-color: white;
   border-radius: 40px;
 }
-
+.instagram::before{
+  opacity: 0;
+}
 .instagram {
   border-radius: 10px;
   height: 30px;
@@ -165,16 +167,16 @@ export default {
   font-size: 30px;
 }
 .instagram:hover {
-
-  // border-radius: 40px;
-  background: radial-gradient(
+   background: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
     #fdf497 5%,
     #fd5949 45%,
     #d6249f 60%,
-    #285aeb 90%
+    #285aeb 90%,
   );
+  // border-radius: 40px;
+ 
 }
 .twitter {
   transition: all 0.3s;

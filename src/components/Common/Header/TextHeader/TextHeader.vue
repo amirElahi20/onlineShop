@@ -3,7 +3,7 @@
     <div class="textheader">
       <img class="head2" src="../../../../../public/img/header2.png" alt="" />
       <img class="head1" src="../../../../../public/img/header1.png" alt="" />
-      <img class="head3" src="../../../../../public/img/header3.png" alt="">
+     <router-link to="/" ><img class="head3" src="../../../../../public/img/header3.png" alt=""></router-link> 
       <h1 class="heading-primary">
         <span class="heading-primary-main">خشکینجا</span>
         <span class="heading-primary-sub">خرید اینترنتی انواع خشکبار</span>

@@ -23,7 +23,7 @@ const actions = {
                 responseType: 'json'
             })
             .then(res => {
-                commit("SetMobiles", res.data.results);
+                commit("SetMobiles", res.data);
                 // console.log(res.data.results)
 
             })

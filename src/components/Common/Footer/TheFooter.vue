@@ -51,7 +51,8 @@ export default {};
 $color-primary-dark: #fc5296;
 $color-primary-light: #f67062;
 .footer{
-   background-image: linear-gradient(to right ,$color-primary-dark , $color-primary-light);
+//    background-image: linear-gradient(to right ,$color-primary-dark , $color-primary-light);
+background-color:  rgb(138, 10, 99);
 }
 .layout{
     display: none;

@@ -28,6 +28,11 @@
               </transition>
             </li>
             <li>
+              <router-link class="router forget" to="/"
+                >خانه</router-link
+              >
+            </li>
+            <li>
               <router-link class="router forget" to="/product"
                 >محصولات</router-link
               >
