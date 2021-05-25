@@ -1,10 +1,10 @@
 <template>
     <div class="confirm">
         <div class="topalert">
-            <h3>کاربر گرامی ، ایمیل شما با موفقیت فعال شد</h3>
+            <h3>!!توجه کنید!!</h3>
         </div>
-        <div class="mainalert">با کلیک بر روی دکمه ی زیر به سایت برگردید</div>
-        <router-link class="btn" @click="confirm" to="/login"> بازگشت به سایت</router-link>
+        <div class="mainalert">با کلکی بر روی دکمه زیر ایمیل خود را فعال کنید</div>
+        <router-link class="btn" @click="confirm" to="/login"> فعالسازی ایمیل</router-link>
     </div>
 </template>
 

@@ -23,7 +23,7 @@ const actions = {
             })
             .then(res => {
                 commit("SetMenuOptions", res.data.results);
-                // console.log(res.data.results);
+                console.log(res);
 
             })
     },

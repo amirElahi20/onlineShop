@@ -17,7 +17,7 @@ import AboutUs from './MenuPages/AboutUs.vue';
 import ResetPassword from './components/Login/ResetPassword.vue';
 import ConfirmEmail from './components/Login/ConfirmEmail.vue';
 import ContactUs from './MenuPages/ContactUs.vue';
-
+import TotalProduct from './components/ProductPage/TotalProduct.vue';
 axios.interceptors.request.use(function(config) {
     const token = localStorage.getItem('token')
     if (token) {
@@ -37,11 +37,13 @@ const router = createRouter({
             name: 'home',
             component: MainContent,
 
+
         },
         {
             path: '/login',
             component: LogIn,
-            name: 'login'
+            name: 'login',
+
         },
         {
             path: '/register',
@@ -69,10 +71,13 @@ const router = createRouter({
             path: '/contactus',
             component: ContactUs
 
+        },
+        {
+            path: '/products',
+            component: TotalProduct
         }
     ]
 });
-
 
 
 library.add(fas, fab);

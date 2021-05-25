@@ -33,7 +33,7 @@
               >
             </li>
             <li>
-              <router-link class="router forget" to="/product"
+              <router-link class="router forget" to="/products"
                 >محصولات</router-link
               >
             </li>

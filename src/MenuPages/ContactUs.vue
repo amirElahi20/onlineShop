@@ -36,13 +36,18 @@
       <section class="form">
         <li>
           <label> موضوع</label>
-          <select class="select">
-            <option disabled selected value="پیشنهاد">پیشنهادات</option>
-            <option value="">شکایات و انتقادات</option>
-            <option value="">مدیریت</option>
-            <option value="">حسابداری</option>
-            <option value="">سایر موضوعات</option>
-          </select>
+          <div class="select">
+       <select name="format" id="format">
+           <option selected disabled>--انتخاب موضوع--</option>
+           <option style="font-family:BYekan" value="">پیشنهادات</option>
+           <option value="">انتقادات</option>
+           <option value="">مدیریت</option>
+           <option value="">حسابداری</option>
+           <option value="">سایر موضوعات</option>
+       </select>
+       
+   </div>
+          
         </li>
 
         <li>
@@ -148,6 +153,21 @@ export default {};
   margin: 2rem auto;
   margin-bottom: 5rem;
 }
+#format{
+  width: 88%;
+  // text-indent: 10px;
+  height: 40px;
+  text-align: right;
+  text-indent: 10px;
+  border-radius: 10px;
+  border: 0.5px solid rgb(138, 10, 99);
+  display: block;
+  background-image: none;
+  background-color: white;
+  appearance: none;
+  outline: none;
+  font-family: "BYekan";
+}
 .contactul{
 direction: rtl;
 }
@@ -183,6 +203,8 @@ li {
   margin-bottom: 1rem;
   padding: 0 30px;
 }
+
+
 .btn {
   background-color: rgb(192, 17, 139);
   color: white;
@@ -225,17 +247,9 @@ input {
   border: 0.5px solid rgb(138, 10, 99);
   display: block;
 }
-.select {
-  width: 88%;
-  text-indent: 10px;
-  height: 40%;
-  text-align: right;
-  border-radius: 10px;
-  border: 0.5px solid rgb(138, 10, 99);
-  display: block;
-  font-family: "BYekan";
-  outline: none;
-}
+
+
+ 
 .massege {
   width: 800px;
 }
