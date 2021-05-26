@@ -22,8 +22,10 @@ const actions = {
                 responseType: 'json'
             })
             .then(res => {
-                commit("SetMenuOptions", res.data.results);
-                console.log(res);
+                // console.log("this is the menu response", res.data)
+                // console.log(names)
+                commit("SetMenuOptions", res.data);
+                // console.log(res.data);
 
             })
     },

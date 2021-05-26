@@ -2,7 +2,9 @@
   <div>
     <div class="company">
       <ul v-for="name in GroupName" :key="name.id">
-        <li>{{ name.sub_group[0] }}</li>
+        <li v-if="name.group !== null && name.group ==resId">
+          {{ name.name }}
+        </li>
       </ul>
     </div>
   </div>
@@ -10,6 +12,7 @@
 
 <script>
 export default {
+  props: ["resId"],
   data() {
     return {};
   },
@@ -25,44 +28,22 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .company {
-  background-color: white;
+  // background-color: red;
   width: 1200px;
-  height: 445px;
+  height: 300px;
   position: absolute;
   top: 0;
-  right: 0.5rem;
+  right: 0;
   padding-right: 200px;
   border-radius: 10px;
   border-top-right-radius: 0px;
-  display:  none;
-  justify-content: space-around;
+  // justify-content: space-around;
+  position: absolute;
+  margin-right: 8px;
   opacity: 1;
   z-index: -2;
-}
-.sub-menu ul li:hover .company {
-  z-index: -1;
-  opacity: 1;
-  /* display: flex; */
-}
-ul {
-  text-decoration: none;
-  list-style: none;
-  padding-top: 10px;
-}
-.titletext {
-  color: crimson;
-  text-decoration: none;
-}
-.title {
-  padding-bottom: 15px;
-}
-ul li {
-  padding-bottom: 5px;
-}
-ul li a {
-  text-decoration: none;
-  color: black;
+
 }
 </style>

@@ -1,35 +1,37 @@
 <template>
   <div>
     <div class="sub-menu" :class="{ scroll: position >= 20 }">
-      <ul class="ulmenu">
-        <li v-for="item in GroupName" :key="item.id">
+      <ul class="ulmenu" v-for="name in GroupName" :key="name.id">
+        <li v-if="name.group === null" @mouseover="index(name.id)">
           <fa class="fa-circle" icon="circle"></fa>
           <a href="#"
-            >{{ item.name }}<fa class="fa-angle-left" icon="angle-left"></fa
+            >{{ name.name }}<fa class="fa-angle-left" icon="angle-left"></fa
           ></a>
-           <multimedia-sub></multimedia-sub>
-          <network-sub></network-sub>
-          <laptop-sub></laptop-sub>
-          <computer-sub></computer-sub>
-        <company-sub ></company-sub>
         </li>
+        <!-- <company-sub v-if="resId == name.id" :res-id="resId">
+        </company-sub> -->
       </ul>
+      <div class="txt" v-if="active">
+        <ul v-for="name in GroupName" :key="name.id">
+          <li class="item" v-if="name.group !== null && name.group == resId">
+            {{ name.name }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ComputerSub from "./ComputerSub";
-import MultimediaSub from "./MultimediaSub.vue";
-import NetworkSub from "./NetworkSub";
-import LaptopSub from "./LaptopSub";
-import CompanySub from "./CompanySub";
+// import CompanySub from "./CompanySub";
 export default {
   props: ["position"],
   data() {
     return {
       multimedia: "",
       Amir: false,
+      resId: "",
+      active:false
     };
   },
   methods: {
@@ -39,13 +41,15 @@ export default {
     mouseleave() {
       this.Amir = false;
     },
+    index(resId) {
+      console.log(resId);
+      this.resId = resId;
+      this.active = true;
+    },
+   
   },
   components: {
-    ComputerSub,
-    NetworkSub,
-    MultimediaSub,
-    LaptopSub,
-    CompanySub,
+    // CompanySub,
   },
   computed: {
     GroupName() {
@@ -61,16 +65,29 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../../styles/mixins.scss";
-
-.sub-menu {
-  display: none;
-  border-radius: 10px;
-  z-index: 999;
-  // background-color: white;
-  width: 1200px;
-  // padding: 40px;
+.txt {
+  width: 980px;
+  display: flex;
+  position: absolute;
+  margin-right: 220px;
+  height: 300px;
+  background-color:white;
 }
 
+.sub-menu {
+  display: flex;
+  flex-direction: column;
+  // border-radius: 10px;
+  z-index: 999;
+  background-color: white;
+  width: 220px;
+  height: 300px;
+  // margin-top:2rem ;
+  // margin: 0 auto;
+  position: fixed;
+  // margin-right: 0px;
+  margin-top: 5px;
+}
 
 .scroll {
   right: 1;
@@ -81,7 +98,7 @@ export default {
   list-style: none;
   padding-top: 25px;
   position: relative;
-  padding-right: 8px;
+  padding-right: 0px;
 }
 .sub-menu ul li {
   padding-right: 10px;
@@ -118,15 +135,15 @@ export default {
   text-decoration: none;
   margin-top: 15px;
 }
-.r:hover .sub-menu {
-  display: block;
-  position: absolute;
-  margin-top: 5px;
-  margin-right: -8px;
-  transition: all 0.3s;
-}
-.subbox:hover .sub-menu ul {
-  display: block;
-  margin: 0px;
-}
+// .r:hover .sub-menu {
+//   display: block;
+//   position: absolute;
+//   margin-top: 5px;
+//   margin-right: -8px;
+//   transition: all 0.3s;
+// }
+// .subbox:hover .sub-menu ul {
+//   display: block;
+//   margin: 0px;
+// }
 </style>

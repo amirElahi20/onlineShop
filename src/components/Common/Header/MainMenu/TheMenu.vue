@@ -187,6 +187,7 @@ export default {
   padding: 12px 7px;
   transition: all 1s;
   color: black;
+  // font-size: 50px;
 }
 
 a {
