@@ -91,11 +91,11 @@ export default {
   methods: {
     mouseover() {
       this.activePopup = false;
-      console.log(this.activePopup);
+      // console.log(this.activePopup);m
     },
     mouseleave() {
       this.activePopup = true;
-      console.log(this.activePopup);
+      // console.log(this.activePopup);
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
@@ -119,7 +119,7 @@ export default {
   text-decoration: none;
   direction: rtl;
   height: auto;
-  margin-top: 5px;
+  margin-top: 10px;
   // background-clip: white;
 }
 .r li {

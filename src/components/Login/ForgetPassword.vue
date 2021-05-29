@@ -1,5 +1,9 @@
 <template>
   <div>
+    <transition name="fade">
+      <div class="popup" v-if="popup"></div>
+    </transition>
+    <success-password @popup-ok="ok" v-if="popup"></success-password>
     <div class="log">
       <section class="login">
         <div class="row">
@@ -49,7 +53,9 @@
                   >ثبت نام کنید</router-link
                 >
               </h5>
-              <router-link class="back-btn" to="/">بازگشت به صفحه اصلی</router-link>
+              <router-link class="back-btn" to="/"
+                >بازگشت به صفحه اصلی</router-link
+              >
               <h5 class="txt">
                 <router-link class="router forget" to="/login"
                   >بازگشت به صفحه ورود</router-link
@@ -67,13 +73,18 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
-import axios from 'axios';
+import SuccessPassword from "../Dialogs/ForgetPass/SuccessPassword";
+import axios from "axios";
 export default {
+  components: {
+    SuccessPassword,
+  },
   data() {
     return {
       email: "",
       visibility: "password",
       error: null,
+      popup: false,
       v$: useVuelidate(),
     };
   },
@@ -81,22 +92,32 @@ export default {
     return {
       email: {
         required,
-        email
+        email,
       },
     };
   },
 
   methods: {
-    sendEmail(){
-      axios.post('https://onshop321.herokuapp.com/accounts/v1/request_reset_email/',{
-        email : this.email,
-      }).then(response =>{
-        console.log(response);
-        alert(' لینک بازنشانی رمز به ایمیلتان ارسال شد')
-      }).catch(error=>{
-        console.log(error)
-      })
-    }
+    sendEmail() {
+      axios
+        .post(
+          "https://onshop321.herokuapp.com/accounts/v1/request_reset_email/",
+          {
+            email: this.email,
+          }
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      this.popup = true;
+    },
+    ok(popupstatus) {
+      this.popup = popupstatus;
+      console.log(popupstatus);
+    },
   },
 };
 </script>
@@ -246,5 +267,39 @@ p {
   &:hover {
     transform: scale(1.1);
   }
+}
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.836);
+  opacity: 1;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.4s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 0.4s;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

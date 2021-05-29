@@ -1,47 +1,38 @@
 <template>
   <div>
     <div class="total">
-      <div class="right"></div>
+      <div class="right">
+        <ul>
+          <li class="ul" v-for="(name, index) in GroupName" :key="index">
+            <div class="title" @click="name.open = !name.open">
+              {{ name.name }}<fa v-if="name.sub_group" icon="caret-down"></fa>
+            </div>
+            <div
+              v-for="(name, array) in GroupName[index].sub_group.length"
+              :key="array"
+            >
+              <div v-if="GroupName[index].open">
+                {{ GroupName[index].sub_group[array] }}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
       <div class="left">
         <h2 class="header">محصولات</h2>
         <div class="row">
-          <div class="box" v-for="(item, index) in items" :key="index">
+          <div class="box" v-for="product in FilteredProduct" :key="product.id">
             <img
               class="image"
               src="../../../public/img/giorgio-trovato-fczCr7MdE7U-unsplash.jpg"
               alt=""
             />
-            <p class="paragraph">موز</p>
-            <h5 class="pack">نوع دسته بندی را مشخص کنید</h5>
-            <div class="pack-box">
-              <img
-                @click="activeclass1(index)"
-                class="icon"
-                :class="{ active: item.activeIcon1 }"
-                src="../../../public/img/jar.png"
-                alt=""
-              />
-              <img
-                @click="activeclass2(index)"
-                class="icon"
-                :class="{ active: item.activeIcon2 }"
-                src="../../../public/img/can.png"
-                alt=""
-              />
-              <img
-                @click="activeclass3(index)"
-                class="icon"
-                :class="{ active: item.activeIcon3 }"
-                src="../../../public/img/envelope.png"
-                alt=""
-              />
-            </div>
-            <div class="cost-box">
-              <the-packet v-if="item.activeIcon3"></the-packet>
-              <big-glassess v-if="item.activeIcon1"></big-glassess>
-              <tinny-glassess v-if="item.activeIcon2"></tinny-glassess>
-            </div>
+            <p class="paragraph">{{ product.name }}</p>
+            <h5 class="cost">{{ product.show_cost }} تومان</h5>
             <a class="btn">مشاهده محصول</a>
+            <p class="available" v-if="!product.available">
+              کالای مورد نظر موجود نیست!
+            </p>
           </div>
         </div>
       </div>
@@ -50,92 +41,75 @@
 </template>
 
 <script>
-import BigGlassess from "../ProductPage/CostPages/BigGlassess";
-import TinnyGlassess from "../ProductPage/CostPages/TinyGlassess";
-import ThePacket from "../ProductPage/CostPages/ThePacket";
-
+// import DropDown from "./DropDown.vue";
 export default {
-  components: {
-    BigGlassess,
-    TinnyGlassess,
-    ThePacket,
-  },
+  // components: { DropDown },
   data() {
     return {
-    //   activeIcon1: true,
-    //   activeIcon2: false,
-    //   activeIcon3: false,
-    //   activeCost: true,
-      items: [
-        { id: 1, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 2, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 3, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 4, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 5, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 6, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 7, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 8, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 9, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 10, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-        { id: 11, activeIcon1: true, activeIcon2: false, activeIcon3: false },
-      ],
+      resId: "",
+      active: false,
+      name: "",
+      open: true,
     };
   },
   methods: {
-    activeclass1(resId) {
-      this.items[resId].activeIcon1 = true;
-      this.items[resId].activeIcon2 = false;
-      this.items[resId].activeIcon3 = false;
+    titleClick(resId) {
+      console.log(resId);
     },
-    activeclass2(resId) {
-      this.items[resId].activeIcon1 = false;
-      this.items[resId].activeIcon2 = true;
-      this.items[resId].activeIcon3 = false;
-    
+  },
+  computed: {
+    FilteredProduct() {
+      return this.$store.getters.GetProducts;
     },
-    activeclass3(resId) {
-     this.items[resId].activeIcon1 = false;
-      this.items[resId].activeIcon2 = false;
-      this.items[resId].activeIcon3 = true;
+    GroupName() {
+      return this.$store.getters.GetOptions;
     },
+  },
+  created() {
+    this.$store.dispatch("GetProductsFromServer");
+    this.$store.dispatch("GetMenuOptionsFromServer");
   },
 };
 </script>
 
 
 <style lang="scss" scoped>
+.a {
+  display: block;
+}
 .header {
   text-align: center;
 }
-.pack-box {
-  //   background-color: yellow;
-  padding: 10px 0 10px 0;
-  width: 170px;
-}
-.pack {
-  margin-bottom: 10px;
-}
-.active {
-  background-color: whitesmoke;
-  // height: 40%;
-  // padding: 20px;
-}
-.icon {
-  margin-right: 40px;
-  cursor: pointer;
-
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  width: 30px;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  &:nth-child(1) {
-    margin-right: 0px;
-  }
+.ul {
+  background-color: red;
+  margin-top: 10px;
 }
 
+.available {
+  font-size: 12px;
+  margin-top: 7px;
+  color: red;
+  font-weight: bold;
+  border-bottom: 1px solid red;
+}
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-right: 15px;
+  display: block;
+  // background-color: black;
+}
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+.sub {
+  font-size: 16px;
+  padding-right: 25px;
+  font-weight: 200;
+  display: block;
+}
 .total {
   // width: 200px;
   height: auto;
@@ -146,7 +120,10 @@ export default {
 }
 .right {
   width: 20%;
-  background-color: yellow;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0rem 0rem 1rem 1rem rgba(rgba(163, 158, 158, 0.514), 0.4);
 }
 .left {
   width: 80%;
@@ -161,7 +138,7 @@ export default {
   padding: 10px;
 }
 .box {
-  background-color: rgb(236, 221, 225);
+  background-color: white;
   text-align: center;
   padding: 15px;
   margin-left: 20px;
@@ -178,6 +155,7 @@ export default {
   width: 180px;
   border: 1px solid black;
   border-radius: 10px;
+  background-color: orange;
 }
 .paragraph {
   display: block;
@@ -186,9 +164,6 @@ export default {
   margin-bottom: 10px;
 }
 
-.cost-box {
-  margin-top: -18px;
-}
 .btn {
   display: block;
   text-align: center;

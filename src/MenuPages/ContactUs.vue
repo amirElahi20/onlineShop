@@ -211,6 +211,7 @@ li {
   padding: 10px;
   border-radius: 10px;
   transition: all 0.3s;
+  text-decoration: none;
   border: 1px solid rgb(138, 10, 99);
 
   &:hover {

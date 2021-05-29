@@ -18,6 +18,8 @@ import ResetPassword from './components/Login/ResetPassword.vue';
 import ConfirmEmail from './components/Login/ConfirmEmail.vue';
 import ContactUs from './MenuPages/ContactUs.vue';
 import TotalProduct from './components/ProductPage/TotalProduct.vue';
+
+
 axios.interceptors.request.use(function(config) {
     const token = localStorage.getItem('token')
     if (token) {

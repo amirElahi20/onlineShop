@@ -1,21 +1,29 @@
 <template>
   <div>
     <div class="sub-menu" :class="{ scroll: position >= 20 }">
-      <ul class="ulmenu" v-for="name in GroupName" :key="name.id">
-        <li v-if="name.group === null" @mouseover="index(name.id)">
-          <fa class="fa-circle" icon="circle"></fa>
-          <a href="#"
-            >{{ name.name }}<fa class="fa-angle-left" icon="angle-left"></fa
-          ></a>
-        </li>
-        <!-- <company-sub v-if="resId == name.id" :res-id="resId">
-        </company-sub> -->
-      </ul>
-      <div class="txt" v-if="active">
-        <ul v-for="name in GroupName" :key="name.id">
-          <li class="item" v-if="name.group !== null && name.group == resId">
-            {{ name.name }}
+      <ul class="ulmenu">
+        <div v-for="name in GroupName" :key="name.id">
+          <li v-if="name.group === null" @mouseover="index(name.id)">
+            <fa class="fa-circle" icon="circle"></fa>
+            <a href="#"
+              >{{ name.name }}<fa class="fa-angle-left" icon="angle-left"></fa
+            ></a>
           </li>
+        </div>
+      </ul>
+      <!-- <ul class="txt-ul">
+          <div class="txt-sub" v-for="name in GroupName" :key="name.id">
+            <li class="item txt-sub" v-if="name.group !== null && name.group == resId">
+              {{ name.name }}
+            </li>
+          </div>
+        </ul> -->
+
+      <div class="txt" v-if="active">
+        <ul class="txt-ul" v-for="name in GroupName" :key="name.id">
+          <div v-if="name.group !== null && name.group == resId">
+            <li class="item">{{ name.name }}</li>
+          </div>
         </ul>
       </div>
     </div>
@@ -23,7 +31,6 @@
 </template>
 
 <script>
-// import CompanySub from "./CompanySub";
 export default {
   props: ["position"],
   data() {
@@ -31,7 +38,7 @@ export default {
       multimedia: "",
       Amir: false,
       resId: "",
-      active:false
+      active: false,
     };
   },
   methods: {
@@ -46,19 +53,17 @@ export default {
       this.resId = resId;
       this.active = true;
     },
-   
   },
   components: {
     // CompanySub,
   },
   computed: {
     GroupName() {
-      return this.$store.getters.GetOptions;
+      return this.$store.getters.GetSub;
     },
   },
   created() {
-    this.$store.dispatch("GetMenuOptionsFromServer");
-    // this.$store.dispatch("GetSubMenuOptionsFromServer");
+    this.$store.dispatch("GetSubFromServer");
   },
 };
 </script>
@@ -67,54 +72,63 @@ export default {
 @import "../../../../styles/mixins.scss";
 .txt {
   width: 980px;
-  display: flex;
   position: absolute;
   margin-right: 220px;
-  height: 300px;
-  background-color:white;
+  min-height: 300px;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
-
+.item {
+  // z-index: 999;
+  color: black;
+  margin-right: 40px;
+  width: 200px;
+}
+.txt-ul {
+  list-style: none;
+  // margin-right: 30px;
+}
 .sub-menu {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   // border-radius: 10px;
   z-index: 999;
-  background-color: white;
+  background-color: rgb(202, 201, 201);
   width: 220px;
-  height: 300px;
-  // margin-top:2rem ;
-  // margin: 0 auto;
+  min-height: 200px;
   position: fixed;
-  // margin-right: 0px;
   margin-top: 5px;
+  color: white;
 }
 
 .scroll {
   right: 1;
   transition: all 0.3s;
 }
-.sub-menu ul {
+.ulmenu {
   text-decoration: none;
   list-style: none;
   padding-top: 25px;
   position: relative;
   padding-right: 0px;
 }
-.sub-menu ul li {
+.ulmenu li {
   padding-right: 10px;
   height: 70px;
   width: 220px;
   padding-top: 25px;
+  color: white;
 }
-.sub-menu ul li:hover {
+.ulmenu li:hover {
   background-color: crimson;
   transition: all 0.3s;
 }
-
-.sub-menu ul li:last-child:hover {
-  border-bottom-right-radius: 8px;
+.ulmenu li a {
+  color: white;
 }
-.sub-menu ul li:hover a {
+.ulmenu li:hover a {
   color: white;
   transition: all 0.3s;
 }
@@ -122,28 +136,17 @@ export default {
   float: left;
   margin-left: 15px;
 }
-.sub-menu ul li .fa-circle {
+.ulmenu li .fa-circle {
   margin-left: 10px;
   font-size: 7px;
   color: crimson;
 }
-.sub-menu ul li:hover .fa-circle {
+.ulmenu li:hover .fa-circle {
   color: white;
 }
-.sub-menu ul li a {
+.ulmenu li a {
   color: black;
   text-decoration: none;
   margin-top: 15px;
 }
-// .r:hover .sub-menu {
-//   display: block;
-//   position: absolute;
-//   margin-top: 5px;
-//   margin-right: -8px;
-//   transition: all 0.3s;
-// }
-// .subbox:hover .sub-menu ul {
-//   display: block;
-//   margin: 0px;
-// }
 </style>
