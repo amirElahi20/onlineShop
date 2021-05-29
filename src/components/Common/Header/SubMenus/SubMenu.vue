@@ -75,7 +75,7 @@ export default {
   position: absolute;
   margin-right: 220px;
   min-height: 300px;
-  background-color: white;
+  background-color: whitesmoke;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;

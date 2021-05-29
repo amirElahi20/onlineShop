@@ -2,19 +2,44 @@
   <div>
     <div class="total">
       <div class="right">
+        <h3 class="header">دسته بندی محصولات</h3>
+        <svg height="1" width="100%">
+          <line
+            x1="3%"
+            y1="0"
+            x2="97%"
+            y2="0"
+            style="stroke: rgb(138, 10, 99); stroke-width: 0.7"
+          />
+        </svg>
         <ul>
           <li class="ul" v-for="(name, index) in GroupName" :key="index">
             <div class="title" @click="name.open = !name.open">
-              {{ name.name }}<fa v-if="name.sub_group" icon="caret-down"></fa>
+              {{ name.name
+              }}<fa
+                class="title-icon"
+                v-if="name.sub_group"
+                icon="caret-down"
+              ></fa>
             </div>
             <div
               v-for="(name, array) in GroupName[index].sub_group.length"
               :key="array"
             >
-              <div v-if="GroupName[index].open">
-                {{ GroupName[index].sub_group[array] }}
+              <div class="sub-title" v-if="GroupName[index].open">
+                <fa class="sub-icon" icon="circle"></fa
+                >{{ GroupName[index].sub_group[array] }}
               </div>
             </div>
+            <svg height="1" width="100%">
+              <line
+                x1="3%"
+                y1="0"
+                x2="97%"
+                y2="0"
+                style="stroke: rgb(138, 10, 99); stroke-width: 0.3"
+              />
+            </svg>
           </li>
         </ul>
       </div>
@@ -74,17 +99,25 @@ export default {
 
 
 <style lang="scss" scoped>
-.a {
-  display: block;
-}
 .header {
   text-align: center;
 }
-.ul {
-  background-color: red;
-  margin-top: 10px;
-}
 
+.sub-title {
+  margin-right: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s;
+
+  &:hover{
+    transform: scale(1.3);
+    color: rgb(187, 10, 107);
+  }
+}
+.sub-title:last-child {
+  margin-bottom: 20px;
+}
 .available {
   font-size: 12px;
   margin-top: 7px;
@@ -92,13 +125,24 @@ export default {
   font-weight: bold;
   border-bottom: 1px solid red;
 }
+.sub-icon {
+  font-size: 7px;
+  margin-left: 5px;
+  color: purple;
+}
+.title-icon {
+  font-size: 15px;
+  margin-right: 5px;
+  color: purple;
+}
 .title {
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 20px;
-  padding-right: 15px;
-  display: block;
-  // background-color: black;
+  font-size: 17px;
+  font-weight: 800;
+  margin-right: 20px;
+  margin-top: 20px;
+  display: inline-block;
+  cursor: pointer;
+  // background-color: rgb(202, 199, 199);
 }
 ul {
   text-decoration: none;
@@ -119,7 +163,7 @@ ul {
   padding: 5rem 0 5rem 0;
 }
 .right {
-  width: 20%;
+  width: 15%;
   background-color: whitesmoke;
   border: 1px solid black;
   border-radius: 10px;
@@ -182,5 +226,29 @@ ul {
     border: 1px solid rgb(192, 13, 138);
     color: rgb(192, 13, 138);
   }
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.4s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  transition: all 0.4s;
+}
+
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
