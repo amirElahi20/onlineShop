@@ -10,19 +10,18 @@
       <span class="span s1" :class="{ deactive: l <= 0 }" @click="goToLeft"
         >&#10092;</span
       >
-       <div class="cards ms"  v-for="mobile in Mobiles" :key="mobile.id">
+      <div class="cards ms" v-for="mobile in Mobiles" :key="mobile.id">
         <div class="swipimg">
           <img :src="mobile.picture" alt="" />
-          <span class="text">{{mobile.name }}</span>
-          <span class="text--sub">{{mobile.description_one}}</span>
-          <span class="cost">{{mobile.cost}} تومان</span>
+          <span class="text">{{ mobile.name }}</span>
+          <span class="text--sub">{{ mobile.description_one }}</span>
+          <span class="cost">{{ mobile.cost }} تومان</span>
           <button class="product-btn">مشاهده محصول</button>
         </div>
       </div>
     </section>
 
-      <a class="btn">نمایش همه</a>
-
+    <a class="btn">نمایش همه</a>
   </div>
 </template>
 
@@ -83,15 +82,15 @@ export default {
       }
     },
   },
-   computed:{
-    Mobiles(){
+  computed: {
+    Mobiles() {
       return this.$store.getters.GetMobiles;
     },
   },
-  created(){
+  created() {
     this.$store.dispatch("GetMobilesFromServer");
     // console.log("GetMostSellProductsFromServer");
-  }
+  },
 };
 </script>
 
@@ -168,6 +167,8 @@ h1 {
   justify-content: space-between;
   overflow-x: auto;
   overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     visibility: hidden;
@@ -185,13 +186,13 @@ h1 {
   transition: all 0.8s;
   left: 0px;
   border-radius: 50px;
-  text-align: center;;
+  text-align: center;
   border: 3px solid #fc5296;
   // cursor: pointer;
 }
 
-.btn{
-   text-decoration: none;
+.btn {
+  text-decoration: none;
   padding: 20px 40px;
   display: inline-block;
   border-radius: 100px;
@@ -272,6 +273,5 @@ $color-primary-light: #f67062;
   display: inline-block;
   color: transparent;
   transition: all 0.3s;
-
 }
 </style>

@@ -48,7 +48,7 @@
         <div class="row">
           <div class="box" v-for="product in FilteredProduct" :key="product.id">
             <img
-              class="image"
+              class="image" :class="{blurimg : !product.available}"
               src="../../../public/img/giorgio-trovato-fczCr7MdE7U-unsplash.jpg"
               alt=""
             />
@@ -110,7 +110,7 @@ export default {
   display: inline-block;
   transition: all 0.3s;
 
-  &:hover{
+  &:hover {
     transform: scale(1.3);
     color: rgb(187, 10, 107);
   }
@@ -124,6 +124,10 @@ export default {
   color: red;
   font-weight: bold;
   border-bottom: 1px solid red;
+  position: absolute;
+  margin-top: -220px;
+  margin-right: 40px;
+   transform: rotate(-30deg);
 }
 .sub-icon {
   font-size: 7px;
@@ -163,7 +167,7 @@ ul {
   padding: 5rem 0 5rem 0;
 }
 .right {
-  width: 15%;
+  width: 250px;
   background-color: whitesmoke;
   border: 1px solid black;
   border-radius: 10px;
@@ -180,6 +184,7 @@ ul {
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 10px;
+  margin-right: 90px;
 }
 .box {
   background-color: white;
@@ -188,7 +193,7 @@ ul {
   margin-left: 20px;
   margin-top: 20px;
   border-radius: 10px;
-  width: 210px;
+  width: 240px;
   border: 1px solid rgb(138, 10, 99);
   transition: all 0.5s;
   &:hover {
@@ -200,6 +205,9 @@ ul {
   border: 1px solid black;
   border-radius: 10px;
   background-color: orange;
+}
+.blurimg {
+  filter: blur(7px);
 }
 .paragraph {
   display: block;

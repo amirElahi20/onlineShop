@@ -10,19 +10,19 @@
       <span class="span s1" :class="{ deactive: l <= 0 }" @click="goToLeft"
         >&#10092;</span
       >
-        <div class="cards mos"  v-for="monitor in Monitors" :key="monitor.id">
+      <div class="cards mos" v-for="monitor in Monitors" :key="monitor.id">
         <div class="swipimg">
           <img :src="monitor.picture" alt="" />
-          <span class="text">{{monitor.name }}</span>
-          <span class="text--sub">{{monitor.description_one}}</span>
-          <span class="cost">{{monitor.cost}} تومان</span>
+          <span class="text">{{ monitor.name }}</span>
+          <span class="text--sub">{{ monitor.description_one }}</span>
+          <span class="cost">{{ monitor.cost }} تومان</span>
           <button class="product-btn">مشاهده محصول</button>
         </div>
       </div>
     </section>
- 
-      <a class="btn">نمایش همه</a>
-  
+
+    <a class="btn">نمایش همه</a>
+
     <svg height="1" width="100%">
       <line
         x1="15%"
@@ -92,15 +92,15 @@ export default {
       }
     },
   },
-   computed:{
-    Monitors(){
+  computed: {
+    Monitors() {
       return this.$store.getters.GetMonitors;
     },
   },
-  created(){
+  created() {
     this.$store.dispatch("GetMonitorsFromServer");
     // console.log("GetMostSellProductsFromServer");
-  }
+  },
 };
 </script>
 
@@ -178,10 +178,12 @@ h1 {
   justify-content: space-between;
   overflow-x: auto;
   overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
-  // &::-webkit-scrollbar {
-  //   visibility: hidden;
-  // }
+  &::-webkit-scrollbar {
+    visibility: hidden;
+  }
 }
 .cards {
   min-width: 22%;
@@ -200,8 +202,8 @@ h1 {
   // cursor: pointer;
 }
 
-.btn{
-   text-decoration: none;
+.btn {
+  text-decoration: none;
   padding: 20px 40px;
   display: inline-block;
   border-radius: 100px;
@@ -282,6 +284,5 @@ $color-primary-light: #f67062;
   display: inline-block;
   color: transparent;
   transition: all 0.3s;
-
 }
 </style>

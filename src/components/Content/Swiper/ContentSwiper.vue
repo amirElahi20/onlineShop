@@ -175,6 +175,8 @@ h1 {
   justify-content: space-between;
   overflow-x: auto;
   overflow-y: hidden;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     visibility: hidden;
