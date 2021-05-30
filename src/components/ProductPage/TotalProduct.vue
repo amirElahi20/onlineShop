@@ -54,7 +54,8 @@
             />
             <p class="paragraph">{{ product.name }}</p>
             <h5 class="cost">{{ product.show_cost }} تومان</h5>
-            <a class="btn">مشاهده محصول</a>
+            <router-link exact :to="{name:'SingleProduct' , params:{name:product.slug}}"
+             class="btn">مشاهده محصول</router-link>
             <p class="available" v-if="!product.available">
               کالای مورد نظر موجود نیست!
             </p>
