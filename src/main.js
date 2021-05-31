@@ -79,7 +79,7 @@ const router = createRouter({
             component: TotalProduct
         },
         {
-            path: '/products/Single/:name',
+            path: '/products/:name',
             component: SingleProduct,
             name: 'SingleProduct'
         }

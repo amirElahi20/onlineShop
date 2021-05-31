@@ -68,14 +68,14 @@ $color-primary-dark: #fc5296;
 $color-primary-light: #f67062;
 .footer {
   //    background-image: linear-gradient(to right ,$color-primary-dark , $color-primary-light);
-  background-color: rgba(138, 10, 100, 0.747);
+  background-color: rgba(240, 174, 220, 0.747);
   padding-bottom: 20px;
 }
 .layout {
   display: none;
 }
 .top-footer {
-  color: white;
+  color: black;
   direction: rtl;
   padding-right: 20px;
   padding-top: 1rem;
@@ -87,7 +87,7 @@ span::after {
   content: "";
   width: 2px;
   height: 19px;
-  background-color: white;
+  background-color: black;
   position: absolute;
   right: 208px;
 }
@@ -104,7 +104,7 @@ span:last-child::after {
   direction: rtl;
   justify-content: space-around;
   padding-top: 2rem;
-  color: white;
+  color: black;
 }
 .sub-txt {
   font-size: 14px;
@@ -113,7 +113,7 @@ span:last-child::after {
   display: flex;
   direction: rtl;
   padding-top: 2rem;
-  color: white;
+  color: black;
 }
 .right-column {
   width: 50%;
