@@ -10,7 +10,7 @@
           y1="0"
           x2="97%"
           y2="0"
-          style="stroke: rgb(255, 0, 0); stroke-width: 10"
+          style="stroke: rgb(255, 255, 255); stroke-width: 10"
         />
       </svg>
       <section class="question">
@@ -30,24 +30,22 @@
           y1="0"
           x2="97%"
           y2="0"
-          style="stroke: rgb(138, 10, 99); stroke-width: 0.5"
+          style="stroke: rgb(255, 255, 255); stroke-width: 1"
         />
       </svg>
       <section class="form">
         <li>
           <label> موضوع</label>
           <div class="select">
-       <select name="format" id="format">
-           <option selected disabled>--انتخاب موضوع--</option>
-           <option style="font-family:BYekan" value="">پیشنهادات</option>
-           <option value="">انتقادات</option>
-           <option value="">مدیریت</option>
-           <option value="">حسابداری</option>
-           <option value="">سایر موضوعات</option>
-       </select>
-       
-   </div>
-          
+            <select name="format" id="format">
+              <option selected disabled>--انتخاب موضوع--</option>
+              <option style="font-family: BYekan" value="">پیشنهادات</option>
+              <option value="">انتقادات</option>
+              <option value="">مدیریت</option>
+              <option value="">حسابداری</option>
+              <option value="">سایر موضوعات</option>
+            </select>
+          </div>
         </li>
 
         <li>
@@ -75,7 +73,7 @@
           y1="0"
           x2="97%"
           y2="0"
-          style="stroke: rgb(138, 10, 99); stroke-width: 0.5"
+          style="stroke: rgb(255, 255, 255); stroke-width: 1"
         />
       </svg>
 
@@ -89,7 +87,7 @@
             y1="0"
             x2="97%"
             y2="0"
-            style="stroke: rgb(255, 0, 0); stroke-width: 10"
+            style="stroke: rgb(255, 255, 255); stroke-width: 10"
           />
         </svg>
         <div class="info">
@@ -98,7 +96,8 @@
               <h3>دفتر مرکزی</h3>
               <p>
                 ه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
+                فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هوع با هدف بهبود
+                ابزارهای کاربردی می باشد، کتابهای
               </p>
             </div>
             <div class="box">
@@ -108,9 +107,9 @@
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
                 نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت د نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی
-                سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
-                گیرد.
+                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت د نیاز
+                شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای
+                موجود طراحی اساسا مورد استفاده قرار گیرد.
               </p>
             </div>
           </div>
@@ -119,21 +118,30 @@
           </div>
         </div>
       </section>
-        <svg height="1" width="100%">
+      <svg height="1" width="100%">
         <line
           x1="3%"
           y1="0"
           x2="97%"
           y2="0"
-          style="stroke: rgb(138, 10, 99); stroke-width: 0.5"
+          style="stroke: rgb(255, 255, 255); stroke-width: 0.5"
         />
       </svg>
       <section class="bottom">
         <div class="last">
           <ul class="contactul">
-            <li class="li"><fa class="icon icon1" icon="phone"></fa>شماره تماس ما <span>0214557896</span></li>
-            <li class="li"><fa class="icon icon1" icon="envelope"></fa>ایمیل ما <span class="english">info@gmail.com</span></li>
-            <li class="li"><fa class="icon icon1" icon="clock"></fa>پاسخگویی 24 ساعته و 7 روز هفته</li>
+            <li class="li">
+              <fa class="icon icon1" icon="phone"></fa>شماره تماس ما
+              <span>0214557896</span>
+            </li>
+            <li class="li">
+              <fa class="icon icon1" icon="envelope"></fa>ایمیل ما
+              <span class="english">info@gmail.com</span>
+            </li>
+            <li class="li">
+              <fa class="icon icon1" icon="clock"></fa>پاسخگویی 24 ساعته و 7 روز
+              هفته
+            </li>
           </ul>
         </div>
       </section>
@@ -149,18 +157,19 @@ export default {};
 <style lang="scss" scoped>
 .contact {
   width: 1000px;
-  background-color: whitesmoke;
+  background-color: orange;
   margin: 2rem auto;
   margin-bottom: 5rem;
+  border-radius: 50px;
 }
-#format{
+#format {
   width: 88%;
   // text-indent: 10px;
   height: 40px;
   text-align: right;
   text-indent: 10px;
   border-radius: 10px;
-  border: 0.5px solid rgb(138, 10, 99);
+  border: 0.5px solid orangered;
   display: block;
   background-image: none;
   background-color: white;
@@ -168,16 +177,15 @@ export default {};
   outline: none;
   font-family: "BYekan";
 }
-.contactul{
-direction: rtl;
+.contactul {
+  direction: rtl;
 }
-.last{
+.last {
   // text-align: center;
   margin-right: 40%;
   padding: 3rem 0 3rem 0;
-
 }
-.li{
+.li {
   margin-top: 10px;
 }
 li {
@@ -204,25 +212,24 @@ li {
   padding: 0 30px;
 }
 
-
 .btn {
-  background-color: rgb(192, 17, 139);
+  background-color: orangered;
   color: white;
   padding: 10px;
   border-radius: 10px;
   transition: all 0.3s;
   text-decoration: none;
-  border: 1px solid rgb(138, 10, 99);
+  border: 1px solid orangered;
 
   &:hover {
-    border: 1px solid rgb(138, 10, 99);
-    color: rgb(138, 10, 99);
+    border: 1px solid orangered;
+    color: orangered;
     background-color: white;
   }
 }
 .map {
   width: 458px;
-  // margin-top: 7rem;
+  border-radius: 10px;
 }
 .form {
   display: grid;
@@ -233,7 +240,7 @@ li {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.icon1{
+.icon1 {
   font-size: 20px;
   margin-left: 10px;
 }
@@ -249,8 +256,6 @@ input {
   display: block;
 }
 
-
- 
 .massege {
   width: 800px;
 }
@@ -271,13 +276,12 @@ textarea {
 button {
   width: 30%;
   height: 20%;
-  // position: absolute;
-  // top: 10rem;
   margin-right: 56%;
   margin-top: 35%;
   border-radius: 5px;
-  border: 1px solid greenyellow;
-  background-color: greenyellow;
+  border: 1px solid gold;
+  color: black;
+  background-color: gold;
   transition: all 0.3s;
   cursor: pointer;
 
@@ -300,10 +304,10 @@ button {
 .left {
   width: 50%;
 }
-.box{
+.box {
   margin-bottom: 3rem;
 }
-.box:last-child{
+.box:last-child {
   margin-bottom: 0;
 }
 </style>

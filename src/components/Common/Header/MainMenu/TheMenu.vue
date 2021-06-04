@@ -28,9 +28,7 @@
               </transition>
             </li>
             <li>
-              <router-link class="router forget" to="/"
-                >خانه</router-link
-              >
+              <router-link class="router forget" to="/">خانه</router-link>
             </li>
             <li>
               <router-link class="router forget" to="/products"
@@ -53,10 +51,10 @@
           <ul class="menu l">
             <search-box></search-box>
             <li class="shopping">
-              <a href="#">
-                <span class="badge"><h5 class="h4">10</h5></span>
+              <router-link to="/shopping">
+              <span class="badge"><h5 class="h4">10</h5></span>
                 <fa class="fa" icon="shopping-cart"></fa>
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -152,7 +150,7 @@ export default {
   }
 }
 .scroll {
-  background-color: rgb(138, 10, 99);
+  background-color: brown;
   border-radius: 0px;
   margin-top: -100px;
   justify-content: space-around;
@@ -229,7 +227,7 @@ a {
 }
 .badge {
   // margin-left: 10px;
-  background-color: rgb(231, 31, 171);
+  background-color: orange;
   z-index: 999;
   position: absolute;
   border-radius: 50px;

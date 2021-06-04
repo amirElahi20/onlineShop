@@ -1,4 +1,9 @@
-<template>
+
+<template> 
+<!-- *******************************************************************************************************
+********************  This template includes Media icons Link like Telegram , whatsapp *********************
+**********************and instagram . Also you can find the login , register and log out button here *******
+************************************************************************************************************ -->
   <div>
     <top-responsive></top-responsive>
     <div class="topnav">
@@ -163,7 +168,6 @@ export default {
   border-radius: 10px;
   height: 30px;
   width: 30px;
-
   font-size: 30px;
 }
 .instagram:hover {
@@ -175,7 +179,6 @@ export default {
     #d6249f 60%,
     #285aeb 90%,
   );
-  // border-radius: 40px;
  
 }
 .twitter {
@@ -205,14 +208,14 @@ export default {
   padding-left: 30px;
 }
 .login {
-  color: white;
-  background: rgb(231, 31, 171);
+  color:whitesmoke;
+  background-color: orange ;
   cursor: pointer;
   text-decoration: none;
   padding: 8px 25px;
   border-radius: 15px;
   // position: relative;
-  border: 1px solid white;
+  border: 1px solid gold;
   margin-top: -10px;
   margin-left: 10px;
   // position: absolute;
@@ -222,14 +225,14 @@ export default {
   color: black;
 }
 .login:hover {
-  color: rgb(231, 31, 171);
-  border: 1px solid rgb(231, 31, 171);
-  background: white;
+  color: black;
+  border: 1px solid gold;
+  background:white;
   transition: all 0.5s;
 
   
   &:hover .tit{
-    color: rgb(231, 31, 171);
+    color: rgb(247, 211, 9) ;
      transition: all 0.5s;
   }
 }

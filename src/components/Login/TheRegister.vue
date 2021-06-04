@@ -304,7 +304,8 @@ export default {
 }
 .router {
   text-decoration: none;
-  color: #500a61;
+  color: orangered;
+  border-bottom: 0.5px solid orangered;
 }
 .form {
   width: 100%;
@@ -315,9 +316,9 @@ export default {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/wp3997775-purple-grapes-wallpapers.jpg");
+    url("../../../public/img/tamas-tuzes-katai-GZ9_EfvDCFU-unsplash.jpg");
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   position: relative;
   border-radius: 30px;
   box-shadow: 1rem 2rem 2rem rgba(rgb(15, 15, 15), 0.8);
@@ -345,8 +346,6 @@ export default {
     display: block;
     color: inherit;
   }
-  $color-primary-dark: #fc5296;
-  $color-primary-light: #f67062;
   &__label {
     font-size: 1rem;
     font-weight: 700;
@@ -367,8 +366,8 @@ export default {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #500a61;
-  border: 1px solid #500a61;
+  background-color: orangered;
+  border: 1px solid orangered;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -388,7 +387,7 @@ export default {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #9e2abb;
+  background-color: orange;
   color: white;
   cursor: pointer;
   text-decoration: none;

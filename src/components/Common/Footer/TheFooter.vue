@@ -8,7 +8,8 @@
           $route.path == '/login' ||
           $route.path == '/forget' ||
           $route.name == 'resetpassword' ||
-          $route.name == 'Confirm',
+          $route.name == 'Confirm' ||
+          $route.name == 'shopping',
       }"
     >
       <div class="top-footer">
@@ -44,8 +45,8 @@
           </h3>
           <p>
             ن گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
-            که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کمان مورد نیاز شامل حروفچینی
-            دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای م
+            که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کمان مورد نیاز
+            شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای م
           </p>
         </div>
         <div class="left-column">
@@ -64,18 +65,16 @@ export default {};
 
 
 <style lang="scss" scoped>
-$color-primary-dark: #fc5296;
-$color-primary-light: #f67062;
 .footer {
-  //    background-image: linear-gradient(to right ,$color-primary-dark , $color-primary-light);
-  background-color: rgba(240, 174, 220, 0.747);
+  background-color: rgba(24, 21, 23, 0.856);
   padding-bottom: 20px;
+  margin-top: 8rem;
 }
 .layout {
   display: none;
 }
 .top-footer {
-  color: black;
+  color: white;
   direction: rtl;
   padding-right: 20px;
   padding-top: 1rem;
@@ -87,7 +86,7 @@ span::after {
   content: "";
   width: 2px;
   height: 19px;
-  background-color: black;
+  background-color: white;
   position: absolute;
   right: 208px;
 }
@@ -104,7 +103,7 @@ span:last-child::after {
   direction: rtl;
   justify-content: space-around;
   padding-top: 2rem;
-  color: black;
+  color: white;
 }
 .sub-txt {
   font-size: 14px;
@@ -113,7 +112,7 @@ span:last-child::after {
   display: flex;
   direction: rtl;
   padding-top: 2rem;
-  color: black;
+  color: white;
 }
 .right-column {
   width: 50%;

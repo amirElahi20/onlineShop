@@ -62,8 +62,7 @@ export default {};
   // flex-wrap:wrap ;
 }
 .feature-box {
-
-  background-color: rgba(221, 50, 164, 0.726);
+  background-color: rgba(255, 255, 255, 0.37);
   width: 250px;
   font-size: 20px;
   padding: 2.5rem 0px;
@@ -89,7 +88,7 @@ export default {};
 .section-features {
   padding: 13rem 0;
   background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
-    url("../../../../public/img/661793.jpg");
+    url("../../../../public/img/zaib-tse-KVv5lFOMY1E-unsplash.jpg");
   background-color: #2d3436;
   background-size: cover;
   background-position: bottom;

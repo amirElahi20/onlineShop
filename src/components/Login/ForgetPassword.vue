@@ -126,7 +126,8 @@ export default {
 <style lang="scss" scoped>
 .router {
   text-decoration: none;
-  color: #500a61;
+  color: orangered;
+  border-bottom: 0.5px solid orangered;
 }
 .invalid input {
   border: 1px solid red !important;
@@ -155,7 +156,8 @@ export default {
 .forget {
   font-size: 15px;
   text-align: center;
-  color: #500a61;
+  color: orangered;
+  border-bottom: 1px solid orangered;
 }
 .log {
   display: flex;
@@ -185,7 +187,7 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/aliona-gumeniuk-Y9WTwredge0-unsplash.jpg");
+    url("../../../public/img/koen-emmers-uYM_PQJ8VvY-unsplash.jpg");
   //   background-color: #2d3436;
   background-size: cover;
   background-position: right;
@@ -237,8 +239,8 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #500a61;
-  border: 1px solid #500a61;
+  background-color: orangered;
+  border: 1px solid orangered;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -259,7 +261,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #9e2abb;
+  background-color: orange;
   color: white;
   cursor: pointer;
   text-decoration: none;

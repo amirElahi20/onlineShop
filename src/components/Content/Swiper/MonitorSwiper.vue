@@ -1,218 +1,201 @@
 <template>
-  <div class="moni">
+  <div>
     <div class="u-center-text">
-      <h2 class="heading-secondary">---مانیتور---</h2>
+      <h2 class="heading-secondary">میوه خشک</h2>
     </div>
-    <section class="cardbox">
-      <span class="span s2" :class="{ deactive: l >= 3 }" @click="goToRight"
-        >&#10093;</span
+    <div class="carousel">
+      <carousel
+        :items-to-show="5"
+        :settings="settings"
+        :breakpoints="breakpoints"
+        class="carousel-all"
       >
-      <span class="span s1" :class="{ deactive: l <= 0 }" @click="goToLeft"
-        >&#10092;</span
-      >
-      <div class="cards mos" v-for="monitor in Monitors" :key="monitor.id">
-        <div class="swipimg">
-          <img :src="monitor.picture" alt="" />
-          <span class="text">{{ monitor.name }}</span>
-          <span class="text--sub">{{ monitor.description_one }}</span>
-          <span class="cost">{{ monitor.cost }} تومان</span>
-          <button class="product-btn">مشاهده محصول</button>
-        </div>
-      </div>
-    </section>
-
-    <a class="btn">نمایش همه</a>
-
-    <svg height="1" width="100%">
+        <slide v-for="product in MostSellProducts" :key="product.id">
+          <div class="carousel__item">
+            <div class="carousel-box">
+              <img class="slider-img" :src="product.picture" alt="" />
+              <h4 class="similar-name">{{ product.name }}</h4>
+              <p class="similar-cost">{{ product.show_cost }}تومان</p>
+              <a class="similar-btn" href="">مشاهده محصول</a>
+            </div>
+          </div>
+        </slide>
+        <template #addons>
+          <navigation />
+        </template>
+      </carousel>
+    </div>
+    <router-link class="btn" to="/products">نمایش محصولات</router-link>
+    <svg class="svg" height="1" width="98%">
       <line
-        x1="15%"
+        x1="10%"
         y1="0"
-        x2="85%"
+        x2="92%"
         y2="0"
-        style="stroke: #f67062; stroke-width: 2"
+        style="stroke: rgb(255, 69, 0); stroke-width: 0.5"
       />
     </svg>
   </div>
 </template>
 
-
 <script>
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Navigation } from "vue3-carousel";
 export default {
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+  },
   data() {
     return {
-      div: document.getElementsByClassName("mos"),
-      l: 0,
-      active: true,
+      settings: {
+        itemsToShow: 1,
+        snapAlign: "center",
+      },
+      // breakpoints are mobile first
+      // any settings not specified will fallback to the carousel settings
+      breakpoints: {
+        // 700px and up
+        700: {
+          itemsToShow: 5,
+          snapAlign: "center",
+        },
+        // 1024 and up
+        1024: {
+          itemsToShow: 5,
+          snapAlign: "start",
+        },
+      },
     };
   },
-  methods: {
-    goToRight() {
-      this.l++;
-      console.log(this.l);
-      console.log(this.div);
-      for (var i of this.div) {
-        if (this.l == 0) {
-          i.style.left = "0px";
-        }
-        if (this.l == 1) {
-          i.style.left = "-24.8%";
-        }
-        if (this.l == 2) {
-          i.style.left = "-49.7%";
-        }
-        if (this.l == 3) {
-          i.style.left = "-74.6%";
-        }
-        if (this.l > 3) {
-          this.l = 3;
-          this.active = !this.active;
-        }
-      }
-    },
-    goToLeft() {
-      this.l--;
-      console.log(this.l);
-      for (var i of this.div) {
-        if (this.l == 0) {
-          i.style.left = "0px";
-        }
-        if (this.l == 1) {
-          i.style.left = "-24.8%";
-        }
-        if (this.l == 2) {
-          i.style.left = "-49.7%";
-        }
-        if (this.l == 3) {
-          i.style.left = "-74.6%";
-        }
-        if (this.l < 0) {
-          this.l = 0;
-          this.active = !this.active;
-        }
-      }
-    },
-  },
   computed: {
-    Monitors() {
-      return this.$store.getters.GetMonitors;
+    MostSellProducts() {
+      return this.$store.getters.GetMostSellProducts;
     },
   },
   created() {
-    this.$store.dispatch("GetMonitorsFromServer");
-    // console.log("GetMostSellProductsFromServer");
+    this.$store.dispatch("GetMostSellProductsFromServer");
   },
 };
 </script>
 
-
 <style lang="scss" scoped>
-.moni {
-  padding: 1rem 2rem;
+$color-primary-dark: orange;
+$color-primary-light: orangered;
+.heading-secondary {
+  font-size: 2rem;
+  font-weight: 700;
   text-align: center;
-}
-
-.swipimg img {
-  width: 100%;
-  height: 300px;
-  padding: 0 20px;
-  margin-bottom: 0px;
-  border-radius: 50px;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-dark,
+    $color-primary-light
+  );
+  -webkit-background-clip: text;
+  display: inline-block;
+  color: transparent;
   transition: all 0.3s;
-  top: 0;
-  cursor: pointer;
+}
+.u-center-text {
+  text-align: center;
+  padding-bottom: 4rem;
+}
+.similar-name {
+  color: black;
+  padding-bottom: 5px;
+}
+.similar-cost {
+  color: black;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+.similar-btn {
+  padding: 10px 25px;
+  margin-top: 15px;
+  background-color: brown;
+  border: 1px solid brown;
+  color: white;
+  font-size: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.4s;
 
   &:hover {
-    transform: scale(1.09);
+    background-color: white;
+    border: 1px solid brown;
+    color: brown;
   }
 }
-main {
-  width: 95%;
-  height: 400px;
-  margin: 20px;
-  position: absolute;
+body {
+  padding: 20px;
+  color: rgb(255, 69, 0);
 }
-.cost {
-  color: black;
-  display: block;
-  padding: 5px 0;
-  direction: rtl;
-}
-h1 {
-  width: 90%;
-  margin: 10px auto;
-  background: #1967d2;
-  font-weight: bold;
-  color: white;
-}
-
-.span {
-  position: absolute;
-  // top: 140rem;
-  margin-top: 140px;
-  font-size: 60px;
-  font-weight: bold;
-  color: #fc5296;
-  cursor: pointer;
-  left: 0.5%;
-  z-index: 1;
-  background-color: white;
-  padding: 1px 6px;
-  box-shadow: 0.5rem 1rem 1rem rgba(rgb(163, 158, 158), 0.5);
-
-  &.s2 {
-    left: 96.1%;
-  }
-
-  &.deactive {
-    color: #fc529628;
-  }
-}
-.s1 {
-  left: 20px;
-}
-
-.cardbox {
-  margin: 0px 2rem;
+.carousel-all {
   display: flex;
-  height: 570px;
-  justify-content: space-between;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    visibility: hidden;
-  }
+  flex-wrap: wrap;
+  // background-color:red ;
 }
-.cards {
-  min-width: 22%;
-  height: 460px;
-  position: relative;
-  padding-top: 20px;
-  font-weight: bold;
-  margin: 10px 20px;
+.carousel-box {
+  border: 1px solid brown;
+  border-radius: 10px;
+  height: 340px;
+}
+.carousel__item {
+  min-height: 200px;
+  width: 100%;
   color: white;
-  background: whitesmoke;
-  transition: all 0.8s;
-  left: 0px;
-  border-radius: 50px;
-  text-align: center;
-  border: 3px solid #fc5296;
-  // cursor: pointer;
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn {
+.carousel__slide {
+  padding: 10px;
+}
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+  border: 5px solid white;
+}
+
+.slider-img {
+  width: 200px;
+  padding: 5px;
+  height: 200px;
+  // border-radius: 10px;
+  border-bottom: 1px solid brown;
+}
+.carousel {
+  width: 1200px;
+  margin: 0 auto 3rem auto;
+}
+.carousel-total {
+  // background-color: red;
+  // left: 0px;
+  position: absolute;
+}
+
+.btn:link,
+.btn.visited {
   text-decoration: none;
-  padding: 20px 40px;
+  padding: 15px 20px;
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 10px;
   transition: all 0.2s;
   position: relative;
-  background-color: #fc5296;
-  margin-bottom: 2rem;
-  cursor: pointer;
+  left: 45%;
+}
+.btn {
+  background-color: orangered;
   color: white;
+  position: relative;
+  direction: rtl;
+  // padding: 50px;
+  margin-top: -20px;
+  margin-bottom: 2rem;
 }
 .btn:hover {
   transform: translateY(-5px);
@@ -225,8 +208,8 @@ h1 {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
-  background-color: #fc5296;
+  border-radius: 10px;
+  background-color: orangered;
   position: absolute;
   top: 0;
   left: 0;
@@ -237,52 +220,7 @@ h1 {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
-
-.product-btn {
-  padding: 10px 50px;
-  border-radius: 10px;
-  border: 3px solid #fc5296;
-  background-color: white;
-  margin-top: 15px;
-  font-size: 15px;
-  transition: all 0.3s;
-  z-index: 1;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #fc5296;
-    color: white;
-  }
-}
-.text {
-  display: block;
-  font-size: 20px;
-  padding-bottom: 10px;
-  color: black;
-
-  &--sub {
-    display: block;
-    font-size: 12px;
-    color: black;
-  }
-}
-.u-center-text {
-  text-align: center;
-  padding-bottom: 4rem;
-}
-$color-primary-dark: #fc5296;
-$color-primary-light: #f67062;
-.heading-secondary {
-  font-size: 2rem;
-  font-weight: 700;
-  background-image: linear-gradient(
-    to right,
-    $color-primary-dark,
-    $color-primary-light
-  );
-  -webkit-background-clip: text;
-  display: inline-block;
-  color: transparent;
-  transition: all 0.3s;
+.svg {
+  margin-bottom: 5rem;
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <section class="section-product">
       <div class="u-center-text">
-        <h2 class="heading-secondary">---پرفروش ترین محصولات---</h2>
+        <h2 class="heading-secondary">پرفروش ترین محصولات</h2>
       </div>
     </section>
     <content-swiper></content-swiper>
@@ -32,8 +32,8 @@ export default {
 .section-product {
   padding: 5rem 0 0 0;
 }
-$color-primary-dark: #fc5296;
-$color-primary-light: #f67062;
+$color-primary-dark: orange;
+$color-primary-light: orangered;
 .heading-secondary {
   font-size: 2rem;
   font-weight: 700;

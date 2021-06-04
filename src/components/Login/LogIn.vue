@@ -77,7 +77,7 @@
                   </div>
                 </div>
 
-                <button class="submit-btn" type="submit">ورود</button>
+                <button :disabled="popup" class="submit-btn" type="submit">ورود</button>
               </form>
               <h5 class="txt">
                 عضو نیستید؟؟
@@ -236,7 +236,8 @@ export default {
 }
 .router {
   text-decoration: none;
-  color: #500a61;
+  color: orange;
+  border-bottom: 0.5px solid orange;
 }
 .invalid input {
   border: 1px solid red !important;
@@ -265,7 +266,8 @@ export default {
 .forget {
   font-size: 15px;
   text-align: center;
-  color:#500a61;
+  color:orangered;
+  border-bottom: 0.5px solid orangered;
 }
 .log {
   display: flex;
@@ -295,8 +297,7 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/prunes2.jpg");
-  //   background-color: #2d3436;
+    url("../../../public/img/tatiana-VpZyvTc_9Mg-unsplash.jpg");
   background-size: cover;
   background-position: left;
   position: relative;
@@ -346,9 +347,9 @@ p {
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  color: white;
-  background-color: #500a61;
-  border: 1px solid #500a61;
+  color: black;
+  background-color: orange;
+  border: 1px solid orange;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -369,7 +370,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #c820f1;
+  background-color: orangered;
   color: white;
   cursor: pointer;
   text-decoration: none;

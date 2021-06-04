@@ -95,7 +95,7 @@ export default {
   flex-direction: row;
   // border-radius: 10px;
   z-index: 999;
-  background-color: rgb(202, 201, 201);
+  background-color: orange;
   width: 220px;
   min-height: 200px;
   position: fixed;
@@ -122,7 +122,7 @@ export default {
   color: white;
 }
 .ulmenu li:hover {
-  background-color: crimson;
+  background-color: orangered;
   transition: all 0.3s;
 }
 .ulmenu li a {

@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="textheader">
-      <img class="head2" src="../../../../../public/img/header2.png" alt="" />
-      <img class="head1" src="../../../../../public/img/header1.png" alt="" />
+      <!-- <img class="head2" src="../../../../../public/img/header2.png" alt="" /> -->
+      <!-- <img class="head1" src="../../../../../public/img/header1.png" alt="" /> -->
      <router-link to="/" ><img class="head3" src="../../../../../public/img/header3.png" alt=""></router-link> 
       <h1 class="heading-primary">
-        <span class="heading-primary-main">خشکینجا</span>
-        <span class="heading-primary-sub">خرید اینترنتی انواع خشکبار</span>
+        <span class="heading-primary-main">ساکورا شاپ</span>
+        <span class="heading-primary-sub">خرید اینترنتی انواع میوه خشک</span>
       </h1>
-      <a href="#" class="btn">نمایش محصولات</a>
+      <router-link class="btn" to="/products">نمایش محصولات</router-link>
     </div>
   </div>
 </template>
@@ -146,11 +146,12 @@ export default {};
   }
 }
 .btn {
-  background-color: rgb(231, 31, 171);
+  background-color: orangered;
   color: white;
   position: relative;
   direction: rtl;
   // padding: 50px;
+  margin-top: -20px;
 }
 .btn:hover {
   transform: translateY(-5px);
@@ -164,7 +165,7 @@ export default {};
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color: rgb(231, 31, 171);
+  background-color: orangered;
   position: absolute;
   top: 0;
   left: 0;

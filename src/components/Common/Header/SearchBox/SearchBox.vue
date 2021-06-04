@@ -23,7 +23,7 @@ input{
   margin-top: -10px;
   margin-left: 15px;
   transform: translate(-1%);
-  background: rgb(231, 31, 171) ;
+  background: orangered ;
   height: 40px;
   border-radius: 40px;
   padding: 0px;
@@ -41,7 +41,7 @@ input{
   background: white;
 }
 .search-btn {
-  color: rgb(231, 31, 171);
+  color: orangered;
   float: right;
   width: 40px;
   height: 40px;
