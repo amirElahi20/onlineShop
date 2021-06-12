@@ -3,17 +3,20 @@
         <div class="topalert">
             <h3>!!توجه کنید!!</h3>
         </div>
-        <div class="mainalert">با کلکی بر روی دکمه زیر ایمیل خود را فعال کنید</div>
+        <div class="mainalert">با کلیک بر روی دکمه زیر ایمیل خود را فعال کنید</div>
         <router-link class="btn" @click="confirm" to="/login"> فعالسازی ایمیل</router-link>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+ import { useToast } from "vue-toastification";
+
 export default {
     data() {
         return{
           token: this.$route.params.token,
+          toast : useToast()
         }
     },
     methods:{
@@ -22,7 +25,8 @@ export default {
           token : this.token
         })
         .then(response=>{
-            console.log(response)
+            console.log(response);
+            this.toast.success("ایمیل شما با موفقیت تایید شد");
             // this.$router.push('/login');
         })
     },
@@ -33,13 +37,14 @@ export default {
 
 <style lang="scss" scoped>
   .topalert{
-      background-color: pink;
+      background-color: orange;
       padding: 20px;
       font-size: 20px;
       margin-bottom: 2rem;
   }
   .confirm{
       text-align: center;
+      color: orangered;
   }
   .mainalert{
       font-size: 18px;
@@ -52,7 +57,7 @@ export default {
   border-radius: 100px;
   transition: all 0.2s;
   position: relative;
-  background-color: #fc5296;
+  background-color: orange;
   margin-bottom: 2rem;
   cursor: pointer;
   color: white;
@@ -70,7 +75,7 @@ export default {
   height: 100%;
   width: 100%;
   border-radius: 100px;
-  background-color: #fc5296;
+  background-color: orange;
   position: absolute;
   top: 0;
   left: 0;

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div class="popup" v-if="popup"></div>
     </transition>
-    <success-password @popup-ok="ok" v-if="popup"></success-password>
+    <success-password @popup-ok="ok" v-if="popup"></success-password> -->
     <div class="log">
       <section class="login">
         <div class="row">
@@ -73,11 +73,13 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
-import SuccessPassword from "../Dialogs/ForgetPass/SuccessPassword";
+// import SuccessPassword from "../Dialogs/ForgetPass/SuccessPassword";
 import axios from "axios";
+ import { useToast } from "vue-toastification";
+
 export default {
   components: {
-    SuccessPassword,
+    // SuccessPassword,
   },
   data() {
     return {
@@ -86,6 +88,7 @@ export default {
       error: null,
       popup: false,
       v$: useVuelidate(),
+      toast : useToast(),
     };
   },
   validations() {
@@ -108,11 +111,13 @@ export default {
         )
         .then((response) => {
           console.log(response);
+          this.toast.success("لینک تغییر رمز برای ایمیل شما ارسال شد")
         })
         .catch((error) => {
           console.log(error);
+          this.toast.error(" !موفقیت آمیز نبود دوباره تلاش کنید");
         });
-      this.popup = true;
+      
     },
     ok(popupstatus) {
       this.popup = popupstatus;
@@ -187,7 +192,7 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/koen-emmers-uYM_PQJ8VvY-unsplash.jpg");
+    url("../../../public/img/tamas-tuzes-katai-GZ9_EfvDCFU-unsplash.jpg");
   //   background-color: #2d3436;
   background-size: cover;
   background-position: right;

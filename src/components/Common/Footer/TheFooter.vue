@@ -65,10 +65,15 @@ export default {};
 
 
 <style lang="scss" scoped>
+@import "../../../styles/mixins.scss";
+
 .footer {
   background-color: rgba(24, 21, 23, 0.856);
   padding-bottom: 20px;
   margin-top: 8rem;
+    @include respond(phone) {
+      width: 100%;
+  }
 }
 .layout {
   display: none;
@@ -113,6 +118,7 @@ span:last-child::after {
   direction: rtl;
   padding-top: 2rem;
   color: white;
+  flex-wrap:wrap ;
 }
 .right-column {
   width: 50%;
@@ -132,6 +138,10 @@ img {
   // padding-right: 15px;
   margin-right: 15px;
   border-radius: 10px;
+  display: block;
+    @include respond(phone) {
+    width: 100px;
+  }
 }
 </style>
 

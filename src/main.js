@@ -18,8 +18,10 @@ import ResetPassword from './components/Login/ResetPassword.vue';
 import ConfirmEmail from './components/Login/ConfirmEmail.vue';
 import ContactUs from './MenuPages/ContactUs.vue';
 import TotalProduct from './components/ProductPage/TotalProduct.vue';
-import SingleProduct from './components/ProductPage/SingleProduct.vue'
-import Shoppingpage from './components/ProductPage/ShoppingPage.vue'
+import SingleProduct from './components/ProductPage/SingleProduct.vue';
+import Shoppingpage from './components/ProductPage/ShoppingPage.vue';
+import Toast from 'vue-toastification';
+import "vue-toastification/dist/index.css"
 
 axios.interceptors.request.use(function(config) {
     const token = localStorage.getItem('token')
@@ -30,8 +32,6 @@ axios.interceptors.request.use(function(config) {
 }, function(err) {
     return Promise.reject(err);
 });
-
-
 
 const router = createRouter({
     history: createWebHistory(),
@@ -98,7 +98,7 @@ library.add(fas, fab);
 const app = createApp(App);
 
 app.component('fa', FontAwesomeIcon);
-
+app.use(Toast);
 app.use(router);
 app.use(store);
 app.use(VueAxios, axios);

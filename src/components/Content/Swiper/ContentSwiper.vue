@@ -82,6 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/mixins.scss";
 
 .similar-name {
   color: black;
@@ -116,7 +117,6 @@ body {
 .carousel-all {
   display: flex;
   flex-wrap: wrap;
-  // background-color:red ;
 }
 .carousel-box {
   border: 1px solid brown;
@@ -153,6 +153,10 @@ body {
 .carousel {
   width: 1200px;
   margin: 0 auto 3rem auto;
+  @include respond(phone) {
+    width: 320px;
+    margin: 0 auto;
+  }
 }
 .carousel-total {
   // background-color: red;

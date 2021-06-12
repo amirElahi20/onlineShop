@@ -1,9 +1,9 @@
 <template>
   <div>
-       <transition name="fade">
+       <!-- <transition name="fade">
       <div class="popup" v-if="popup"></div>
     </transition>
-    <success-login @popup-ok="ok" v-if="popup"></success-login>
+    <success-login @popup-ok="ok" v-if="!popup"></success-login> -->
     <div class="log">
       <section class="login">
         <div class="row">
@@ -104,11 +104,12 @@
 import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
-import SuccessLogin from './../Dialogs/LoginDialog/SuccessLogin'
+// import SuccessLogin from './../Dialogs/LoginDialog/SuccessLogin'
+ import { useToast } from "vue-toastification";
 
 export default {
   components:{
-    SuccessLogin
+    // SuccessLogin
   },
   data() {
     return {
@@ -117,6 +118,7 @@ export default {
       error: null,
       popup : false,
       v$: useVuelidate(),
+      toast : useToast(),
       visibility: "password",
     };
   },
@@ -170,13 +172,15 @@ export default {
             this.$store.commit("setAuth", true);
            
           });
-          // this.$router.push("/");
-           this.popup = true
+           this.toast.success("ورود موفقیت آمیز بود");
+           this.$router.push('/');
          
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error.status);
+          this.toast.error("ایمیل خود را فعال نکرده اید")
           this.error = "مشخصات وارد شده صحیح نیستند";
+
         });
       }
     },

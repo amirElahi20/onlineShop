@@ -59,18 +59,18 @@ export default {};
 .row {
   display: flex;
   justify-content: space-evenly;
-  // flex-wrap:wrap ;
+  flex-wrap:wrap ;
 }
 .feature-box {
   background-color: rgba(255, 255, 255, 0.37);
-  width: 250px;
+  width: 220px;
   font-size: 20px;
   padding: 2.5rem 0px;
   text-align: center;
   border-radius: 5px;
-  // box-shadow: 0.5rem 1rem 1rem rgba(rgb(163, 158, 158), 0.5);
   transition: all 0.3s;
   color: white;
+  margin-top: 30px;
 
   &__icon {
     font-size: 50px;

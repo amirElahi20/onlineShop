@@ -64,15 +64,18 @@
 import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
+import { useToast } from "vue-toastification";
+
 export default {
   data() {
     return {
       password: "",
       token: this.$route.params.token,
-      uidb64:this.$route.params.uidb64,
+      uidb64: this.$route.params.uidb64,
       error: null,
       v$: useVuelidate(),
       visibility: "password",
+      toast: useToast(),
     };
   },
   validations() {
@@ -85,17 +88,21 @@ export default {
   },
   methods: {
     Reset() {
-        axios.patch('https://onshop321.herokuapp.com/accounts/v1/change_password/',{
-            token : this.token,
-            password: this.password,
-            uidb64:this.uidb64
+      axios
+        .patch("https://onshop321.herokuapp.com/accounts/v1/change_password/", {
+          token: this.token,
+          password: this.password,
+          uidb64: this.uidb64,
         })
-        .then(response=>{
-            console.log(response)
-            this.$router.push('/login');
-        }).catch(error =>{
-            console.log(error)
+        .then((response) => {
+          console.log(response);
+          this.toast.success("رمز عبور با موفقیت تغییر کرد");
+          this.$router.push("/login");
         })
+        .catch((error) => {
+          console.log(error);
+          this.toast.error(`ارسال موفقیت آمیز نبود دوباره تلاش کنید`);
+        });
     },
     showPassword() {
       this.visibility = "text";
@@ -171,7 +178,7 @@ p {
       rgba(white, 0.7) 50%,
       transparent 50%
     ),
-    url("../../../public/img/prunes2.jpg");
+    url("../../../public/img/neha-deshmukh-GoKXJaQoLQs-unsplash.jpg");
   //   background-color: #2d3436;
   background-size: cover;
   background-position: left;
@@ -223,8 +230,8 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #500a61;
-  border: 1px solid #500a61;
+  background-color: orangered;
+  border: 1px solid orangered;
   transition: all 0.3s;
   margin-top: 30px;
   &:hover {
@@ -245,7 +252,7 @@ p {
   width: 90%;
   margin-top: 1rem;
   border-radius: 10px;
-  background-color: #c820f1;
+  background-color: orange;
   color: white;
   cursor: pointer;
   text-decoration: none;

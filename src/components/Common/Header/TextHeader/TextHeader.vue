@@ -1,9 +1,6 @@
 <template>
   <div>
     <div class="textheader">
-      <!-- <img class="head2" src="../../../../../public/img/header2.png" alt="" /> -->
-      <!-- <img class="head1" src="../../../../../public/img/header1.png" alt="" /> -->
-     <router-link to="/" ><img class="head3" src="../../../../../public/img/header3.png" alt=""></router-link> 
       <h1 class="heading-primary">
         <span class="heading-primary-main">ساکورا شاپ</span>
         <span class="heading-primary-sub">خرید اینترنتی انواع میوه خشک</span>
@@ -34,6 +31,7 @@ export default {};
   @include respond(phone) {
     padding: 10px;
     padding-bottom: 15px;
+    width: 300px;
   }
 }
 .head1 {
@@ -59,6 +57,7 @@ export default {};
   color: white;
   backface-visibility: hidden;
   margin-bottom: 60px;
+  
 }
 .heading-primary-main {
   display: block;
@@ -70,7 +69,7 @@ export default {};
   animation-duration: 2s;
 
   @include respond(phone) {
-    font-size: 30px;
+    font-size: 10px;
     padding-bottom: 15px;
   }
 
@@ -89,7 +88,7 @@ export default {};
   letter-spacing: 0;
 
   @include respond(phone) {
-    font-size: 15px;
+    font-size: 10px;
     padding-bottom: 10px;
   }
 

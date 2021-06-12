@@ -72,6 +72,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/mixins.scss";
+
 $color-primary-dark: orange;
 $color-primary-light: orangered;
 .heading-secondary {
@@ -162,6 +164,10 @@ body {
 .carousel {
   width: 1200px;
   margin: 0 auto 3rem auto;
+   @include respond(phone) {
+    width: 320px;
+    margin: 0 auto;
+  }
 }
 .carousel-total {
   // background-color: red;

@@ -106,11 +106,13 @@ export default {
   @include respond(phone) {
     display: none;
   }
+    @include respond(tab-port) {
+   font-size: 10px;
+  }
 }
 
 .left {
   height: 50px;
-  // background-color: yellow;
 }
 .right {
   height: 50px;
@@ -129,18 +131,21 @@ export default {
   }
 
   @include respond(tab-port) {
-    width: 590px;
+   width:700px ;
     margin: 0 auto;
   }
 }
 .whatsapp {
   transition: all 0.3s;
-  font-size: 30px;
-  // background:green;
+  // font-size: 20px;
   border-radius: 5px;
   height: 30px;
   width: 30px;
-  // font-size: 30px;
+
+   @include respond(tab-port) {
+    width: 20px;
+    height: 20px;
+  }
 }
 .whatsapp:hover {
   background: green;
@@ -155,6 +160,10 @@ export default {
 .telegram {
   transition: all 0.3s;
   font-size: 30px;
+  @include respond(tab-port) {
+    width: 20px;
+    height: 20px;
+  }
 }
 .telegram:hover {
   color: #2693c9;
@@ -169,6 +178,10 @@ export default {
   height: 30px;
   width: 30px;
   font-size: 30px;
+  @include respond(tab-port) {
+    width: 20px;
+    height: 20px;
+  }
 }
 .instagram:hover {
    background: radial-gradient(
@@ -206,6 +219,7 @@ export default {
 }
 .r li {
   padding-left: 30px;
+ 
 }
 .login {
   color:whitesmoke;
@@ -218,8 +232,9 @@ export default {
   border: 1px solid gold;
   margin-top: -10px;
   margin-left: 10px;
-  // position: absolute;
-  // top: 20px;
+    @include respond(tab-port) {
+   font-size: 10px;
+  }
 }
 .login:active {
   color: black;

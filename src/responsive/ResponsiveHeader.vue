@@ -4,21 +4,19 @@
       <div class="container">
         <ul>
           <li>
-            <a href="#"><i class="fa fa-user" aria-hidden="true"></i>ورود</a>
+            <a href="#"><fa class="icon icon1" icon="user"></fa>ورود</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-search"></i>جست و جو</a>
+            <a href="#"><fa class="icon icon2" icon="search"></fa>جست و جو</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-shopping-cart"></i>سبد خرید</a>
+            <a href="#"><fa class="icon icon3" icon="shopping-cart"></fa>سبد خرید</a>
           </li>
           <li>
-            <a href="#"
-              ><i class="fa fa-bars" aria-hidden="true"></i>دسته بندی</a
-            >
+            <a href="#"><fa class="icon icon4" icon="bars"></fa>دسته بندی</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-home"></i>خانه</a>
+            <a href="#"><fa class="icon icon5" icon="home"></fa>خانه</a>
           </li>
         </ul>
       </div>
@@ -34,7 +32,6 @@ export default {};
 <style lang="scss" scoped>
 @import "../styles/mixins.scss";
 .res-header {
-//   width: 600px;
   height: auto;
   margin: 0 auto;
   display: none;
@@ -43,6 +40,26 @@ export default {};
     display: block;
   }
 }
+.icon {
+  display: block;
+  margin-top: 10px;
+}
+.icon1 {
+  margin-left: 6px;
+}
+.icon2 {
+  margin-left: 20px;
+}
+.icon3 {
+  margin-left: 20px;
+}
+.icon4 {
+  margin-left: 25px;
+}
+.icon5 {
+  margin-left: 5px;
+}
+
 .container {
   width: 100%;
   // margin: 0 auto;
@@ -56,19 +73,16 @@ export default {};
 ul {
   display: flex;
   justify-content: space-evenly;
-  padding-bottom:5px;
-  // margin: 0 auto;
+  padding-bottom: 5px;
+  list-style: none;
 }
-li {
-  text-align: center;
-}
-i {
-  display: block;
-}
+
 a {
   color: white;
   transition: all 0.3s;
   font-size: 15px;
+  // display: block;
+  text-decoration: none;
 }
 a:hover {
   color: darkturquoise;

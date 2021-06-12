@@ -72,7 +72,7 @@
                         v-for="(cost, index) in SingleProduct.product_cost"
                         :key="index"
                         v-show="
-                          SingleProduct.product_cost[index].pack.parent == 2
+                          SingleProduct.product_cost[index].pack.parent == 3
                         "
                         :value="index"
                       >
@@ -83,16 +83,28 @@
                 </section>
                 <footer class="count-box">
                   <h5>تعداد</h5>
-                  <fa class="count-icon plus" @click="plus" icon="plus"></fa>
-                  <input
-                    class="input-count"
-                    :value="count"
-                    type="text"
-                    placeholder="تعداد"
-                  />
-                  <fa class="count-icon minus" @click="minus" icon="minus"></fa>
+                  <button class="count-icon plus" @click="plus">+</button>
+
+                  <div class="input-count">{{ count }}</div>
+                  <button
+                    :disabled="count === 1"
+                    class="count-icon minus"
+                    @click="minus"
+                  >
+                    -
+                  </button>
                 </footer>
-                <a href="#" class="btn">افزودن به سبد خرید</a>
+
+                <a
+                  class="btn"
+                  @click="
+                    AddProductToOrder(
+                      SingleProduct.product_cost[select].id,
+                      SingleProduct.id
+                    )
+                  "
+                  >افزودن به سبد خرید</a
+                >
               </header>
             </div>
             <div class="left">
@@ -123,6 +135,7 @@
         </div>
       </div>
     </div>
+
     <div class="u-center-text">
       <h2 class="heading-secondary">محصولات مشابه</h2>
     </div>
@@ -238,6 +251,15 @@ export default {
     },
     minus() {
       this.count -= 1;
+    },
+    AddProductToOrder(packId, productId) {
+      console.log(packId, productId);
+      const orderDetail = {
+        Product: productId,
+        Pack: packId,
+        Amount: this.count,
+      };
+      this.$store.dispatch("AddProductToOrder", orderDetail);
     },
   },
   computed: {
@@ -355,6 +377,7 @@ body {
   color: white;
   transition: all 0.4s;
   border: 1px solid brown;
+  cursor: pointer;
 
   &:hover {
     background-color: orangered;
@@ -372,12 +395,16 @@ body {
 }
 .input-count {
   width: 50%;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 10px;
 }
 .count-icon {
-  padding: 2px;
+  padding:0px;
   cursor: pointer;
   border-radius: 7px;
   color: white;
+  padding:2px 5px 4px 5px ;
 }
 .plus {
   background-color: green;

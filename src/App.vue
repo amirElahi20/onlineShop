@@ -47,7 +47,7 @@ export default {
 body {
   font-family: "BYekan";
   width: 100%;
-
+  // overflow-x: hidden;
   @include respond(tab-port) {
     padding: 0;
   }

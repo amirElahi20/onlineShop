@@ -5,6 +5,7 @@ import Mobile from './Modules/Mobile';
 import Monitor from './Modules/Monitor';
 import Menu from './Modules/Menu';
 import Products from './Modules/Products';
+import Order from './Modules/Order';
 import axios from 'axios'
 
 
@@ -79,6 +80,7 @@ export const store = createStore({
         Mobile,
         Monitor,
         Menu,
-        Products
+        Products,
+        Order
     }
 })

@@ -1,9 +1,9 @@
 <template>
   <div>
-       <transition name="fade">
+       <!-- <transition name="fade">
       <div class="popup" v-if="popup"></div>
     </transition>
-    <success-register @popup-ok="ok" v-if="popup"></success-register>
+    <success-register @popup-ok="ok" v-if="popup"></success-register> -->
     <div class="log">
       <section class="login">
         <div class="row">
@@ -137,16 +137,18 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, alphaNum } from "@vuelidate/validators";
-import SuccessRegister from "../Dialogs/RegisterDialog/SuccessRegister.vue";
+// import SuccessRegister from "../Dialogs/RegisterDialog/SuccessRegister.vue";
+ import { useToast } from "vue-toastification";
 
 // import axios from "axios";
 export default {
   components:{
-    SuccessRegister
+    // SuccessRegister
   },
   data() {
     return {
       v$: useVuelidate(),
+      toast : useToast(),
       username: "",
       email: "",
       password: "",
@@ -202,7 +204,8 @@ export default {
               this.error = "ایمیل وارد شده تکراری است";
               this.checkEmail = "yes";
             } else {
-              this.popup = true
+              this.toast.success(`لینک فعال سازی به ایمیل شما ارسال شد 
+              ایمیل خود را چک کنید`)
               // this.$router.push("/login");
             }
           });
