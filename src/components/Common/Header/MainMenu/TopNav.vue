@@ -247,7 +247,7 @@ export default {
 
   
   &:hover .tit{
-    color: rgb(247, 211, 9) ;
+    color: black;
      transition: all 0.5s;
   }
 }

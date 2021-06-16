@@ -1,9 +1,6 @@
 <template>
   <div>
-    <!-- <transition name="fade">
-      <div class="popup" v-if="popup"></div>
-    </transition>
-    <success-password @popup-ok="ok" v-if="popup"></success-password> -->
+
     <div class="log">
       <section class="login">
         <div class="row">
@@ -104,7 +101,7 @@ export default {
     sendEmail() {
       axios
         .post(
-          "https://onshop321.herokuapp.com/accounts/v1/request_reset_email/",
+          "http://asha4f.pythonanywhere.com/accounts/api/v1/request_reset_email/",
           {
             email: this.email,
           }

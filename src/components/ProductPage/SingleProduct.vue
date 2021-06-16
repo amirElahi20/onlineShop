@@ -510,7 +510,7 @@ body {
   position: absolute;
   // margin-right: 240px;
   // margin-top: 100px;
-  left: 100px;
+  left: 220px;
   top: 45rem;
   border-radius: 10px;
   border: 1px solid brown;
@@ -548,7 +548,7 @@ body {
   direction: rtl;
   flex-wrap: wrap;
   padding: 30px;
-  margin-left: 80px;
+  margin-left: 130px;
 }
 .note {
   width: 30%;

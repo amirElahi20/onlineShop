@@ -177,9 +177,9 @@ export default {
          
         })
         .catch((error) => {
-          console.log(error.status);
-          this.toast.error("ایمیل خود را فعال نکرده اید")
-          this.error = "مشخصات وارد شده صحیح نیستند";
+          console.log(error);
+          this.toast.error(" ایمیل خود را فعال نکرده اید یامشخصات ورودی اشتباه است")
+          // this.error = "مشخصات وارد شده صحیح نیستند یا ایمیل فعال نیست";
 
         });
       }

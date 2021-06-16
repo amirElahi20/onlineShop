@@ -21,12 +21,12 @@ export default {
     },
     methods:{
       confirm() {
-        axios.post('https://onshop321.herokuapp.com/accounts/v1/check_confirm_email/',{
+        axios.post('https://asha4f.pythonanywhere.com/accounts/api/v1/check_confirm_email/',{
           token : this.token
         })
         .then(response=>{
             console.log(response);
-            this.toast.success("ایمیل شما با موفقیت تایید شد");
+            this.toast.success("ایمیل شما با موفقیت فعال شد");
             // this.$router.push('/login');
         })
     },

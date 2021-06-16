@@ -61,12 +61,12 @@ const router = createRouter({
             component: AboutUs,
         },
         {
-            path: '/accounts/v1/check_reset_token/:uidb64/:token',
+            path: '/accounts/api/v1/check_reset_token/:uidb64/:token',
             component: ResetPassword,
             name: 'resetpassword'
         },
         {
-            path: '/accounts/v1/check_confirm_email/:token',
+            path: '/accounts/api/v1/check_confirm_email/:token',
             component: ConfirmEmail,
             name: 'Confirm'
         },

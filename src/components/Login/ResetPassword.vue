@@ -89,7 +89,7 @@ export default {
   methods: {
     Reset() {
       axios
-        .patch("https://onshop321.herokuapp.com/accounts/v1/change_password/", {
+        .patch("http://asha4f.pythonanywhere.com/accounts/api/v1/change_password/", {
           token: this.token,
           password: this.password,
           uidb64: this.uidb64,

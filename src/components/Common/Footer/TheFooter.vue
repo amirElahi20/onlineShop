@@ -12,47 +12,45 @@
           $route.name == 'shopping',
       }"
     >
-      <div class="top-footer">
-        <h3 class="txt">کامپیوتر شاپ</h3>
-        <span>تلفن پشتیبانی : 025895211</span>
-        <span>هفت روز هفته پاسخگوی شما هستیم</span>
-      </div>
-      <div class="main-footer">
+      <div class="body-footer">
         <ul>
-          <li><h3 class="txt">با کامپیوتر شاپ</h3></li>
-          <li class="sub-txt">اتاق خبر کامپیوتر شاپ</li>
-          <li class="sub-txt">فروش در کامپیوتر شاپ</li>
-          <li class="sub-txt">فرصت های شغلی</li>
-          <li class="sub-txt">تماس با کامپیوتر شاپ</li>
+          <h4>ما را دنبال کنید</h4>
+          <li>
+            <div class="social-media">
+              <a href="#" class="whatsapp">
+                <h4>ساکورا شاپ در تلگرام</h4>
+                <fa class="icon" :icon="['fab', 'whatsapp']"></fa
+              ></a>
+            </div>
+          </li>
+          <li>
+            <div class="social-media">
+              <a href="#" class="telegram">
+                <h4>ساکورا شاپ در تلگرام</h4>
+                <fa class="icon" :icon="['fab', 'telegram']"></fa
+              ></a>
+            </div>
+          </li>
+          <li>
+            <div class="social-media">
+              <a href="#" class="instagram">
+                <h4>ساکورا شاپ در تلگرام</h4>
+                <fa class="icon" :icon="['fab', 'instagram']"></fa
+              ></a>
+            </div>
+          </li>
         </ul>
         <ul>
-          <li><h3 class="txt">خدمات مشتریان</h3></li>
-          <li class="sub-txt">پاسخ به پرسش های متداول</li>
-          <li class="sub-txt">رویه های بازگرداندن کالا</li>
-          <li class="sub-txt">گزارش باگ</li>
+          <li>دسترسی سریع</li>
+          <li>ورود به سایت</li>
+          <li>ثبت نام</li>
+          <li>درباره ساکورا</li>
+          <li>ارتباط با ساکورا</li>
         </ul>
         <ul>
-          <li><h3 class="txt">راهنمای خرید از کامپیوتر شاپ</h3></li>
-          <li class="sub-txt">نحوه ثبت سفارش</li>
-          <li class="sub-txt">رویه ارسال سفارش</li>
-          <li class="sub-txt">شیوه های پرداخت</li>
+          <li><img src="../../../../public/img/namad.jpg" alt="" /></li>
+          <li><img src="../../../../public/img/neshan.jpg" alt="" /></li>
         </ul>
-      </div>
-      <div class="bottom-footer">
-        <div class="right-column">
-          <h3 class="txt t1">
-            فروشگاه اینترنتی کامپیوتر شاپ ، بررسی ، انتخاب و خرید آنلاین
-          </h3>
-          <p>
-            ن گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
-            که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کمان مورد نیاز
-            شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای م
-          </p>
-        </div>
-        <div class="left-column">
-          <img src="../../../../public/img/namad.jpg" alt="" />
-          <img src="../../../../public/img/neshan.jpg" alt="" />
-        </div>
       </div>
     </div>
   </div>
@@ -68,69 +66,15 @@ export default {};
 @import "../../../styles/mixins.scss";
 
 .footer {
-  background-color: rgba(24, 21, 23, 0.856);
+  background-color: whitesmoke;
   padding-bottom: 20px;
   margin-top: 8rem;
-    @include respond(phone) {
-      width: 100%;
+  @include respond(phone) {
+    width: 100%;
   }
 }
 .layout {
   display: none;
-}
-.top-footer {
-  color: white;
-  direction: rtl;
-  padding-right: 20px;
-  padding-top: 1rem;
-}
-.txt {
-  font-size: 18px;
-}
-span::after {
-  content: "";
-  width: 2px;
-  height: 19px;
-  background-color: white;
-  position: absolute;
-  right: 208px;
-}
-span {
-  padding-left: 20px;
-}
-
-span:last-child::after {
-  display: none;
-}
-
-.main-footer {
-  display: flex;
-  direction: rtl;
-  justify-content: space-around;
-  padding-top: 2rem;
-  color: white;
-}
-.sub-txt {
-  font-size: 14px;
-}
-.bottom-footer {
-  display: flex;
-  direction: rtl;
-  padding-top: 2rem;
-  color: white;
-  flex-wrap:wrap ;
-}
-.right-column {
-  width: 50%;
-  padding-right: 20px;
-}
-.left-column {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-}
-.t1 {
-  padding-bottom: 1rem;
 }
 img {
   width: 200px;
@@ -139,10 +83,56 @@ img {
   margin-right: 15px;
   border-radius: 10px;
   display: block;
-    @include respond(phone) {
+  @include respond(phone) {
     width: 100px;
   }
 }
+.body-footer {
+  direction: rtl;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.social-media a {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  // background-color: black;
+  margin-top: 1rem;
+  width: 300px;
+  padding: 20px;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.4s;
+  -webkit-clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 25% 100%, 0 52%, 25% 0%);
+clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 25% 100%, 0 52%, 25% 0%);
+}
+.social-media .whatsapp {
+  background-color: green;
+}
+.social-media .telegram {
+  background-color: #2693c9;
+}
+.social-media .instagram {
+  background: #d6249f;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+}
+ul {
+  list-style: none;
+}
+.icon {
+  font-size: 30px;
+  margin-right: 50px;
+}
+
 </style>
 
 

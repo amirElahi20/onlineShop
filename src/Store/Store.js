@@ -6,6 +6,8 @@ import Monitor from './Modules/Monitor';
 import Menu from './Modules/Menu';
 import Products from './Modules/Products';
 import Order from './Modules/Order';
+import AboutUs from './Modules/AboutUs';
+
 import axios from 'axios'
 
 
@@ -21,9 +23,9 @@ export const store = createStore({
         jwt: localStorage.getItem('token'),
         endpoints: {
             // TODO: Remove hardcoding of dev endpoints
-            obtainJWT: 'https://onshop321.herokuapp.com/accounts/v1/auth/obtain_token/',
-            refreshJWT: 'https://onshop321.herokuapp.com/accounts/v1/auth/refresh_token/',
-            baseUrl: 'https://onshop321.herokuapp.com/accounts/v1/'
+            obtainJWT: 'http://asha4f.pythonanywhere.com/accounts/api/v1/obtain_token/',
+            refreshJWT: 'https://asha4f.pythonanywhere.com/api/accounts/v1/refresh_token/',
+            baseUrl: 'https://asha4f.pythonanywhere.com/accounts/api/v1'
         }
     },
     getters: {
@@ -58,7 +60,7 @@ export const store = createStore({
 
     actions: {
         CheckForLogin(context) {
-            axios.get('https://onshop321.herokuapp.com/accounts/v1/username/')
+            axios.get('http://asha4f.pythonanywhere.com/accounts/api/v1/username/')
                 .then(response => {
                     console.log("check for login",
                         response);
@@ -81,6 +83,7 @@ export const store = createStore({
         Monitor,
         Menu,
         Products,
-        Order
+        Order,
+        AboutUs
     }
 })

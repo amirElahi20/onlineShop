@@ -1,9 +1,5 @@
 <template>
   <div>
-       <!-- <transition name="fade">
-      <div class="popup" v-if="popup"></div>
-    </transition>
-    <success-register @popup-ok="ok" v-if="popup"></success-register> -->
     <div class="log">
       <section class="login">
         <div class="row">
@@ -128,7 +124,6 @@
           </div>
         </div>
       </section>
-      <!-- <div>{{ v$.username }}</div> -->
     </div>
   </div>
 </template>
@@ -166,7 +161,6 @@ export default {
     return {
       username: {
         required,
-
         alphaNum,
       },
       email: {
@@ -184,7 +178,7 @@ export default {
       this.v$.$validate();
       if (!this.v$.$error) {
         this.error = null;
-        fetch("https://onshop321.herokuapp.com/accounts/v1/auth/register/", {
+        fetch("https://asha4f.pythonanywhere.com/accounts/api/v1/register/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
