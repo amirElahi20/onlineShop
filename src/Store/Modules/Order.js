@@ -37,7 +37,7 @@ const mutations = {
 const actions = {
     AddProductToOrder(context, orderDetail) {
         console.log(orderDetail);
-        axios.post('https://onshop321.herokuapp.com/shop/v1/new_Order/', {
+        axios.post('https://asha4f.pythonanywhere.com/shop/api/v1/new_Order/', {
             product: orderDetail.Product,
             amount: orderDetail.Amount,
             pack: orderDetail.Pack,

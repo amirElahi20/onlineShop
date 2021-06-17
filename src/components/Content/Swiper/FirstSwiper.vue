@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="u-center-text">
-      <h2 class="heading-secondary">آجیل</h2>
+      <h2 class="heading-secondary">میوه خشک</h2>
     </div>
     <div class="carousel">
       <carousel
@@ -13,10 +13,24 @@
         <slide v-for="product in MostSellProducts" :key="product.id">
           <div class="carousel__item">
             <div class="carousel-box">
-              <img class="slider-img" :src="product.picture" alt="" />
+              <img
+                class="slider-img"
+                :class="{ blurimg: !product.available }"
+                :src="product.picture[0].picture"
+                alt=""
+              />
               <h4 class="similar-name">{{ product.name }}</h4>
               <p class="similar-cost">{{ product.show_cost }}تومان</p>
-              <a class="similar-btn" href="">مشاهده محصول</a>
+              <p class="available" v-if="!product.available">
+                کالای مورد نظر موجود نیست!
+              </p>
+                <router-link
+                exact
+                :to="{ name: 'SingleProduct', params: { name: product.slug } }"
+                class="similar-btn"
+                >مشاهده محصول</router-link
+              >
+
             </div>
           </div>
         </slide>
@@ -26,6 +40,15 @@
       </carousel>
     </div>
     <router-link class="btn" to="/products">نمایش محصولات</router-link>
+    <svg class="svg" height="1" width="98%">
+      <line
+        x1="10%"
+        y1="0"
+        x2="92%"
+        y2="0"
+        style="stroke: rgb(255, 69, 0); stroke-width: 0.5"
+      />
+    </svg>
   </div>
 </template>
 
@@ -62,11 +85,11 @@ export default {
   },
   computed: {
     MostSellProducts() {
-      return this.$store.getters.GetMostSellProducts;
+      return this.$store.getters.GetBestProducts;
     },
   },
   created() {
-    this.$store.dispatch("GetMostSellProductsFromServer");
+    this.$store.dispatch("GetBestProductsFromServer");
   },
 };
 </script>
@@ -97,6 +120,21 @@ $color-primary-light: orangered;
 .similar-name {
   color: black;
   padding-bottom: 5px;
+}
+.available {
+  font-size: 12px;
+  // margin-top: 7px;
+  direction: rtl;
+  color: red;
+  font-weight: bold;
+  border-bottom: 1px solid red;
+  position: absolute;
+  margin-top: -200px;
+  margin-left: 30px;
+  transform: rotate(-30deg);
+}
+.blurimg {
+  filter: blur(4px);
 }
 .similar-cost {
   color: black;
@@ -164,7 +202,7 @@ body {
 .carousel {
   width: 1200px;
   margin: 0 auto 3rem auto;
-   @include respond(phone) {
+  @include respond(phone) {
     width: 320px;
     margin: 0 auto;
   }

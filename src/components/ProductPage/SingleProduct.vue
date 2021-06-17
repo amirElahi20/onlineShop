@@ -5,17 +5,7 @@
         <div class="lines"></div>
         <h4>خواص</h4>
         <ul class="list">
-          <li>تسکین دهنده</li>
-          <li>جلوگیری از سرطان</li>
-          <li>کاهش کلسترول خون</li>
-          <li>ضد عفونت های میکروبی</li>
-          <li>مقوی وضدگاز معده</li>
-          <li>نرم کننده سینه و گلو</li>
-          <li>کاهش درد</li>
-          <li>ضد اسپاسم</li>
-          <li>آرامش بخش</li>
-          <li>پاکسازی خون</li>
-          <li>و ...</li>
+          <li>5</li>
         </ul>
       </div>
       <div class="product-box">
@@ -33,6 +23,13 @@
                   </h1>
                 </div>
                 <span class="cost-cost">تومان</span>
+                <h5>درباره محصول:</h5>
+                <p class="aboutproduct">
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                  مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                  تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزا
+                </p>
                 <h5>نوع بسته بندی را انتخاب کنید</h5>
                 <main class="product-img">
                   <img
@@ -48,7 +45,7 @@
                     @click="glassIcon"
                   /><fa v-if="envelope" class="icon2" icon="check"></fa>
                 </main>
-                <label class="label">حجم بسته را انتخاب کنید</label>
+                <h5 class="label">حجم بسته را انتخاب کنید</h5>
                 <section class="package">
                   <div v-if="glass" class="select">
                     <select v-model="select" name="format" class="format">
@@ -57,7 +54,7 @@
                         v-for="(cost, index) in SingleProduct.product_cost"
                         :key="index"
                         v-show="
-                          SingleProduct.product_cost[index].pack.parent == 1
+                          SingleProduct.product_cost[index].pack.parent == 5
                         "
                         :value="index"
                       >
@@ -72,7 +69,7 @@
                         v-for="(cost, index) in SingleProduct.product_cost"
                         :key="index"
                         v-show="
-                          SingleProduct.product_cost[index].pack.parent == 3
+                          SingleProduct.product_cost[index].pack.parent == 8
                         "
                         :value="index"
                       >
@@ -110,7 +107,7 @@
             <div class="left">
               <img
                 class="big-img"
-                src="../../../public/img/orange-web.jpg"
+                :src="SingleProduct.picture[0].picture"
                 alt=""
               />
               <div class="images">
@@ -135,7 +132,6 @@
         </div>
       </div>
     </div>
-
     <div class="u-center-text">
       <h2 class="heading-secondary">محصولات مشابه</h2>
     </div>
@@ -146,17 +142,26 @@
         :breakpoints="breakpoints"
         class="carousel-all"
       >
-        <slide v-for="slide in 10" :key="slide">
+        <slide v-for="similar in SimilarProducts" :key="similar.id">
           <div class="carousel__item">
             <div class="carousel-box">
               <img
+                :class="{ blurimg: !similar.available }"
                 class="slider-img"
-                src="../../../public/img/mockup-graphics-enNffryKuQI-unsplash.jpg"
+                :src="similar.picture[0].picture"
                 alt=""
               />
-              <h5 class="similar-name">پرتقال</h5>
-              <p class="similar-cost">50000تومان</p>
-              <a class="similar-btn" href="">مشاهده محصول</a>
+              <h5 class="similar-name">{{ similar.name }}</h5>
+              <p class="similar-cost">{{ similar.show_cost }}تومان</p>
+              <p class="available" v-if="!similar.available">
+                کالای مورد نظر موجود نیست!
+              </p>
+              <router-link
+                exact
+                :to="{ name: 'SingleProduct', params: { name: similar.slug } }"
+                class="similar-btn"
+                >مشاهده محصول</router-link
+              >
             </div>
           </div>
         </slide>
@@ -166,33 +171,7 @@
         </template>
       </carousel>
     </div>
-    <div class="carousel">
-      <carousel
-        :items-to-show="5"
-        :settings="settings"
-        :breakpoints="breakpoints"
-        class="carousel-all"
-      >
-        <slide v-for="slide in 10" :key="slide">
-          <div class="carousel__item">
-            <div class="carousel-box">
-              <img
-                class="slider-img"
-                src="../../../public/img/mockup-graphics-enNffryKuQI-unsplash.jpg"
-                alt=""
-              />
-              <h5 class="similar-name">پرتقال</h5>
-              <p class="similar-cost">50000تومان</p>
-              <a class="similar-btn" href="">مشاهده محصول</a>
-            </div>
-          </div>
-        </slide>
-
-        <template #addons>
-          <navigation />
-        </template>
-      </carousel>
-    </div>
+    {{ SingleProduct.product_properties.length }}
   </div>
 </template>
 
@@ -211,6 +190,7 @@ export default {
       envelope: false,
       select: 1,
       count: 1,
+      route: this.$route.params.name,
       // carousel settings
       settings: {
         itemsToShow: 1,
@@ -231,6 +211,13 @@ export default {
         },
       },
     };
+  },
+  watch: {
+    $route() {
+      this.$store.dispatch("GetSingleProductFromServer", {
+        name: this.$route.params.name,
+      });
+    },
   },
   methods: {
     glassIcon() {
@@ -266,9 +253,15 @@ export default {
     SingleProduct() {
       return this.$store.getters.GetSingleProduct;
     },
+    SimilarProducts() {
+      return this.$store.getters.GetSimilarProducts;
+    },
   },
   created() {
     this.$store.dispatch("GetSingleProductFromServer", {
+      name: this.$route.params.name,
+    });
+    this.$store.dispatch("GetSimilarProductFromServer", {
       name: this.$route.params.name,
     });
   },
@@ -322,6 +315,21 @@ $color-primary-light: orangered;
     color: brown;
   }
 }
+.blurimg {
+  filter: blur(4px);
+}
+.available {
+  font-size: 12px;
+  // margin-top: 7px;
+  direction: rtl;
+  color: red;
+  font-weight: bold;
+  border-bottom: 1px solid red;
+  position: absolute;
+  margin-top: -200px;
+  margin-left: 30px;
+  transform: rotate(-30deg);
+}
 body {
   padding: 20px;
 }
@@ -357,6 +365,7 @@ body {
 .slider-img {
   width: 200px;
   padding: 5px;
+  height: 200px;
   // border-radius: 10px;
   border-bottom: 1px solid brown;
 }
@@ -375,6 +384,9 @@ body {
   border-radius: 10px;
   background-color: brown;
   color: white;
+  position: absolute;
+  margin-right: 20px;
+  margin-top: -60px;
   transition: all 0.4s;
   border: 1px solid brown;
   cursor: pointer;
@@ -389,8 +401,8 @@ body {
   width: 150px;
   padding: 10px;
   border-radius: 10px;
-  margin-right: 33px;
-  margin-top: 0.5rem;
+  margin-right: -50px;
+  margin-top: 0.1rem;
   margin-bottom: 0.5rem;
 }
 .input-count {
@@ -400,11 +412,11 @@ body {
   border-radius: 10px;
 }
 .count-icon {
-  padding:0px;
+  padding: 0px;
   cursor: pointer;
   border-radius: 7px;
   color: white;
-  padding:2px 5px 4px 5px ;
+  padding: 2px 5px 4px 5px;
 }
 .plus {
   background-color: green;
@@ -421,15 +433,14 @@ body {
   border: 1px solid brown;
   border-radius: 10px;
   // width: 40%;
-  height: 650px;
+  height: 670px;
   // margin: 50px auto;
   direction: rtl;
   display: flex;
-  box-shadow: 0rem 0rem 1rem 1rem rgba(rgba(163, 158, 158, 0.514), 0.4);
 }
 .product-name {
   font-size: 30px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 .product {
   margin-bottom: 1rem;
@@ -466,7 +477,7 @@ body {
   color: green;
   font-size: 30px;
   position: absolute;
-  right: 50%;
+  margin-right: -88px;
   margin-top: -20px;
 }
 .product-img {
@@ -475,9 +486,9 @@ body {
   margin: 30px 30px 30px 0;
 }
 .cost {
-  font-size: 70px;
+  font-size: 55px;
   color: orangered;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 .cost-cost {
   font-size: 28px;
@@ -486,9 +497,14 @@ body {
   position: absolute;
   color: orangered;
   //   background-color: yellow;
-  margin-top: -170px;
+  margin-top: -100px;
   transform: rotate(-30deg);
   margin-right: 70px;
+}
+.aboutproduct {
+  // border-bottom: 1px solid orange;
+  margin-bottom: 30px;
+  font-size: 13px;
 }
 .header {
   text-align: center;
@@ -514,7 +530,6 @@ body {
   top: 45rem;
   border-radius: 10px;
   border: 1px solid brown;
-  box-shadow: 0rem 0rem 1rem 1rem rgba(rgba(163, 158, 158, 0.514), 0.4);
 }
 .big-img {
   width: 100%;

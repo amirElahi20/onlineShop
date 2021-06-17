@@ -7,17 +7,27 @@
         :breakpoints="breakpoints"
         class="carousel-all"
       >
-        <slide  v-for="product in MostSellProducts" :key="product.id">
+        <slide v-for="product in MostSellProducts" :key="product.id">
           <div class="carousel__item">
             <div class="carousel-box">
               <img
                 class="slider-img"
-                :src="product.picture"
-                alt=""
+                :class="{ blurimg: !product.available }"
+                :src="product.picture[0].picture"
+                :alt="product.slug"
               />
-              <h4 class="similar-name">{{product.name}}</h4>
-              <p class="similar-cost">{{product.show_cost}}تومان</p>
-              <a class="similar-btn" href="">مشاهده محصول</a>
+
+              <h4 class="similar-name">{{ product.name }}</h4>
+              <p class="similar-cost">{{ product.show_cost }}تومان</p>
+              <p class="available" v-if="!product.available">
+                کالای مورد نظر موجود نیست!
+              </p>
+              <router-link
+                exact
+                :to="{ name: 'SingleProduct', params: { name: product.slug } }"
+                class="similar-btn"
+                >مشاهده محصول</router-link
+              >
             </div>
           </div>
         </slide>
@@ -27,7 +37,7 @@
       </carousel>
     </div>
     <router-link class="btn" to="/products">نمایش محصولات</router-link>
-      <svg class="svg" height="1" width="98%">
+    <svg class="svg" height="1" width="98%">
       <line
         x1="10%"
         y1="0"
@@ -40,7 +50,7 @@
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css";
+// import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 export default {
   components: {
@@ -57,6 +67,10 @@ export default {
       // breakpoints are mobile first
       // any settings not specified will fallback to the carousel settings
       breakpoints: {
+        // 400: {
+        //   itemsToShow: 2,
+        //   snapAlign: "center",
+        // },
         // 700px and up
         700: {
           itemsToShow: 5,
@@ -88,6 +102,7 @@ export default {
   color: black;
   padding-bottom: 5px;
 }
+
 .similar-cost {
   color: black;
   margin-bottom: 15px;
@@ -110,6 +125,21 @@ export default {
     color: brown;
   }
 }
+.blurimg {
+  filter: blur(4px);
+}
+.available {
+  font-size: 12px;
+  // margin-top: 7px;
+  direction: rtl;
+  color: red;
+  font-weight: bold;
+  border-bottom: 1px solid red;
+  position: absolute;
+  margin-top: -200px;
+  margin-left: 30px;
+  transform: rotate(-30deg);
+}
 body {
   padding: 20px;
   color: rgb(255, 69, 0);
@@ -122,6 +152,10 @@ body {
   border: 1px solid brown;
   border-radius: 10px;
   height: 340px;
+  transition: all 0.4s;
+  &:hover {
+    box-shadow: 0.5rem 1rem 1rem rgba(rgb(163, 158, 158), 0.5);
+  }
 }
 .carousel__item {
   min-height: 200px;
@@ -147,7 +181,8 @@ body {
   width: 200px;
   padding: 5px;
   height: 200px;
-  // border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   border-bottom: 1px solid brown;
 }
 .carousel {
@@ -175,7 +210,7 @@ body {
   left: 45%;
 }
 .btn {
-  background-color:orangered;
+  background-color: orangered;
   color: white;
   position: relative;
   direction: rtl;
@@ -206,7 +241,7 @@ body {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
-.svg{
+.svg {
   margin-bottom: 5rem;
 }
 </style>

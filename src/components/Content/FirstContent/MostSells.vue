@@ -7,21 +7,21 @@
     </section>
     <content-swiper></content-swiper>
     <monitor-swiper></monitor-swiper>
-    <mobile-swiper></mobile-swiper>
+    <!-- <mobile-swiper></mobile-swiper> -->
   </div>
 </template>
 
 
 <script>
 import ContentSwiper from '../Swiper/ContentSwiper.vue'
-import MonitorSwiper from '../Swiper/MonitorSwiper.vue'
-import MobileSwiper from '../Swiper/MobileSwiper.vue'
+import MonitorSwiper from '../Swiper/FirstSwiper.vue'
+// import MobileSwiper from '../Swiper/MobileSwiper.vue'
 // import BoxSwiper from '../Swiper/BoxSwiper.vue'
 export default {
     components:{
         ContentSwiper,
         MonitorSwiper,
-        MobileSwiper,
+        // MobileSwiper,
         // BoxSwiper
     }
 }

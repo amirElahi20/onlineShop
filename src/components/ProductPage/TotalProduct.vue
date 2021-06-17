@@ -10,7 +10,7 @@
             <img
               class="image"
               :class="{ blurimg: !product.available }"
-              src="../../../public/img/mockup-graphics-enNffryKuQI-unsplash.jpg"
+              :src="product.picture[0].picture"
               alt=""
             />
             <p class="paragraph">{{ product.name }}</p>
@@ -123,7 +123,8 @@ $color-primary-light: orangered;
   }
 }
 .image {
-  width: 180px;
+  width: 100%;
+  height: 190px;
   border: 1px solid brown;
   border-radius: 10px;
 }
