@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-// import Vue from 'vue';
 import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +19,10 @@ import ContactUs from './MenuPages/ContactUs.vue';
 import TotalProduct from './components/ProductPage/TotalProduct.vue';
 import SingleProduct from './components/ProductPage/SingleProduct.vue';
 import Shoppingpage from './components/ProductPage/ShoppingPage.vue';
+import ThePurches from './Client/ThePurches.vue';
+import ClientAccount from './Client/ClientAccount.vue'
+import EditAccount from './Client/EditAccount.vue'
+import ThePassword from './Client/ThePassword.vue';
 import Toast from 'vue-toastification';
 import "vue-toastification/dist/index.css"
 
@@ -98,7 +101,25 @@ const router = createRouter({
             path: '/shopping',
             component: Shoppingpage,
             name: 'shopping'
-        }
+        },
+        {
+            path: '/clientaccount',
+            component: ClientAccount,
+
+        },
+        {
+            path: '/editaccount',
+            component: EditAccount,
+        },
+        {
+            path: '/changepassword',
+            component: ThePassword,
+        },
+        {
+            path: '/purches',
+            component: ThePurches,
+        },
+
     ],
 });
 

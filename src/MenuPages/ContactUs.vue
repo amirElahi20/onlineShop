@@ -278,7 +278,7 @@ export default {
   border: 1px solid red !important;
 }
 .contact {
-  width: 1000px;
+  width: 65%;
   background-color: whitesmoke;
   border-radius: 10px;
   border: 1px solid black;
@@ -363,8 +363,9 @@ li {
 .form {
   display: grid;
   direction: rtl;
-  grid-template-columns: repeat(2, 500px);
+  // grid-template-columns: repeat(2, 500px);
   grid-template-rows: repeat(2, 100px);
+   grid-template-columns: repeat(auto-fill, minmax(350px, 4fr));
   margin-right: 30px;
   margin-top: 2rem;
   margin-bottom: 2rem;

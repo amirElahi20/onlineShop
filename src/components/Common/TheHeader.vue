@@ -42,7 +42,6 @@ export default {
 .header {
   width: 100%;
   height: 75vh;
-  // overflow: hidden;
   background-image: linear-gradient(315deg, #000000 0%, #0000003a 74%),
     url("../../../public/img/Header_img.jpg");
   background-size: cover;

@@ -1,6 +1,6 @@
 
-<template> 
-<!-- *******************************************************************************************************
+<template>
+  <!-- *******************************************************************************************************
 ********************  This template includes Media icons Link like Telegram , whatsapp *********************
 **********************and instagram . Also you can find the login , register and log out button here *******
 ************************************************************************************************************ -->
@@ -10,19 +10,36 @@
       <div class="container">
         <div class="right">
           <ul class="menu r">
-              
             <li v-if="!IsUserAuthenticated">
               <router-link to="/login" class="login" exact>ورود</router-link>
               <router-link to="/register" class="login" exact
                 >ثبت نام</router-link
               >
             </li>
-            
-              <li v-else>
-              <router-link to="/login" class="login" exact> <span class="tit english">{{UserName.username}}</span> عزیز خوش آمدید</router-link>
+
+            <li v-else>
+              <a @click="client" href="#" class="login"
+                ><span class="tit english"
+                  >{{ UserName.username
+                  }}<fa v-if="!subClient" class="caret" icon="caret-down"></fa
+                  ><fa
+                    v-if="subClient"
+                    class="caret"
+                    icon="caret-up"
+                  ></fa></span
+              ></a>
+
               <router-link @click="SignOut" to="/" class="login" exact
                 >خروج</router-link
               >
+              <div class="sub-client" v-if="subClient">
+                <ul>
+                  <li><router-link to="/clientaccount">مشاهده حساب کاربری</router-link></li>
+                  <li><router-link to="/editaccount">ویرایش حساب کاربری</router-link></li>
+                  <li><router-link to="/changepassword">تغییر رمز عبور</router-link></li>
+                  <li><router-link to="/purches">فاکتورهای من</router-link></li>
+                </ul>
+              </div>
             </li>
             <li>
               <span class="english">0216400010</span>
@@ -72,42 +89,78 @@
 import TopResponsive from "../../../../responsive/TopResponsive.vue";
 
 export default {
+  data() {
+    return {
+      subClient: false,
+    };
+  },
   components: { TopResponsive },
-  computed:{
-    IsUserAuthenticated(){
+  computed: {
+    IsUserAuthenticated() {
       return this.$store.getters.getAuth;
     },
-    UserName(){
+    UserName() {
       return this.$store.getters.getUserName;
-    }
-  },
-  methods:{
-    checkForLogin(){
-      this.$store.dispatch("CheckForLogin")
     },
-    SignOut(){
-      this.$store.dispatch("removeToken");
-    }
   },
-  created(){
+  methods: {
+    checkForLogin() {
+      this.$store.dispatch("CheckForLogin");
+    },
+    SignOut() {
+      this.$store.dispatch("removeToken");
+    },
+    client() {
+      this.subClient = !this.subClient;
+    },
+  },
+  created() {
     this.checkForLogin();
-  }
+  },
 };
 </script>
 
 <style scoped lang="scss">
 @import "../../../../styles/mixins.scss";
-
+.sub-client {
+  background-color: white;
+  z-index: 999;
+  position: absolute;
+  margin-top: 10px;
+  border-radius: 10px;
+  // margin-right:100px;
+  padding: 15px;
+}
+.sub-client ul {
+  list-style: none;
+  color: black;
+}
+.sub-client ul li {
+  margin-top: 10px;
+}
+.sub-client ul li a {
+  color: black;
+  transition: all 0.4s;
+  &:hover {
+    color: orange;
+  }
+}
+.caret {
+  margin-right: 10px;
+  margin-left: -15px;
+}
 .topnav {
   padding-top: 20px;
   height: 100%;
   display: flex;
+  // background-color: red;
+  // height: 100vh;
 
   @include respond(phone) {
     display: none;
   }
-    @include respond(tab-port) {
-   font-size: 10px;
+  @include respond(tab-port) {
+    font-size: 10px;
   }
 }
 
@@ -131,7 +184,7 @@ export default {
   }
 
   @include respond(tab-port) {
-   width:700px ;
+    width: 700px;
     margin: 0 auto;
   }
 }
@@ -142,7 +195,7 @@ export default {
   height: 30px;
   width: 30px;
 
-   @include respond(tab-port) {
+  @include respond(tab-port) {
     width: 20px;
     height: 20px;
   }
@@ -170,7 +223,7 @@ export default {
   background-color: white;
   border-radius: 40px;
 }
-.instagram::before{
+.instagram::before {
   opacity: 0;
 }
 .instagram {
@@ -184,16 +237,16 @@ export default {
   }
 }
 .instagram:hover {
-   background: radial-gradient(
+  background: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
     #fdf497 5%,
     #fd5949 45%,
     #d6249f 60%,
-    #285aeb 90%,
+    #285aeb 90%
   );
- 
 }
+
 .twitter {
   transition: all 0.3s;
 }
@@ -219,11 +272,10 @@ export default {
 }
 .r li {
   padding-left: 30px;
- 
 }
 .login {
-  color:whitesmoke;
-  background-color: orange ;
+  color: whitesmoke;
+  background-color: orange;
   cursor: pointer;
   text-decoration: none;
   padding: 8px 25px;
@@ -232,8 +284,8 @@ export default {
   border: 1px solid gold;
   margin-top: -10px;
   margin-left: 10px;
-    @include respond(tab-port) {
-   font-size: 10px;
+  @include respond(tab-port) {
+    font-size: 10px;
   }
 }
 .login:active {
@@ -242,13 +294,12 @@ export default {
 .login:hover {
   color: black;
   border: 1px solid gold;
-  background:white;
+  background: white;
   transition: all 0.5s;
 
-  
-  &:hover .tit{
+  &:hover .tit {
     color: black;
-     transition: all 0.5s;
+    transition: all 0.5s;
   }
 }
 span {

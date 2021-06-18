@@ -89,11 +89,11 @@ export default {
   methods: {
     mouseover() {
       this.activePopup = false;
-      // console.log(this.activePopup);m
+
     },
     mouseleave() {
       this.activePopup = true;
-      // console.log(this.activePopup);
+
     },
     updateScroll() {
       this.scrollPosition = window.scrollY;
@@ -102,7 +102,6 @@ export default {
       } else {
         this.isSticky = false;
       }
-      // console.log(this.scrollPosition);
     },
   },
 };
@@ -118,14 +117,12 @@ export default {
   direction: rtl;
   height: auto;
   margin-top: 10px;
-  // background-clip: white;
 }
 .r li {
   margin-left: 20px;
 }
 .fa {
   font-size: 35px;
-  // z-index: -1;
   margin-top: -5px;
   margin-right: 10px;
   transition: all 0.3s;
@@ -136,9 +133,9 @@ export default {
   margin: 0 auto;
   justify-content: space-between;
   direction: rtl;
-  z-index: 999;
   transition: all 0.4s;
   width: 1200px;
+  z-index: 998;
 
   @include respond(tab-land) {
     width: 900px;
@@ -185,7 +182,6 @@ export default {
   padding: 12px 7px;
   transition: all 1s;
   color: black;
-  // font-size: 50px;
 }
 
 a {
@@ -270,4 +266,5 @@ a {
 .fade-leave-to {
   opacity: 0;
 }
+
 </style>
